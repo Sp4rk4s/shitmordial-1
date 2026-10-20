@@ -9,4 +9,8 @@ bool install(HMODULE owner);
 }
 
 // Separate from mapping::Handoff: that state still describes payload entry return.
+#ifdef MENU_UI_IMPORT
+extern "C" __declspec(dllimport) volatile LONG primordial_menu_state;
+#else
 extern "C" __declspec(dllexport) volatile LONG primordial_menu_state;
+#endif

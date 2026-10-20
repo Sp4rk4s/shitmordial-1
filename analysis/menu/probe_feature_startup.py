@@ -12,7 +12,7 @@ sys.path.insert(0,str(ROOT/'tools'))
 from test_menu import one
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--entry',type=lambda x:int(x,0),required=True);parser.add_argument('--model-event-registration',action='store_true');parser.add_argument('--bind-field',action='append',default=[]);parser.add_argument('--bind-client-state',action='store_true');parser.add_argument('--bind-client-panel',action='store_true');parser.add_argument('--dry-hooks',action='store_true');parser.add_argument('--max-steps',type=int,default=3000000);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--entry',type=lambda x:int(x,0),required=True);parser.add_argument('--adapt-event-signature',action='store_true',help='OFFLINE only: use the private dispatcher proven by both current public event wrappers');parser.add_argument('--model-event-registration',action='store_true');parser.add_argument('--bind-field',action='append',default=[]);parser.add_argument('--bind-client-state',action='store_true');parser.add_argument('--bind-client-panel',action='store_true');parser.add_argument('--dry-hooks',action='store_true');parser.add_argument('--max-steps',type=int,default=3000000);args=parser.parse_args()
     pid=one('csgo.exe')
     thread=json.loads((ROOT/f'analysis/menu/threads-{pid}.json').read_text())['threads'][0]
     teb=int(thread['teb'],16)
@@ -78,14 +78,28 @@ def main():
             vt=struct.unpack('<I',process.read(events,4))[0]
             registration=struct.unpack('<I',process.read(vt+6*4,4))[0]
             models[registration]='hypothetical_source_global_event_registration'
+        adaptations={}
+        if args.adapt_event_signature:
+            assert args.entry==0x1564B0 and args.dry_hooks,'Signature experiment requires the bounded failed-hook inventory'
+            from audit_feature_patterns import event_link,executable_sections
+            facts=json.loads((ROOT/f'analysis/menu/source-interface-state-{pid}.json').read_text())['factories']
+            section_data=executable_sections(process,int(facts['engine.dll']['base'],16))
+            link=event_link(process,facts,section_data)
+            target=link['expected_target']
+            start,data=next((a,d) for a,d in section_data if a<=target<a+len(d))
+            adaptations[link['old_pattern']]={
+                'range_start':start,'range_end':start+len(data),
+                'replacement_pattern':link['replacement_pattern'],'expected_target':target,
+                'proof':link,'scope':'OFFLINE only; exact old pattern/mask, current executable range, two public wrappers and unique target'}
         result=probe.probe(process,bytes(image),teb,args.entry,0,fields,
             standard_models=models,step_budget=args.max_steps,
+            signature_adaptations=adaptations,
             reject_null_reads=True,observed_exports=observed,
             external_code_ranges=[(m['base'],m['base']+m['size']) for m in modules if Path(m['path']).name.lower() in
                 ('ucrtbase.dll','msvcp140.dll','vcruntime140.dll','kernelbase.dll','kernel32.dll','ntdll.dll','inputsystem.dll','engine.dll','client.dll','vstdlib.dll','tier0.dll')])
     result['offline_interface_hypotheses']=bindings
     result['scope']='OFFLINE ONLY candidate startup root with synthetic guard/allocations and exact masked-scan models; real current process page copies. No target calls/writes. Root ABI remains unresolved.'
-    (ROOT/f'analysis/menu/feature-startup-{args.entry:06x}-{pid}{'-dry-hooks' if args.dry_hooks else ''}{'-client-panel' if args.bind_client_panel else ''}{'-client-state' if args.bind_client_state else ''}{'-extra'+str(len(args.bind_field)) if args.bind_field else ''}{'-event-model' if args.model_event_registration else ''}.json').write_text(json.dumps(result,indent=2)+'\n')
+    (ROOT/f'analysis/menu/feature-startup-{args.entry:06x}-{pid}{'-dry-hooks' if args.dry_hooks else ''}{'-client-panel' if args.bind_client_panel else ''}{'-client-state' if args.bind_client_state else ''}{'-extra'+str(len(args.bind_field)) if args.bind_field else ''}{'-event-model' if args.model_event_registration else ''}{'-event-pattern' if args.adapt_event_signature else ''}.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps({key:result.get(key) for key in ['instructions','stop_reason','last_eip_rva','synthetic_field_reads','final_stack_words','emulator_error']},indent=2))
 
 if __name__=='__main__':main()

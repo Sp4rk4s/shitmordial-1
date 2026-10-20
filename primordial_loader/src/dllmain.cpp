@@ -2,6 +2,8 @@
 #include "crashlog.h"
 #include "config.h"
 #include "menu_ui.h"
+#include "event_pattern.h"
+#include "movement_features.h"
 #include <windows.h>
 #include <cstdio>
 
@@ -33,8 +35,14 @@ static DWORD WINAPI init_thread(LPVOID hModule) {
         printf("\n[+] Payload entry completed.\n");
         printf("    Base: 0x%08X\n", static_cast<uint32_t>(result.base));
         printf("    Entry: 0x%08X\n\n", cfg::IMAGE_BASE + cfg::ENTRY_RVA);
+        if(event_pattern::install())
+            printf("[*] Verified event-dispatch pattern adapter installed; gameplay startup remains unresolved.\n");
+        else
+            printf("[!] Event pattern adapter refused the current profile; original scan behavior preserved.\n");
         if (menu_ui::install(static_cast<HMODULE>(hModule))) {
             printf("[*] Menu hooks installed; waiting for the first UI paint.\n");
+            if(!movement_features::install())
+                printf("[!] Movement feature profile refused; menu remains available.\n");
         } else {
             printf("[!] Menu UI installation failed. Check primordial_menu.log in the game directory.\n");
         }

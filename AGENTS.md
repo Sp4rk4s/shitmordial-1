@@ -1,3 +1,53 @@
+## First movement-feature test is live (2026-10-20; supersedes older feature status)
+
+Read analysis/menu/first-movement-feature-tests.md first. User requested all
+features if possible, proper consumer-linked patterns, and will test behavior.
+User confirmed BOTH bunnyhop and infinite duck stamina work in the actual game.
+This confirmation covers these two features only; other features remain unresolved.
+
+Preserved game23896 still uses the successful menu-native-input normal loader.
+New optional movement_probe.dll from build/movement-first/primordial-x86-native/
+is loaded at990000; it imports actual UI readiness from the existing loader,
+constructs no menu and does not rerun payload startup. It uses the same bounded
+movement backend compiled into the new normal loader. ClientMode24 MinHook
+installation/profile/RecvTable validation passed, exported movement state1;
+latest counters0/0, menu state3, both checkboxes off, menu shown. No map callback
+or gameplay effect has yet been observed. Discover PID and use
+py -3 tools/capture_movement_state.py. Do not install a duplicate movement hook
+or replace this pinned diagnostic in place. User was told to join a local map,
+enable those two controls, close menu with Insert, then test jump/crouch.
+
+New normal artifacts are build/movement-first/ with validation.json,25 native
+checks passed (19x86,6Steam),5 Python provenance checks,320 differential cases
+executing the original bunnyhop x86 decision with explicit local fixtures. Normal
+replacement DLL itself is NOT game-loaded; canonical outputs remain the old
+working menu build. Keep normal loader/TLS adjacent when moving them. Optional
+probe is built with tools/build.ps1 -FeatureProbe and is not required for normal
+fresh-process loading. Both production DLL and probe compile movement_features.cpp.
+
+One proper pattern link is repaired in new normal source: event_pattern.cpp adapts
+only original masked18 signature/helper155840, returns155352/155375, mask0 and
+current engine executable range. Both public GAMEEVENTSMANAGER002 wrappers
+independently call engine211C70; unique new prefix/zero old matches, helper/source
+hashes and wrappers checked. This is NOT ASCII scanner21E560. Updated OFFLINE
+1564B0 inventory --adapt-event-signature has24requests/6nulls instead of7nulls.
+Adapter is NOT loaded by movement_probe and no original event hook was installed.
+tools/audit_feature_patterns.py pins OsirisAndExtra c85f8301 and records115
+reference patterns/109unique candidates/6ambiguous, plus RTTI player-vtable
+evidence. Reference candidates are not automatic original-consumer replacements.
+Downloaded hazedumper config matches all58 existing diagnostic catalog patterns.
+
+New original-code evidence: native movement coordinatorF8510 calls autostrafe
+F92D0 and reads the named UI controls. Core native CreateMove-shaped callback
+3798C0 callsF8510 at379A58 and uses original-pointer44B65FE0. Its Input buffers
+use+F4/F8 while installed CInput uses+F0/F4; it calls stale checksum2DBE2740.
+Do NOT activate that entire callback from one corrected pattern. Other consumers
+also read old Source operand locations for offsets (155B80/36A7C0 notes).
+HelperA06C0 fully retained live as refresh_cached_local_player, verified thiscall
+prototype/comment; seven bounded partial/scanner notes read back and indexed.
+Latest IDA database disk save remains unverified. Legacy comment getter truncates
+at1024 chars, so supplemental notes go on next instruction, preserving originals.
+
 ## Local Git repository and build guide
 
 This workspace is now a local Git repository on main. README.md documents the

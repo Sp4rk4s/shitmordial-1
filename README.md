@@ -3,11 +3,16 @@
 Windows C++20 loader for the supplied x86 Primordial dump and legacy CS:GO.
 The normal loader includes the original menu: Insert toggles it, and the user
 confirmed dragging, tabs, checkboxes, multi-selects, keybinds, sliders and search.
-**Gameplay features are not restored yet.**
+**First feature test scope: bunnyhop and infinite duck stamina.** These two
+controls now have a bounded native backend, and the user confirmed both work
+in the actual game. The other gameplay features are not restored yet.
 
-Current source also repairs all fourteen module resolver inputs. That correction
-passes all 22 isolated checks but has not been injected into the game; the last
-user-confirmed menu build predates that correction. See
+Current source also repairs all fourteen module resolver inputs and one proven
+event-dispatch signature. All 25 native checks pass. The latest normal DLLs are
+under `build/movement-first/`; that normal loader has not been game-loaded yet.
+The current game retains its working menu loader with a movement-only diagnostic
+using the same backend. See
+[current feature tests](analysis/menu/first-movement-feature-tests.md),
 [feature recovery](analysis/menu/feature-startup-recovery-findings.md) and
 [menu findings](analysis/menu/native-ui-input-findings.md).
 
@@ -30,7 +35,7 @@ Source DLL build documented in
 
 ## Compile
 
-Build the loader, TLS companion and x64 Steam stager, then run the 22 checks:
+Build the loader, TLS companion and x64 Steam stager, then run the 25 checks:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\build.ps1
@@ -60,6 +65,10 @@ currently supports x64 Steam.
 
 Optional: `build.ps1 -MenuPreview` also compiles a separate diagnostic preview.
 Normal injection uses the integrated menu and does not need that DLL.
+
+Keep `primordial_loader.dll` and `primordial_tls.dll` together when moving them.
+The Steam DLL can live in a separate folder. Inject the loader only; it loads
+its TLS companion automatically.
 
 ## Inject automatically
 
