@@ -5,9 +5,25 @@
 #include "event_pattern.h"
 #include "movement_features.h"
 #include <windows.h>
+#include <algorithm>
 #include <cstdio>
 
 static FILE* s_console = nullptr;
+
+// Team select and map change crash fix: make the matched function `mov al,1; ret 4`.
+static void apply_crash_fix() {
+    constexpr unsigned char pattern[]{0x55,0x8B,0xEC,0x56,0x8B,0xF1,0x33,0xC0,0x57,0x8B,0x7D,0x08};
+    constexpr unsigned char patch[]{0xB0,0x01,0xC2,0x04,0x00};
+    for (auto name : {L"client.dll", L"engine.dll", L"server.dll", L"studiorender.dll", L"materialsystem.dll"}) {
+        auto* base = reinterpret_cast<unsigned char*>(GetModuleHandleW(name));
+        if (!base) { printf("[!] Crash fix: %ls not loaded.\n", name); continue; }
+        auto* nt = reinterpret_cast<IMAGE_NT_HEADERS*>(base + reinterpret_cast<IMAGE_DOS_HEADER*>(base)->e_lfanew);
+        auto* end = base + nt->OptionalHeader.SizeOfImage;
+        auto* hit = std::search(base, end, std::begin(pattern), std::end(pattern));
+        bool ok = hit != end && WriteProcessMemory(GetCurrentProcess(), hit, patch, sizeof(patch), nullptr);
+        printf(ok ? "[+] Crash fix applied in %ls at %p.\n" : "[!] Crash fix: pattern not found/patched in %ls.\n", name, hit);
+    }
+}
 
 static void open_console() {
     if (AllocConsole()) {
@@ -28,6 +44,7 @@ static DWORD WINAPI init_thread(LPVOID hModule) {
     crash::install();
     printf("Crash log: %ls\n", crash::log_path().c_str());
     printf("Crash handler active in csgo.exe process.\n\n");
+    apply_crash_fix();
 
     auto result = mapper::inject();
 

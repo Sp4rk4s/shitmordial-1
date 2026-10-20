@@ -139,14 +139,16 @@ void lifecycle() {
 }
 
 ULONGLONG WINAPI fake_ticks() { return 123456789ull; }
+// MSVC treats IAT slots as constant and can reuse one load across calls; force a fresh read.
+__declspec(noinline) ULONGLONG ticks_via_iat() { return GetTickCount64(); }
 void hook_test() {
     void* original = reinterpret_cast<void*>(GetProcAddress(GetModuleHandleW(L"kernel32.dll"), "GetTickCount64"));
     void* replacement = reinterpret_cast<void*>(&fake_ticks);
     require(iat::hook("GetTickCount64", original, replacement) > 0, "no imports hooked");
-    const auto ticks = GetTickCount64();
+    const auto ticks = ticks_via_iat();
     iat::hook("GetTickCount64", replacement, original);
     require(ticks == 123456789ull, "hook was not invoked");
-    require(GetTickCount64() != 123456789ull, "import not restored");
+    require(ticks_via_iat() != 123456789ull, "import not restored");
 }
 }
 

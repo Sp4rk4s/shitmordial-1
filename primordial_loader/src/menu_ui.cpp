@@ -81,6 +81,8 @@ bool preflight() {
     for(auto& f:menu_profile::fonts)
         if(at<unsigned>(f.rva)||at<unsigned>(f.rva+4)||at<unsigned>(f.rva+8)){log("REFUSED nonempty font %X",f.rva);return false;}
     if(at<unsigned>(0x91BC4B)!=0x1C85CEC8){log("REFUSED unexpected guard pointer");return false;}
+    // Logo texture ID cached by 34CF20; the dump captured the original process's ID 0x132.
+    if(at<unsigned>(0x4B3D50)!=0x132){log("REFUSED unexpected logo texture id %X",at<unsigned>(0x4B3D50));return false;}
     surface=factory("vguimatsurface.dll","VGUI_Surface031");
     panel_api=factory("vgui2.dll","VGUI_Panel009");
     engine=factory("engine.dll","VEngineClient014");
@@ -151,6 +153,9 @@ bool initialize_menu() {
     at<void*>(0x4DE164)=*reinterpret_cast<void**>(mod+menu_profile::timing_slot_rva);
     if(!at<void*>(0x4DE164)){log("REFUSED timing pointer null");return false;}
     if(!fonts()) return false;
+    // -1 makes 34CF20 create the texture and decode the embedded logo PNG (vector 57ECD4)
+    // instead of drawing (and re-uploading over) a stale ID that this game owns.
+    at<unsigned>(0x4B3D50)=0xFFFFFFFF;
     guarded_constructor();
     auto begin=at<unsigned>(0x804E5C), end=at<unsigned>(0x804E60);
     if(!begin || end-begin!=16){log("FAILED constructed window count");return false;}
@@ -211,6 +216,9 @@ void run_ui_frame() {
     }
     at<unsigned char>(0x804DF3)=GetCursor()!=nullptr;
     void* old_focus=at<void*>(0x804DF8);void* old_active=at<void*>(0x804DFC);
+    // Original panel callback 1550AA copies the accent picker value into the global
+    // style accent read by every control draw, immediately before 32BA40.
+    at<unsigned>(0x4B33A8)=at<unsigned>(0x540138);
     // Menu toggle is itself an original keybind control.
     at<unsigned>(0x4B344C)=at<unsigned>(0x5404E0);
     if(!at<void*>(0x804DFC)&&at<unsigned>(0x807F08+83*4)&&pressed(16))
