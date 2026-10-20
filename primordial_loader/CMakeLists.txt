@@ -35,7 +35,7 @@ target_link_options(primordial_tls PRIVATE /NODEFAULTLIB /ENTRY:DllMain@12 /INCL
 # Steam embeds and stages the binary; this DLL patches and initializes it.
 add_library(${PROJECT_NAME} SHARED src/dllmain.cpp src/mapper.cpp src/pe_builder.cpp
     src/crashlog.cpp src/signatures.cpp src/pattern_hook.cpp src/imports.cpp src/startup.cpp src/tls.cpp src/game_modules.cpp
-    src/menu_ui.cpp src/menu_profile.cpp src/event_pattern.cpp src/movement_features.cpp)
+    src/menu_ui.cpp src/menu_profile.cpp src/event_pattern.cpp src/movement_features.cpp src/original_movement.cpp)
 # MSVC19.52 optimizer crashes on the nested native-SEH paint diagnostic boundary.
 set_source_files_properties(src/menu_ui.cpp PROPERTIES COMPILE_OPTIONS /Od)
 add_dependencies(primordial_loader primordial_tls)
@@ -47,12 +47,21 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/minhook/LICENSE.txt"
         "$<TARGET_FILE_DIR:primordial_loader>/MinHook-LICENSE.txt")
 if(BUILD_FEATURE_PROBE)
-    add_library(movement_probe SHARED src/movement_probe_entry.cpp src/movement_features.cpp src/menu_profile.cpp)
+    add_library(movement_probe SHARED src/movement_probe_entry.cpp src/movement_features.cpp src/menu_profile.cpp src/original_movement.cpp)
     target_compile_definitions(movement_probe PRIVATE MENU_UI_IMPORT WIN32_LEAN_AND_MEAN NOMINMAX)
     target_link_libraries(movement_probe PRIVATE primordial_loader minhook bcrypt)
 endif()
 include(CTest)
 if(BUILD_TESTING)
+    # Executes original code with explicit isolated Source/UI fixtures.
+    add_executable(original_motion_probe ../tests/original_motion_probe.cpp src/imports.cpp)
+    target_compile_definitions(original_motion_probe PRIVATE WIN32_LEAN_AND_MEAN NOMINMAX)
+    target_link_libraries(original_motion_probe PRIVATE bcrypt)
+    add_test(NAME original-autostrafe-contract COMMAND original_motion_probe "${CMAKE_CURRENT_SOURCE_DIR}/../primordial.bin")
+    add_executable(original_movement_tests ../tests/original_movement_tests.cpp src/original_movement.cpp src/imports.cpp)
+    target_compile_definitions(original_movement_tests PRIVATE WIN32_LEAN_AND_MEAN NOMINMAX)
+    target_link_libraries(original_movement_tests PRIVATE bcrypt)
+    add_test(NAME original-movement-integration COMMAND original_movement_tests "${CMAKE_CURRENT_SOURCE_DIR}/../primordial.bin")
     add_executable(movement_features_tests ../tests/movement_features_tests.cpp)
     add_test(NAME movement-feature-gates COMMAND movement_features_tests)
     add_executable(movement_native_tests ../tests/movement_native_tests.cpp)

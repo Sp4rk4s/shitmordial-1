@@ -1,5 +1,7 @@
 """Read-only movement bridge diagnostics; never toggles a setting or starts a map."""
 import ctypes as c
+import argparse
+import hashlib
 import json
 from pathlib import Path
 import struct
@@ -32,7 +34,10 @@ def exports(process, base):
 
 
 def main():
-    pid=one('csgo.exe')
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--pid',type=int,help='Select one explicit legacy game process')
+    args=parser.parse_args()
+    pid=args.pid or one('csgo.exe')
     if not pid:
         raise RuntimeError('Legacy CS:GO is not running')
     result=dict(pid=pid,scope='Read-only non-atomic diagnostics; gameplay behavior requires user testing')
@@ -58,9 +63,18 @@ def main():
         address=process.menu_state_address()
         result['menu_state']=struct.unpack('<I',process.read(address,4))[0] if address else None
         result['menu_shown']=bool(process.read(0x447F33B0+0x99,1)[0])
-        result['checkboxes']={name:bool(process.read(0x44340000+rva+0x138,1)[0])
-                              for name,rva in [('bunnyhop',0x53D0E8),('infinite_duck_stamina',0x53DC20)]}
-        result['implemented_features']=['bunnyhop','infinite duck stamina']
+        original=False
+        receipt=Path(path).parent.parent/'validation.json'
+        if receipt.is_file():
+            validation=json.loads(receipt.read_text())
+            expected=validation.get('artifacts_sha256',{}).get(str(Path(path).relative_to(ROOT))) if Path(path).is_relative_to(ROOT) else None
+            original=(validation.get('backend')=='original-native-movement' and expected==hashlib.sha256(Path(path).read_bytes()).hexdigest())
+        features=[('bunnyhop',0x53D0E8),('infinite_duck_stamina',0x53DC20)]
+        if original:features.extend([('autostrafer',0x53D228),('fast_stop',0x53DAE0)])
+        result['checkboxes']={name:bool(process.read(0x44340000+rva+0x138,1)[0]) for name,rva in features}
+        result['backend']='original native movement' if original else 'legacy two-feature bridge / unverified build'
+        result['implemented_features']=[name.replace('_',' ') for name,_ in features]
+        result['ready_for_user_testing']=original and result['state'] in (1,2,3)
         result['other_gameplay_features_ready']=False
     output=ROOT/f'analysis/menu/movement-live-{pid}.json'
     output.write_text(json.dumps(result,indent=2)+'\n')

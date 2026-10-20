@@ -1,6 +1,7 @@
-// First bounded feature restoration. The original full CreateMove callback
-// needs more game-layout/offset recovery and is deliberately not invoked here.
+// Current Source callback adapter for guarded original movement machine code.
+// The full original CreateMove callback still needs unrelated dependency repair.
 #include "movement_features.h"
+#include "original_movement.h"
 #include "menu_ui.h"
 #include "menu_profile.h"
 #include <windows.h>
@@ -21,7 +22,7 @@ struct Prop { const char* name; int type,flags,string_size,inside_array; void *e
 struct Table { Prop* props; int count; void* decoder; const char* name; bool initialized,in_list; };
 struct Class { void *create,*create_event; const char* name; Table* table; Class* next; int id; };
 static_assert(sizeof(Prop)==60 && offsetof(Prop,offset)==44 && sizeof(Class)==24);
-struct Fields { unsigned health=0,flags=0,life=0,water=0,render=0; } fields;
+struct Fields { unsigned health=0,flags=0,life=0,water=0,render=0,velocity=0,ground=0; } fields;
 using Move=bool(__thiscall*)(void*,float,void*);
 Move original=nullptr;
 void *engine=nullptr,*entities=nullptr;
@@ -57,12 +58,12 @@ bool label(unsigned rva,const wchar_t* expected){
     for(unsigned i=0;i<length;++i)if((text[i]^(key&0xFFFF))!=expected[i])return false;
     return true;
 }
-bool enabled(unsigned rva){return *reinterpret_cast<volatile unsigned char*>(0x44340000+rva+0x138)!=0;}
 void process(void* command){
     InterlockedIncrement(&primordial_movement_commands);
     if(primordial_movement_state==4 || primordial_menu_state!=menu_ui::ready || !command)return;
     if(!controls_checked){
-        if(!label(0x53D0E8,L"bunnyhop") || !label(0x53DC20,L"infinite duck stamina")){
+        if(!label(0x53D0E8,L"bunnyhop") || !label(0x53DC20,L"infinite duck stamina") ||
+           !label(0x53D228,L"autostrafer") || !label(0x53DAE0,L"fast stop")){
             InterlockedExchange(&primordial_movement_state,4);std::puts("[movement] Control identity mismatch; disabled.");return;
         }
         controls_checked=true;
@@ -79,9 +80,15 @@ void process(void* command){
         player[fields.life],player[fields.water],player[fields.render+1]};
     InterlockedExchange(&primordial_movement_state,2);
     if(*reinterpret_cast<volatile unsigned char*>(0x447F33B0+0x99))return;
-    auto& buttons=*reinterpret_cast<unsigned*>(bytes+0x30);
-    const auto updated=apply(buttons,state,enabled(0x53D0E8),enabled(0x53DC20));
-    if(updated!=buttons){buttons=updated;InterlockedIncrement(&primordial_movement_changes);InterlockedExchange(&primordial_movement_state,3);}
+    if(state.health<=0 || state.life || state.move==8 || state.move==9 || state.move==10)return;
+    unsigned char before[100];std::memcpy(before,bytes,sizeof(before));
+    __try {original_movement::run(command,engine,entities);}
+    __except(EXCEPTION_EXECUTE_HANDLER){
+        std::memcpy(bytes,before,sizeof(before));
+        std::printf("[movement] Original movement stopped after exception %08lX; command restored.\n",GetExceptionCode());
+        InterlockedExchange(&primordial_movement_state,4);return;
+    }
+    if(std::memcmp(before,bytes,sizeof(before))){InterlockedIncrement(&primordial_movement_changes);InterlockedExchange(&primordial_movement_state,3);}
 }
 bool __fastcall hook(void* object,void*,float frame,void* command){
     const bool result=original(object,frame,command);
@@ -111,19 +118,21 @@ bool checked_install(){
     for(auto* item=classes;item && count++<1024;item=item->next)
         if(item->name && !std::strcmp(item->name,"CCSPlayer")){if(player)return false;player=item->table;}
     if(!player || count>=1024)return false;
-    fields={find(player,"m_iHealth"),find(player,"m_fFlags"),find(player,"m_lifeState"),find(player,"m_nWaterLevel"),find(player,"m_nRenderMode")};
-    if(!fields.health || !fields.flags || !fields.life || !fields.water || !fields.render)return false;
+    fields={find(player,"m_iHealth"),find(player,"m_fFlags"),find(player,"m_lifeState"),find(player,"m_nWaterLevel"),find(player,"m_nRenderMode"),
+        find(player,"m_vecVelocity[0]"),find(player,"m_hGroundEntity")};
+    if(!fields.health || !fields.flags || !fields.life || !fields.water || !fields.render || !fields.velocity || !fields.ground)return false;
     // NETVAR_OFFSET(CBaseEntity,m_nRenderMode,+1) is corroborated by the
     // installed player's native movement-mode byte access at client+42C129.
     const unsigned char mode_read[]={0x80,0xBE,0x5C,0x02,0x00,0x00,0x00};
     if(fields.render+1!=0x25C || std::memcmp(base+0x42C129,mode_read,sizeof(mode_read)))return false;
+    if(!original_movement::prepare(reinterpret_cast<unsigned char*>(0x44340000),{fields.water,fields.flags,fields.velocity,fields.ground}))return false;
     auto status=MH_Initialize();if(status!=MH_OK && status!=MH_ERROR_ALREADY_INITIALIZED)return false;
     if(MH_CreateHook(target,reinterpret_cast<void*>(&hook),reinterpret_cast<void**>(&original))!=MH_OK)return false;
     HMODULE pin=nullptr;
     if(!GetModuleHandleExA(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS|GET_MODULE_HANDLE_EX_FLAG_PIN,reinterpret_cast<LPCSTR>(&hook),&pin) || MH_EnableHook(target)!=MH_OK){
         MH_RemoveHook(target);original=nullptr;return false;
     }
-    std::printf("[movement] Bunnyhop/duck bridge installed. Fields health=%X flags=%X life=%X water=%X move=%X. Other features unresolved.\n",fields.health,fields.flags,fields.life,fields.water,fields.render+1);
+    std::printf("[movement] Original bunnyhop/duck/autostrafer/fast-stop code installed. Fields health=%X flags=%X life=%X water=%X move=%X velocity=%X ground=%X. Other features unresolved.\n",fields.health,fields.flags,fields.life,fields.water,fields.render+1,fields.velocity,fields.ground);
     InterlockedExchange(&primordial_movement_state,1);return true;
 }
 }

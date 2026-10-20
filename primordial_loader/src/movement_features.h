@@ -2,8 +2,8 @@
 #include <cstdint>
 namespace movement_features {
 struct Player { int health; unsigned flags; unsigned char life,water,move; };
-// Recovered movement gates: no jump changes in water, fly/ladder/observer
-// modes, or while dead. Only the original menu's two named controls are wired.
+// Historical bridge oracle, retained for isolated differential regression tests.
+// Production movement now executes original_movement::run, not this function.
 inline unsigned apply(unsigned buttons,const Player& player,bool bunnyhop,bool duck) noexcept {
     if(player.health<=0 || player.life || player.move==8 || player.move==9 || player.move==10)return buttons;
     if(duck)buttons|=0x400000;

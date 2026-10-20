@@ -3,15 +3,23 @@
 Windows C++20 loader for the supplied x86 Primordial dump and legacy CS:GO.
 The normal loader includes the original menu: Insert toggles it, and the user
 confirmed dragging, tabs, checkboxes, multi-selects, keybinds, sliders and search.
-**First feature test scope: bunnyhop and infinite duck stamina.** These two
-controls now have a bounded native backend, and the user confirmed both work
-in the actual game. The other gameplay features are not restored yet.
+**Gameplay test scope: original bunnyhop, infinite duck stamina, autostrafer and
+fast stop.** The normal loader executes original feature machine code with
+verified current Source field/interface bindings. The user confirmed this movement
+build works in gameplay; separate confirmation for each control was not supplied.
+Earlier bunnyhop/duck confirmation covered the old bridge.
 
 Current source also repairs all fourteen module resolver inputs and one proven
-event-dispatch signature. All 25 native checks pass. The latest normal DLLs are
-under `build/movement-first/`; that normal loader has not been game-loaded yet.
-The current game retains its working menu loader with a movement-only diagnostic
-using the same backend. See
+event-dispatch signature. All 27 native checks pass. Latest test DLLs are under
+`build/original-gameplay/`; its normal loader is injected into fresh CS:GO5336.
+To build the same version, run `tools/build.ps1 -OutputDirectory build/original-gameplay`;
+select it in the controller with `--release build/original-gameplay`.
+After loading a local map, run `joingame; jointeam 2` (T) or
+`joingame; jointeam 3` (CT). In the latest session, `jointeam` alone silently left
+the player unassigned; the user confirmed this initial join step resolves it.
+Enable the desired movement controls and close the menu with Insert before
+testing. Other gameplay features remain unresolved. See
+[original gameplay test](analysis/menu/original-gameplay-testing.md),
 [current feature tests](analysis/menu/first-movement-feature-tests.md),
 [feature recovery](analysis/menu/feature-startup-recovery-findings.md) and
 [menu findings](analysis/menu/native-ui-input-findings.md).
@@ -99,8 +107,8 @@ Every automated launch passes **`-windowed -insecure -steam`**. Do not use Steam
 app 730 launch command here: on this installation that selects CS2.
 
 After the controller reports that the integrated menu completed its first draw,
-press **Insert** to show/hide it. Gameplay features remain unresolved even when
-menu controls respond.
+press **Insert** to show/hide it. Only the four movement features listed above
+are ready for gameplay testing; responding controls alone do not prove an effect.
 
 If the correct Steam stager already prepared a fresh running game, inject just
 the normal loader through the controller:

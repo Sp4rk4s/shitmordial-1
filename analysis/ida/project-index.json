@@ -750,6 +750,60 @@
       "aliases": [
         "sub_440A06C0"
       ]
+    },
+    {
+      "address": "0x443748d0",
+      "name": "command_state_ring_record",
+      "prototype": "unsigned char *__cdecl command_state_ring_record(int command_number);",
+      "comment": "Verified native leaf: signed command_number remainder150, returns runtime44B644B8+44*remainder. PlainRET; no allocation, validation or side effects. Positive command numbers select150 records of44bytes at RVA8244B8. Negative remainders can precede ring and are not normalized. Original3798C0 initializes desired angles at record+14/+18/+1C; autostraferF92D0 overwrites them. Other consumers use tick/shift fields. Native execution in tests/original_motion_probe.cpp uses this original helper, not a ring model.",
+      "aliases": [
+        "sub_443748D0"
+      ]
+    },
+    {
+      "address": "0x4410acc0",
+      "name": "read_feature_state_7dbefe",
+      "prototype": "unsigned char __cdecl read_feature_state_7dbefe(void);",
+      "comment": "Verified two-instruction getter: MOV AL,[runtime44B1BEFE], RET; no arguments, preserves no promised upper EAX bits. Reads byte RVA7DBEFE. F7A50 uses it to gate optional special movement handling before old Source move-type operand2D942073. Higher-level meaning of this boolean is unresolved. Isolated original-motion fixture sets the byte false explicitly; no replacement predicate code used.",
+      "aliases": [
+        "sub_4410ACC0"
+      ]
+    },
+    {
+      "address": "0x440f7a50",
+      "name": "correct_command_movement",
+      "prototype": "int __cdecl correct_command_movement(const float *output_angles, const float *movement_angles, void *optional_command);",
+      "comment": "Verified cdecl three-stack-argument function, plainRET, size6D3. Uses optional_command or current command4DE214; converts forward/side movement from movement_angles basis to output_angles basis using original trig imports and constants, normalizes/clamps movement, clamps upmove. Does not set command view angles. Native3798C0 call37A049 supplies cmd+0C, saved ring angles, NULL. Optional branch reads10ACC0/519560 and stale Source operand2D942073, invokes engine slot18 and repairs movement button flags for type9. Full optional-branch live dependencies unresolved. Isolated tests execute original full function after originalF92D0 with explicit false7DBEFE gate: seven active cases preserve450 horizontal magnitude and view angles. Not live gameplay proof.",
+      "aliases": [
+        "sub_440F7A50"
+      ]
+    },
+    {
+      "address": "0x440f92d0",
+      "aliases": [
+        "sub_440F92D0"
+      ],
+      "name": "original_autostrafe",
+      "prototype": "void __cdecl original_autostrafe(void);",
+      "comment": "Verified original autostrafer, no stack args/plainRET, size49D. Checkbox53D360, water<2, no IN_SPEED, inactive slow-walk bind53D700 and airborne flag gate. A06C0 queries local entity; captured Source operand locations2D9CB32C/2D8F778B/2D8F1D4F supply water/flags/velocity offsets. Original math writes command forward/side and ring3748D0 record+14/+18/+1C; toggles7DBBDD. Smoothing53D498 affects angle correction. Native core later appliesF7A50 to convert saved desired-angle basis into actual command movement. Production capsule preserves native decisions/math/callees and repairs only those three verified operand cells plus rel32 call locations. Isolated original_movement_tests exercises real original local lookup, bind getter and correction with public Source interface fixtures. Actual gameplay behavior still requires user validation."
+    },
+    {
+      "address": "0x44369540",
+      "aliases": [
+        "sub_44369540"
+      ],
+      "name": "lookup_ground_entity",
+      "prototype": "void *__thiscall lookup_ground_entity(void *entity);",
+      "comment": "Verified native leaf21bytes/plainRET. ECX=entity; reads field-offset DWORD from captured old-client2D8F003C, then entity+offset as handle, calls ClientEntityList003 slot4 through global4DE170 with that handle and returns its result. Does not validate null interface/method. Offset identity is m_hGroundEntity: current CCSPlayer RecvTable resolves150 and current interface slot4 is handle lookup. Fast-stop blockF8713 calls this before applying braking. Production capsule changes only old operand location to owned verified offset cell; it still calls the real current public interface. Isolated tests cover valid ground handle and no-ground result; no synthetic entity/model used live."
+    },
+    {
+      "address": "0x4433ae00",
+      "aliases": [
+        "sub_4433AE00"
+      ],
+      "name": "keybind_is_active",
+      "prototype": "unsigned char __thiscall keybind_is_active(void *control);",
+      "comment": "Verified native control getter/plainRET, ECX=keybind control, returns AL. Key field+130, mode+134, one-shot flag+154. If one-shot and key nonzero and32C360 false, returns input_button_pressed_this_frame. Otherwise modes0..4 select table33AED0: latched state helper3580D0, held input state, inverse-held input state, always true, always false. Hold/inverse-held use input_button_state_pointer and32C360 suppression; zero key returns false. Table and full getter bytes SHA256 guarded in original movement backend. Autostrafer queries this via bind53D700 slot8; duck prefix uses bind5192B0. Test fixtures exercise actual always/never branches; current original menu supplies real key state live. Wider input subsystem meaning remains in existing input annotations."
     }
   ],
   "data_comments": [

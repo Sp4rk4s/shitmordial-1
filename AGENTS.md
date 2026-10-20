@@ -1,3 +1,76 @@
+## Original movement gameplay test is loaded (2026-10-20; latest status)
+
+Latest user confirmation: "your movemant fix works". This confirms the original
+movement build generally; no separate result for each of the four controls was
+supplied. User requested commit/push on the current feature branch and continued
+recovery of other ORIGINAL features. Preserve this working game/build while
+preparing the next supported feature. Older pending-confirmation text is history.
+
+Latest team-selection follow-up: user could submit jointeam2/3 but remained
+unassigned. They confirmed `joingame; jointeam 2` resolves it. Use the initial
+joingame step after local map load (team3 for CT); do not patch menu/movement
+based on that resolved symptom. Hidden-menu console submission worked; before
+joining movement changes0 and native entity-list binding0 proved original
+features had not yet run. After joining, commands47008/changes449, state2 and
+menu state3 read back. Original individual-feature gameplay confirmation still
+pending. Read analysis/menu/original-gameplay-testing.md follow-up first.
+
+Read analysis/menu/original-gameplay-testing.md first. User requested original
+Primordial feature logic and a build ready for their gameplay testing. New normal
+loader build/original-gameplay/ is injected into fresh game5336, launched with
+-windowed -insecure -steam. Menu state3 and movement install state1 read back;
+commands/changes0/0, all four controls off, menu shown at latest capture. Actual
+gameplay effect remains user-unconfirmed for this original-code build. Discover
+PID before access. Old game23896 did not respond to WM_CLOSE and was explicitly
+terminated for the required fresh-process retest; Steam/IDA preserved, debugger
+was stopped. No movement_probe or preview DLL is loaded in new game5336.
+
+Production now executes guarded original code for bunnyhopF8674, duckF85F3,
+autostraferF92D0 and fast-stopF8713 via executable copies, with verified operand
+cells/rel32 repair and original native lookup/bind/math/ring/correction callees.
+No test dependency substitute is used live. Source RecvTables resolve current
+water/flags/velocity/ground fields; public entity-list interface is bound at
+verified4DE170, engine identity checked, current-command/cache scoped/restored.
+Special-mode state7DBEFE&&519560 refuses execution before modifying a command.
+Exceptions restore command and disable backend. Full original callback/bootstrap
+and other gameplay features remain unresolved. Original fast-stop yields approx
+unit braking in isolated test; do not strengthen it using replacement feature math.
+
+All27 CTests pass (21x86,6Steam), including17 production-capsule scenarios and
+12 separate native autostrafer cases. Live loaded artifact hashes/readiness are
+in build/original-gameplay/validation.json. Original UI labels for all four
+checkboxes were verified read-only in game5336. Use
+py -3 tools/capture_movement_state.py --pid 5336. It distinguishes this receipt-
+verified native backend from historical two-feature bridge builds.
+
+Completed F92D0,369540 and33AE00 reversals named/prototyped/commented/read back
+in live IDA and indexed by tools/retain_original_movement_findings.py. Earlier
+ring/correction/getter retention remains valid. Latest IDA disk save unverified.
+Working branch feature/movement-restoration; these latest changes are not pushed.
+User should join local map/team, enable desired controls and hide menu with Insert
+to test. Do not report this new backend as gameplay-confirmed until they confirm.
+
+## Original feature logic required (2026-10-20; historical preparation)
+
+User explicitly requires Primordial's original feature logic from primordial.bin,
+not new approximate feature implementations. Unpublished C++ autostrafer/fast-stop
+replacements were removed. Existing user-tested two-feature bridge remains live;
+do not describe it as original native feature execution.
+
+Read analysis/menu/original-motion-native-findings.md. New isolated native test
+executes original F92D0 autostrafer,3748D0 command ring and F7A50 movement correction
+with real recovered math imports. Twelve scenarios pass; seven active scenarios
+also pass original correction. Source local-player lookup and inactive slow-walk
+binding are explicit TEST models; old Source field operands point to fixture
+offset cells. Byte7DBEFE is explicitly false to exclude unresolved special handling.
+These fixtures MUST NOT be injected or used as production dependency substitutes.
+
+Build/original-motion passes26 CTests (20x86,6Steam). No new gameplay DLL was
+injected; original feature path is NOT ready for user testing. Ring helper,
+movement correction and byte getter retained/read back in live IDA and index;
+latest IDA disk save unverified. Continue current Source dependency binding and
+original logic restoration, preserving the existing working menu and game.
+
 ## First movement-feature test is live (2026-10-20; supersedes older feature status)
 
 Read analysis/menu/first-movement-feature-tests.md first. User requested all
