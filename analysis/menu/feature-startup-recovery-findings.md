@@ -1,11 +1,5 @@
 # Feature startup recovery — 2026-10-20
 
-Superseded test status: see [first movement feature tests](first-movement-feature-tests.md).
-Two bounded movement features are now installed for user testing in the preserved
-game; whole original bootstrap remains unresolved. The event-pattern correction
-reduces null targets7->6 in the newer OFFLINE inventory; it does not activate the
-original startup or event hook. Historical results below remain evidence.
-
 The user requested all mod gameplay features if possible and will perform actual
 feature tests. **No gameplay feature build is ready for testing yet.** The
 successful menu remains in CS:GO23896 with the existing menu-native-input loader.

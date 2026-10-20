@@ -10,7 +10,6 @@ add_subdirectory(../third_party/minhook "${CMAKE_CURRENT_BINARY_DIR}/minhook")
 # Explicitly injected diagnostic preview; never loaded by either production DLL.
 option(BUILD_MENU_PREVIEW "Build a standalone diagnostic DLL using the production menu code" OFF)
 option(BUILD_MENU_LAYOUT_PROBES "Build historical incremental menu-layout probes" OFF)
-option(BUILD_FEATURE_PROBE "Build movement-only diagnostic for an already loaded normal UI" OFF)
 if(BUILD_MENU_PREVIEW)
 add_library(menu_preview SHARED src/menu_preview_entry.cpp src/menu_ui.cpp src/menu_profile.cpp)
 # Keep the SEH diagnostic boundary out of the preview compiler's optimizer.
@@ -35,7 +34,7 @@ target_link_options(primordial_tls PRIVATE /NODEFAULTLIB /ENTRY:DllMain@12 /INCL
 # Steam embeds and stages the binary; this DLL patches and initializes it.
 add_library(${PROJECT_NAME} SHARED src/dllmain.cpp src/mapper.cpp src/pe_builder.cpp
     src/crashlog.cpp src/signatures.cpp src/pattern_hook.cpp src/imports.cpp src/startup.cpp src/tls.cpp src/game_modules.cpp
-    src/menu_ui.cpp src/menu_profile.cpp src/event_pattern.cpp src/movement_features.cpp)
+    src/menu_ui.cpp src/menu_profile.cpp)
 # MSVC19.52 optimizer crashes on the nested native-SEH paint diagnostic boundary.
 set_source_files_properties(src/menu_ui.cpp PROPERTIES COMPILE_OPTIONS /Od)
 add_dependencies(primordial_loader primordial_tls)
@@ -46,21 +45,8 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
         "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/minhook/LICENSE.txt"
         "$<TARGET_FILE_DIR:primordial_loader>/MinHook-LICENSE.txt")
-if(BUILD_FEATURE_PROBE)
-    add_library(movement_probe SHARED src/movement_probe_entry.cpp src/movement_features.cpp src/menu_profile.cpp)
-    target_compile_definitions(movement_probe PRIVATE MENU_UI_IMPORT WIN32_LEAN_AND_MEAN NOMINMAX)
-    target_link_libraries(movement_probe PRIVATE primordial_loader minhook bcrypt)
-endif()
 include(CTest)
 if(BUILD_TESTING)
-    add_executable(movement_features_tests ../tests/movement_features_tests.cpp)
-    add_test(NAME movement-feature-gates COMMAND movement_features_tests)
-    add_executable(movement_native_tests ../tests/movement_native_tests.cpp)
-    target_compile_definitions(movement_native_tests PRIVATE WIN32_LEAN_AND_MEAN NOMINMAX)
-    add_test(NAME movement-original-x86 COMMAND movement_native_tests "${CMAKE_CURRENT_SOURCE_DIR}/../primordial.bin")
-    add_executable(event_pattern_tests ../tests/event_pattern_tests.cpp)
-    target_compile_definitions(event_pattern_tests PRIVATE WIN32_LEAN_AND_MEAN NOMINMAX)
-    add_test(NAME event-pattern-consumer COMMAND event_pattern_tests "${CMAKE_CURRENT_SOURCE_DIR}/../primordial.bin")
     add_executable(menu_input_tests ../tests/menu_input_tests.cpp)
     add_test(NAME menu-input-transitions COMMAND menu_input_tests)
     add_executable(menu_profile_tests ../tests/menu_profile_tests.cpp src/menu_profile.cpp)

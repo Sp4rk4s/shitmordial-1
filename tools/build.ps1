@@ -3,8 +3,7 @@ param(
     [string]$VisualStudioRoot = '',
     [string]$OutputDirectory = 'build',
     [switch]$SkipTests,
-    [switch]$MenuPreview,
-    [switch]$FeatureProbe
+    [switch]$MenuPreview
 )
 $ErrorActionPreference = 'Stop'
 $workspace = Split-Path $PSScriptRoot -Parent
@@ -45,8 +44,6 @@ try {
         if ($component.Source -eq 'primordial_loader') {
             $previewSetting = if ($MenuPreview) { 'ON' } else { 'OFF' }
             $extraArguments += "-DBUILD_MENU_PREVIEW=$previewSetting"
-            $featureSetting = if ($FeatureProbe) { 'ON' } else { 'OFF' }
-            $extraArguments += "-DBUILD_FEATURE_PROBE=$featureSetting"
         }
         if ($component.Source -eq 'steam_module') {
             $probe = Join-Path $buildRoot 'primordial-x86-native\mapping probe\csgo.exe'
