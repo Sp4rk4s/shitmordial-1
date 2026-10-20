@@ -134,6 +134,7 @@ int main(int argc, char** argv) {
             bool menu_string = false;
             for (const size_t offset : menu_strings)
                 menu_string |= i >= offset && i < offset + 24;
+            if (i == 0x4DDEE4) { require(image[i] == 1, "ac-130 mode byte not enabled"); continue; }
             const bool changed = (in_bss && !loader_input && !module_hash) ||
                 (i >= 0x4DB634 && i < 0x4DB64C) ||
                 (i >= 0x4B3484 && i < 0x4B3490) || menu_string || i == 0x343592;

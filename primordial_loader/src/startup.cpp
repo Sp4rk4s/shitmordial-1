@@ -42,6 +42,7 @@ Result prepare(uint8_t* image, size_t size) {
     constexpr size_t bss_size = 0x348A74;
     constexpr size_t loader_input = 0x4DDCE0;
     constexpr size_t loader_input_size = 0x205; // username[512], id, mode byte
+    constexpr size_t ac130_mode = loader_input + 0x204;
     constexpr uint8_t captured_alphabet[] = {
         0xD8, 0x76, 0x1F, 0x43, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0x3F, 0, 0, 0, 0x3F, 0, 0, 0
@@ -94,6 +95,9 @@ Result prepare(uint8_t* image, size_t size) {
     std::memcpy(settings, image + loader_input, sizeof(settings));
     std::memset(image + bss, 0, bss_size);
     std::memcpy(image + loader_input, settings, sizeof(settings));
+    // Mode byte = ac-130 build tier. Attach helper A1E72 copies it to RVA 4DE245,
+    // read by the title-bar tag (351AB0) and tier-gated feature paths.
+    image[ac130_mode] = 1;
     // These initialized resolver inputs reside inside the linker BSS range.
     // Retain identifiers, discard captured HMODULEs and all container pointers.
     for (const auto& binding : game_modules::bindings)
