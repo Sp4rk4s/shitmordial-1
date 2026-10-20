@@ -1,0 +1,291 @@
+{
+  "scope": "OFFLINE snapshot data associations; model IDs/metrics never usable as live font data",
+  "source_snapshot": "candidate-360080-constructed-offline-11240.zip",
+  "records": [
+    {
+      "settings": {
+        "face": "Tahoma",
+        "synthetic_handle": "0x7104",
+        "tall": 13,
+        "weight": 400,
+        "blur": 0,
+        "scanlines": 0,
+        "flags": 128,
+        "range_min": 0,
+        "range_max": 65535
+      },
+      "exact_record_candidates": [
+        {
+          "rva": "0x580f34",
+          "runtime": "0x448c0f34"
+        }
+      ]
+    },
+    {
+      "settings": {
+        "face": "primordial_menu_icons",
+        "synthetic_handle": "0x7105",
+        "tall": 26,
+        "weight": 500,
+        "blur": 0,
+        "scanlines": 0,
+        "flags": 144,
+        "range_min": 0,
+        "range_max": 0
+      },
+      "exact_record_candidates": [
+        {
+          "rva": "0x8054c8",
+          "runtime": "0x44b454c8"
+        }
+      ]
+    },
+    {
+      "settings": {
+        "face": "primordial_menu_icons",
+        "synthetic_handle": "0x7106",
+        "tall": 13,
+        "weight": 400,
+        "blur": 0,
+        "scanlines": 0,
+        "flags": 144,
+        "range_min": 0,
+        "range_max": 0
+      },
+      "exact_record_candidates": [
+        {
+          "rva": "0x809324",
+          "runtime": "0x44b49324"
+        }
+      ]
+    },
+    {
+      "settings": {
+        "face": "Tahoma",
+        "synthetic_handle": "0x7107",
+        "tall": 14,
+        "weight": 400,
+        "blur": 0,
+        "scanlines": 0,
+        "flags": 128,
+        "range_min": 0,
+        "range_max": 0
+      },
+      "exact_record_candidates": [
+        {
+          "rva": "0x805480",
+          "runtime": "0x44b45480"
+        }
+      ]
+    },
+    {
+      "settings": {
+        "face": "Tahoma",
+        "synthetic_handle": "0x7108",
+        "tall": 13,
+        "weight": 400,
+        "blur": 0,
+        "scanlines": 0,
+        "flags": 128,
+        "range_min": 0,
+        "range_max": 0
+      },
+      "exact_record_candidates": [
+        {
+          "rva": "0x580f40",
+          "runtime": "0x448c0f40"
+        }
+      ]
+    },
+    {
+      "settings": {
+        "face": "Tahoma",
+        "synthetic_handle": "0x7109",
+        "tall": 11,
+        "weight": 400,
+        "blur": 0,
+        "scanlines": 0,
+        "flags": 128,
+        "range_min": 0,
+        "range_max": 0
+      },
+      "exact_record_candidates": [
+        {
+          "rva": "0x805430",
+          "runtime": "0x44b45430"
+        }
+      ]
+    },
+    {
+      "settings": {
+        "face": "Tahoma",
+        "synthetic_handle": "0x710a",
+        "tall": 12,
+        "weight": 700,
+        "blur": 0,
+        "scanlines": 0,
+        "flags": 16,
+        "range_min": 0,
+        "range_max": 0
+      },
+      "exact_record_candidates": [
+        {
+          "rva": "0x7fb610",
+          "runtime": "0x44b3b610"
+        }
+      ]
+    },
+    {
+      "settings": {
+        "face": "Tahoma",
+        "synthetic_handle": "0x710b",
+        "tall": 13,
+        "weight": 700,
+        "blur": 0,
+        "scanlines": 0,
+        "flags": 128,
+        "range_min": 0,
+        "range_max": 0
+      },
+      "exact_record_candidates": [
+        {
+          "rva": "0x80540c",
+          "runtime": "0x44b4540c"
+        }
+      ]
+    },
+    {
+      "settings": {
+        "face": "primordial_csgo_icons",
+        "synthetic_handle": "0x710c",
+        "tall": 30,
+        "weight": 400,
+        "blur": 0,
+        "scanlines": 0,
+        "flags": 144,
+        "range_min": 0,
+        "range_max": 750
+      },
+      "exact_record_candidates": [
+        {
+          "rva": "0x7dc8e0",
+          "runtime": "0x44b1c8e0"
+        }
+      ]
+    },
+    {
+      "settings": {
+        "face": "primordial_csgo_icons",
+        "synthetic_handle": "0x710d",
+        "tall": 16,
+        "weight": 400,
+        "blur": 0,
+        "scanlines": 0,
+        "flags": 144,
+        "range_min": 0,
+        "range_max": 750
+      },
+      "exact_record_candidates": [
+        {
+          "rva": "0x7dc8ec",
+          "runtime": "0x44b1c8ec"
+        }
+      ]
+    },
+    {
+      "settings": {
+        "face": "primordial_csgo_icons",
+        "synthetic_handle": "0x710e",
+        "tall": 12,
+        "weight": 400,
+        "blur": 0,
+        "scanlines": 0,
+        "flags": 144,
+        "range_min": 0,
+        "range_max": 750
+      },
+      "exact_record_candidates": [
+        {
+          "rva": "0x7dcba8",
+          "runtime": "0x44b1cba8"
+        }
+      ]
+    },
+    {
+      "settings": {
+        "face": "Tahoma",
+        "synthetic_handle": "0x710f",
+        "tall": 13,
+        "weight": 400,
+        "blur": 0,
+        "scanlines": 0,
+        "flags": 128,
+        "range_min": 0,
+        "range_max": 10000
+      },
+      "exact_record_candidates": [
+        {
+          "rva": "0x7dc8f8",
+          "runtime": "0x44b1c8f8"
+        }
+      ]
+    },
+    {
+      "settings": {
+        "face": "Small Fonts",
+        "synthetic_handle": "0x7110",
+        "tall": 13,
+        "weight": 400,
+        "blur": 0,
+        "scanlines": 0,
+        "flags": 128,
+        "range_min": 0,
+        "range_max": 0
+      },
+      "exact_record_candidates": [
+        {
+          "rva": "0x57ed80",
+          "runtime": "0x448bed80"
+        }
+      ]
+    },
+    {
+      "settings": {
+        "face": "Small Fonts",
+        "synthetic_handle": "0x7111",
+        "tall": 10,
+        "weight": 400,
+        "blur": 0,
+        "scanlines": 0,
+        "flags": 128,
+        "range_min": 0,
+        "range_max": 0
+      },
+      "exact_record_candidates": [
+        {
+          "rva": "0x7dc904",
+          "runtime": "0x44b1c904"
+        }
+      ]
+    },
+    {
+      "settings": {
+        "face": "Bahnschrift",
+        "synthetic_handle": "0x7112",
+        "tall": 20,
+        "weight": 200,
+        "blur": 0,
+        "scanlines": 0,
+        "flags": 144,
+        "range_min": 0,
+        "range_max": 0
+      },
+      "exact_record_candidates": [
+        {
+          "rva": "0x7fb354",
+          "runtime": "0x44b3b354"
+        }
+      ]
+    }
+  ]
+}

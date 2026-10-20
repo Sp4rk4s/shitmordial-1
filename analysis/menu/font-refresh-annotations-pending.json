@@ -1,0 +1,56 @@
+{
+  "binary_sha256": "e16dd0ecf4f763be49139d5edff21f2e6106cff1040e2f6a684fabcb7eeb9768",
+  "analysis_base": "0x44000000",
+  "functions": [
+    {
+      "address": "0x44360080",
+      "end_address": "0x44360085",
+      "name": "renderer_refresh_screen_fonts",
+      "prototype": "void __cdecl renderer_refresh_screen_fonts(void);",
+      "comment": "Bounded OFFLINE evidence 2026-10-20: entry360080 queries EngineClient4481E174 virtual5, writes dimensions44B487AC/B0; registers fonts447F3D58/3500 and447F7258/23EA4 through verified AddFontMemResourceEx; requests15 cached fonts through35F040, populating six main menu records. Returns balanced after3980473 instructions; native caller15477F pushes no args. CPU guard, Source/GDI and old FontManager pointer layout are explicit EMULATOR MODELS, not live execution. Original bootstrap/hook installation and current private-language layout compatibility remain unresolved. Do not call live under current scope. Evidence candidate-360080-constructor-native-crt-11240-screen-font-model.json. Preserve5-byte stub boundary; protected body is not contiguous.",
+      "aliases": [
+        "sub_44360080"
+      ],
+      "analysis_status": "bounded offline path, original runtime contract incomplete",
+      "byte_sha256": "5f4d603bd0f71ad2f2a64572646898dcb125957eaf184823a25ef9d74ab3227b"
+    },
+    {
+      "address": "0x44154770",
+      "end_address": "0x44154788",
+      "name": "forward_two_args_then_refresh_renderer",
+      "prototype": "void __thiscall forward_two_args_then_refresh_renderer(void *object, int first, int second);",
+      "aliases": [
+        "sub_44154770"
+      ],
+      "comment": "Verified native forwarding wrapper154770..154787: forwards incoming ECX/object and two stack DWORDs to original callback pointer absolute44B3B880, then CALL360080 with no stack arguments; RET8. No independent return value. Callee360080 now has bounded offline evidence of screen/font refresh; OnScreenSizeChanged is a candidate callback identity, not a verified installed hook/slot. Original pointer is zero in latest live run; never call this wrapper before original callback binding. Evidence font-refresh root trace and original24-byte wrapper; original startup/hook installer remains unresolved.",
+      "byte_sha256": "b42fff10d6ab411ef6b8fa5fc1df798dd41d87b1acdd5d585be0834adf17651d"
+    }
+  ],
+  "data_comments": [
+    {
+      "address": "0x44580f34",
+      "comment": "Main-menu font record runtime0x448c0f34, initialized in bounded offline refresh360080: Tahoma tall13 weight400 flags0x80 range0..65535. Three DWORDs are handle,A width,ABCDEF height. Model font IDs and metrics are synthetic; not actual Source results. Real current record remains zero. Evidence font-refresh-settings.json and candidate-360080-constructor-native-crt-11240-screen-font-model.json. Data note pending live replay."
+    },
+    {
+      "address": "0x44580f40",
+      "comment": "Main-menu font record runtime0x448c0f40, initialized in bounded offline refresh360080: Tahoma tall13 weight400 flags0x80 range0..0. Three DWORDs are handle,A width,ABCDEF height. Model font IDs and metrics are synthetic; not actual Source results. Real current record remains zero. Evidence font-refresh-settings.json and candidate-360080-constructor-native-crt-11240-screen-font-model.json. Data note pending live replay."
+    },
+    {
+      "address": "0x447fb610",
+      "comment": "Main-menu font record runtime0x44b3b610, initialized in bounded offline refresh360080: Tahoma tall12 weight700 flags0x10 range0..0. Three DWORDs are handle,A width,ABCDEF height. Model font IDs and metrics are synthetic; not actual Source results. Real current record remains zero. Evidence font-refresh-settings.json and candidate-360080-constructor-native-crt-11240-screen-font-model.json. Data note pending live replay."
+    },
+    {
+      "address": "0x44805430",
+      "comment": "Main-menu font record runtime0x44b45430, initialized in bounded offline refresh360080: Tahoma tall11 weight400 flags0x80 range0..0. Three DWORDs are handle,A width,ABCDEF height. Model font IDs and metrics are synthetic; not actual Source results. Real current record remains zero. Evidence font-refresh-settings.json and candidate-360080-constructor-native-crt-11240-screen-font-model.json. Data note pending live replay."
+    },
+    {
+      "address": "0x44805480",
+      "comment": "Main-menu font record runtime0x44b45480, initialized in bounded offline refresh360080: Tahoma tall14 weight400 flags0x80 range0..0. Three DWORDs are handle,A width,ABCDEF height. Model font IDs and metrics are synthetic; not actual Source results. Real current record remains zero. Evidence font-refresh-settings.json and candidate-360080-constructor-native-crt-11240-screen-font-model.json. Data note pending live replay."
+    },
+    {
+      "address": "0x448054c8",
+      "comment": "Main-menu font record runtime0x44b454c8, initialized in bounded offline refresh360080: primordial_menu_icons tall26 weight500 flags0x90 range0..0. Three DWORDs are handle,A width,ABCDEF height. Model font IDs and metrics are synthetic; not actual Source results. Real current record remains zero. Evidence font-refresh-settings.json and candidate-360080-constructor-native-crt-11240-screen-font-model.json. Data note pending live replay."
+    }
+  ],
+  "status": "functions_applied_live_readback_disk_save_unverified"
+}

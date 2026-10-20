@@ -1,0 +1,17 @@
+import sys,json,hashlib
+sys.path.insert(0,'tools');from prepare_menu_preview import ROOT,ida
+raw=(ROOT/'primordial.bin').read_bytes();assert hashlib.sha256(raw).hexdigest()=='e16dd0ecf4f763be49139d5edff21f2e6106cff1040e2f6a684fabcb7eeb9768'
+records=[(0x1554F0,0x15571B,'inline_hook_create_record','void *__cdecl inline_hook_create_record(void *record12, void *target, void *detour, void **original_out);','Native four-argument cdecl inline-hook constructor, plainRET. Decodes whole instructions from target until >=5 bytes (bespoke legacy instruction-length decoder; all opcode cases not separately validated). VirtualAlloc(0,length+5,MEM_COMMIT,PAGE_EXECUTE_READWRITE), copies displaced bytes, appends E9 back, VirtualProtect target RWX, NOP fills displaced span, writes original_out=trampoline, writes E9detour, record12={target,trampoline,length}, restores protection, returns record. Allocation failure zeroes record12 and returns it; original_out is not written. No target-null check before decoder read. Copy does not visibly relocate displaced relative instructions. This is not MinHook and not atomic publication/thread-quiescence. Protected1564B0 repeatedly requests hooks through it. New offline failure model intentionally inventories requests without target decoding, allocation, original callbacks or Source writes; returning from that model is not hook success. No such original hook installed live.'),(0x354170,0x3542BE,'hash_keyed_pointer_cache_get_or_insert_null','void *__cdecl hash_keyed_pointer_cache_get_or_insert_null(unsigned int key);','Native pointer map access at runtime44B47E88. FNV1a hashes all4 little-endian bytes of key, finds node via150420; if absent allocates16bytes, stores key atnode+8 and value0 atnode+C, may rehash via353EC0 then inserts via353E60. Returns node+C value (zero after missing insertion), caller-cleaned argument/plainRET. Map size limit0FFFFFFF throws. This helper does NOT itself resolve an interface or populate missing values; interpreting a call as automatic CreateInterface resolution is unsupported. Cache semantic role beyond callers remains partial. New offline3542C0 continuation reaches null payload4481E158; no live call applied.')]
+paths=[ROOT/'analysis/menu/hook-helper-annotations-pending.json',ROOT/'analysis/ida/project-index.json'];docs=[json.loads(p.read_text()) for p in paths];receipts=[]
+for rva,end,name,proto,comment in records:
+ address=hex(0x44000000+rva);before=ida('get_function_by_address',address=address);old=before['name']
+ if old.startswith('sub_') or old==name:ida('rename_function',function_address=address,new_name=name)
+ else:name=old
+ ida('set_function_prototype',function_address=address,prototype=proto);ida('set_comment',address=address,comment=comment)
+ after=ida('disassemble_function',start_address=address);assert comment in json.dumps(after)
+ entry=dict(address=address,end_address=hex(0x44000000+end),name=name,prototype=proto,comment=comment,aliases=[old],byte_sha256=hashlib.sha256(raw[rva:end]).hexdigest())
+ for d in docs:d['functions']=[x for x in d['functions'] if x['address'].lower()!=address]+[entry]
+ receipts.append(dict(entry=entry,readback=after))
+for p,d in zip(paths,docs):p.write_text(json.dumps(d,indent=2)+'\n')
+(ROOT/'analysis/menu/feature-startup-helper-ida-applied.json').write_text(json.dumps(dict(scope='Live names/prototypes/comments read back/indexed; newest disk save unverified',records=receipts),indent=2)+'\n')
+print('Two helpers retained live and indexed')

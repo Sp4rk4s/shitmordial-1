@@ -1,0 +1,9 @@
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "address": "0x4419fa70",
+    "name": "sub_4419C730",
+    "size": "0x62dc"
+  }
+}

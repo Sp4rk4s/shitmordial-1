@@ -1,0 +1,48 @@
+{
+  "sha256": "e16dd0ecf4f763be49139d5edff21f2e6106cff1040e2f6a684fabcb7eeb9768",
+  "analysis_base": "0x44000000",
+  "functions": [
+    {
+      "address": "0x4432BA40",
+      "name": "menu_render_frame",
+      "aliases": [
+        "sub_4432BA40"
+      ],
+      "prototype": "void __cdecl menu_render_frame(void);",
+      "comment": "Verified native menu frame dispatcher, RVA32BA40/runtime4466BA40. No stack args; normal RET at32C11F; caller1550B4 pushes none. Initializes centered auxiliary UI once when screen dimensions are nonzero. Alternate modes44B44E34/44B44E30 route other UI. Default path iterates window vector absolute44B44E5C..44B44E60, calling3504B0(update/input/fade candidate) then351AB0(draw) for each, with active window44B44DF8 handled last. Also updates focus/cursor/config-selection state; child details remain partial. Native path is reached from panel-render callback154790 span, across an unresolved protected middle segment. Empty vector means no main windows drawn. Evidence analysis/menu/render-static-findings.md and menu-render-manager-cfg.json. Current runtime21728 has zero interfaces/windows; this static role does not prove callback installation."
+    },
+    {
+      "address": "0x44360CE0",
+      "name": "surface_set_draw_opacity",
+      "aliases": [
+        "sub_44360CE0"
+      ],
+      "prototype": "void __cdecl surface_set_draw_opacity(float opacity);",
+      "comment": "Verified small native float setter, RVA360CE0/runtime446A0CE0: loads object pointer from absolute4481E15C, copies caller-cleaned float stack argument into object+14h, plain RET. No null check, allocation or hook setup. Window draw351AB0 calls this with an eased fade value; opacity purpose is inferred from that use. Exact object-field type/layout beyond the four-byte float is not independently recovered. Paired reset helper443609E0 writes1.0 to the same field. Evidence analysis/menu/render-static-findings.md; original bytes 55 8B EC A1 5C E1 81 44 F3 0F 10 45 08 F3 0F 11 40 14 5D C3."
+    },
+    {
+      "address": "0x443609E0",
+      "name": "surface_reset_draw_opacity",
+      "aliases": [
+        "sub_443609E0"
+      ],
+      "prototype": "void __cdecl surface_reset_draw_opacity(void);",
+      "comment": "Verified small native reset helper, RVA3609E0/runtime446A09E0: loads object pointer from absolute4481E15C, writes float1.0 (3F800000) at object+14h, plain RET; no arguments or semantic return. No null check or initialization. Paired setter44360CE0 stores a float argument at the same offset, used by window drawing with an eased fade value; opacity purpose is inferred, raw store verified. Native panel callback uses this before frame/menu drawing. Evidence analysis/menu/render-static-findings.md; bytes A1 5C E1 81 44 C7 40 14 00 00 80 3F C3."
+    }
+  ],
+  "data_comments": [
+    {
+      "address": "0x44154790",
+      "comment": "Partial native panel-render callback, RVA154790/runtime44494790. Preserves ECX/EDX and three stack args; outer native forwarding path CALLs original absolute44B3B884 at1550F0 then RET0Ch. Filters incoming panel against cache44B3B888, initially obtained via4481E16C vtable+4(arg3). Matching panel pushes Surface context via4481E15C vtable+30(panel,0), updates input at3582C0 and features, enters protected middle at154C29->BE22F8. Later same-frame native continuation CALLs menu_render_frame at1550B4, restores Surface context via vtable+34(panel), forwards original. PaintTraverse-style identification matches Valve interfaces; actual installation and protected transition remain unresolved. Do not invoke arbitrarily: current runtime21728 interfaces/original/window state are zero. Evidence analysis/menu/render-static-findings.md and panel-render-cfg-candidate.json."
+    },
+    {
+      "address": "0x443504B0",
+      "comment": "Partial window input/fade updater, RVA3504B0/runtime446904B0, window pointer in ECX; full ABI/type not assigned. Native prefix updates float window+94 from timing absolute4481E164+14, increasing if bytewindow+99 set and decreasing otherwise; clamps0..1. Nonzero key IDwindow+9C is passed to358090; allowed activation togglesbytewindow+99 and updates focus. Called by menu_render_frame32BA40 before window draw351AB0. Remaining drag/focus/child logic is only partially analyzed. Evidence analysis/menu/render-static-findings.md and window-update-cfg.json."
+    },
+    {
+      "address": "0x44351AB0",
+      "comment": "Partial native window draw, RVA351AB0/runtime44691AB0, window in ECX; class layout/complete ABI not assigned. Returns without drawing when floatwindow+94 equals0. Otherwise computes eased fade and calls surface_set_draw_opacity360CE0; invokes surface rectangle/line/text/child helpers360D60/361360/361090/361AB0. Custom modebytewindow+C8 routes through callbackobjectwindow+C4 vtable+8. Called by menu_render_frame32BA40 after3504B0 updater, including focused window last. Child semantics/error paths remain partial. Evidence analysis/menu/render-static-findings.md and window-draw-cfg.json."
+    }
+  ],
+  "status": "Prepared annotations, not yet claimed applied live."
+}

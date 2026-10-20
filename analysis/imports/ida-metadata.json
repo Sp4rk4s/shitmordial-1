@@ -1,0 +1,14 @@
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "path": "C:\\Users\\k\\Desktop\\Primordial_revival\\primordial.bin",
+    "module": "primordial.bin",
+    "base": "0x44000000",
+    "size": "0x140c000",
+    "md5": "9034a08c980584a4180ed40106520ff5",
+    "sha256": "e16dd0ecf4f763be49139d5edff21f2e6106cff1040e2f6a684fabcb7eeb9768",
+    "crc32": "0x676d5fab",
+    "filesize": "0x140c000"
+  }
+}

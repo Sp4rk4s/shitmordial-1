@@ -1,0 +1,20 @@
+[
+  {
+    "name": "_Thrd_hardware_concurrency",
+    "rva": "0x1156349",
+    "key": "0x357b2a2d",
+    "known_bits": "0xffffffff"
+  },
+  {
+    "name": "api-ms-win-crt-runtime-l1-1-0.dll",
+    "rva": "0x1150165",
+    "key": "0x357b2a2d",
+    "known_bits": "0xffffffff"
+  },
+  {
+    "name": "GetProcAddress",
+    "rva": "0x1215883",
+    "key": "0x3578002d",
+    "known_bits": "0xfffc00ff"
+  }
+]

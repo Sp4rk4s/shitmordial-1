@@ -1,0 +1,29 @@
+# Native panel renderer and menu draw path
+
+Original primordial.bin SHA256e16dd0ecf4f763be49139d5edff21f2e6106cff1040e2f6a684fabcb7eeb9768 was rechecked. RVAs below; runtime base44340000, IDA analysis base44000000. Static inspection only; no target mutation or candidate calls.
+
+## Concrete render route
+
+Native callback154790 (runtime44494790) takes ECX object, EDX preserved scratch, and three four-byte stack argument slots. It filters incoming panel against a cached handle44B3B888. On first use it obtains the desired panel by virtual method at4481E16C->vtable+4 with numeric argument3. A nonmatching panel forwards to original callback44B3B884 at1550F0 and RET0C. For matching panel it invokes4481E15C->vtable+30 with(panel,0), performs frame work, and eventually4481E15C->vtable+34 with(panel) before forwarding original. This is strongly consistent with an IPanel PaintTraverse-style hook and ISurface PushMakeCurrent/PopMakeCurrent drawing context. Exact installation/reachability in the current game is not established by these bytes.
+
+Valve primary source corroboration: https://github.com/ValveSoftware/source-sdk-2013/blob/master/src/public/vgui/IPanel.h declares PaintTraverse(VPANEL,bool,bool); https://github.com/ValveSoftware/source-sdk-2013/blob/master/src/public/vgui/ISurface.h declares drawing-context push/pop followed by surface primitives; https://github.com/ValveSoftware/source-sdk-2013/blob/master/src/public/ienginevgui.h declares GetPanel. SDK2013's panel enum differs from legacyCSGO; keep the observed requested type numeric3 instead of assigning a guessed panel name.
+
+Matching-panel native prefix calls3609A0/3609E0, input update3582C0,354530 and a series of feature drawing routines. At154C29 it enters protected codeBE22F8. The later native continuation uses the same EBP frame/locals, runs additional script/frame work, then CALLs32BA40 at1550B4. Protected transition154C29->later continuation is not fully decoded, so this is an outer-function native render chain with an explicitly unresolved protected segment, not a complete dynamic execution proof.
+
+32BA40 (runtime4466BA40) is the frame menu/window renderer, correcting the older tentative config-only classification in menu-consumer-findings.md. Its native control flow was followed around inline marker data: no stack arguments, ordinary RET32C11F, caller1550B4 pushes none. It initializes an auxiliary centered object once with nonzero screen dimensions, dispatches alternate UI when44B44E34 or44B44E30 is active, otherwise iterates windows44B44E5C..44B44E60. Each ordinary window is processed by3504B0 then351AB0; the active/focused window44B44DF8 is handled last. It also handles focus/input/cursor/config-selection state. Children remain separately partial.
+
+3504B0 (runtime446904B0) receives window inECX. Its prefix updates opacity-like float window+94 from timing4481E164+14, increasing when bytewindow+99 is set and decreasing otherwise, clamped0..1. If key identifierwindow+9C is nonzero, calls358090(key) and, when activation is allowed, toggleswindow+99. Constructor follow-up: menu root2E04D0 pushes0x48 at2E061C; constructor34F920 reads its stack argumentEBP+24 and stores it atwindow+9C (34FB1C). Valve ButtonCode.h assigns Source KEY_INSERT value72/0x48, supporting Insert as the intended toggle once initialization succeeds. This is a Source button code, not Win32 VK0x48. Source: https://github.com/ValveSoftware/source-sdk-2013/blob/master/src/public/inputsystem/ButtonCode.h. Fade delta coefficient at44753E4C is float5.0; clamps compare against0.0 and1.0 verified from original bytes.
+
+351AB0 (runtime44691AB0) receives window inECX. It returns without drawing when floatwindow+94 compares equal0. Otherwise it computes an eased opacity value, passes it to360CE0, then invokes native surface primitives/text/child rendering helpers including360D60,361360,361090,361AB0. Alternative custom-render mode uses callbackobjectwindow+C4 when enabled bybytewindow+C8. Other rendering details and child ABIs remain partial.
+
+360CE0 is a complete small native setter: one float stack argument, writesSurfaceglobal4481E15C object'sfloat+14, plainRET.3609E0 is the matching no-argument setter writing1.0 to the same field. Their opacity role is inferred from the window fade input and reset use; the raw offset/store is verified.
+
+## Concrete rendering prerequisites
+
+SourceSurface pointer4481E15C, panel-provider4481E16C, timing4481E164, originalPaint callback44B3B884, current/cachedpanel44B3B888, window vector44B44E5C/60 and screen dimensions44B487AC/B0 are the useful gates. These are RVAs4DE15C/4DE16C/4DE164/7FB884/7FB888/804E5C/804E60/8087AC/8087B0. The root investigator's render-preconditions-21728.json records these as zero in the current process. Missing callback/interface setup prevents reaching usable panel rendering; an empty window collection additionally supplies no main window to draw. This does not prove which bootstrap operation originally populated them.
+
+Consequently a D3D Present/EndScene detour alone would not populate or initialize this menu path. Calling the paint callback, forcing a window opacity, or inventing hooks with these prerequisites absent is unsupported. Actual repair still requires recovering the initialization/hook-registration path.
+
+## Evidence and persistence
+
+panel-render-cfg-candidate.json/.txt retains the bounded native callback prefix. It follows direct conditional branches both ways and stops on outbound branches; it is not a verified protected CFG. menu-render-manager-cfg.json/.txt,window-update-cfg.json/.txt,window-draw-cfg.json/.txt retain bounded native recursive instruction walks, CALL fallthrough assumptions, and failure/boundary stops. IDA rendering decompilation timed out; failed decompilation was not used as evidence of absence. Live annotation status is recorded separately in render-ida-applied.json when successful; no database disk save is implied.

@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.20)
+project(loadlibrary_injector LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+add_compile_definitions(UNICODE _UNICODE WIN32_LEAN_AND_MEAN NOMINMAX _WIN32_WINNT=0x0A00)
+add_executable(loadlibrary_injector main.cpp)
+if(CMAKE_SIZEOF_VOID_P EQUAL 4)
+    add_library(debugger_exception_policy SHARED debugger_exception_policy.cpp)
+endif()
+include(CTest)
+if(BUILD_TESTING)
+    add_executable(injector_probe_host probe_host.cpp)
+    add_library(injector_probe SHARED probe_dll.cpp)
+    find_package(Python3 REQUIRED COMPONENTS Interpreter)
+    add_test(NAME loadlibrary-roundtrip COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/test_injector.py"
+        "$<TARGET_FILE:loadlibrary_injector>" "$<TARGET_FILE:injector_probe_host>"
+        "$<TARGET_FILE:injector_probe>")
+    set_tests_properties(loadlibrary-roundtrip PROPERTIES TIMEOUT 30)
+endif()

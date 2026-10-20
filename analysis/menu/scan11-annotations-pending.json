@@ -1,0 +1,105 @@
+{
+  "binary_sha256": "e16dd0ecf4f763be49139d5edff21f2e6106cff1040e2f6a684fabcb7eeb9768",
+  "functions": [
+    {
+      "address": "0x440d47a0",
+      "end_address": "0x440d482b",
+      "name": "masked_pattern13_find_first",
+      "aliases": [
+        "sub_440D47A0"
+      ],
+      "prototype": "unsigned int *__thiscall masked_pattern13_find_first(const void *pattern, unsigned int *out_address, const unsigned char *start, unsigned int length);",
+      "comment": "Verified native fixed13-byte masked search. ECX=pattern bytes[0..12], DWORD wildcard mask at+10h; stack outAddress,start,length;RET0Ch,EAX=outAddress. Checks candidate<start+length-13 strictly: final possible slot excluded. Byte0 ALWAYS exact, mask bit0 ignored; bits1..12 set mean wildcard. First match writes candidate to*out; none writes0. Preserves EBX/ESI/EDI/EBP. Defensive index>=13 callsD1C60; normal loop stays below bound. Invalid size/address can underflow/wrap; analysis model refuses unsupported ranges. Nine instantiations are byte-identical after exact width/mask-offset/error-call normalization;954 OFFLINE original-x86 differential cases pass. No external callee or live game code executed. Protected1564B0 uses members of this family during hook construction; full caller graph/startup remains unresolved. Evidence masked-scan-family-model-validation.json.",
+      "byte_sha256": "d0fa2d7ae8e0da48950ff78468e6dd150dbcc8cf19b75126792545178a7c7797"
+    },
+    {
+      "address": "0x440fb720",
+      "end_address": "0x440fb7ab",
+      "name": "masked_pattern10_find_first",
+      "aliases": [
+        "sub_440FB720"
+      ],
+      "prototype": "unsigned int *__thiscall masked_pattern10_find_first(const void *pattern, unsigned int *out_address, const unsigned char *start, unsigned int length);",
+      "comment": "Verified native fixed10-byte masked search. ECX=pattern bytes[0..9], DWORD wildcard mask at+Ch; stack outAddress,start,length;RET0Ch,EAX=outAddress. Checks candidate<start+length-10 strictly: final possible slot excluded. Byte0 ALWAYS exact, mask bit0 ignored; bits1..9 set mean wildcard. First match writes candidate to*out; none writes0. Preserves EBX/ESI/EDI/EBP. Defensive index>=10 callsD1C60; normal loop stays below bound. Invalid size/address can underflow/wrap; analysis model refuses unsupported ranges. Nine instantiations are byte-identical after exact width/mask-offset/error-call normalization;954 OFFLINE original-x86 differential cases pass. No external callee or live game code executed. Protected1564B0 uses members of this family during hook construction; full caller graph/startup remains unresolved. Evidence masked-scan-family-model-validation.json.",
+      "byte_sha256": "39ccf2ae1fa3e033dcac3a5a2e534ca28d0d7430199cce4342ba82202f6ff348"
+    },
+    {
+      "address": "0x44132d10",
+      "end_address": "0x44132d9b",
+      "name": "masked_pattern8_find_first",
+      "aliases": [
+        "sub_44132D10"
+      ],
+      "prototype": "unsigned int *__thiscall masked_pattern8_find_first(const void *pattern, unsigned int *out_address, const unsigned char *start, unsigned int length);",
+      "comment": "Verified native fixed8-byte masked search. ECX=pattern bytes[0..7], DWORD wildcard mask at+8h; stack outAddress,start,length;RET0Ch,EAX=outAddress. Checks candidate<start+length-8 strictly: final possible slot excluded. Byte0 ALWAYS exact, mask bit0 ignored; bits1..7 set mean wildcard. First match writes candidate to*out; none writes0. Preserves EBX/ESI/EDI/EBP. Defensive index>=8 callsD1C60; normal loop stays below bound. Invalid size/address can underflow/wrap; analysis model refuses unsupported ranges. Nine instantiations are byte-identical after exact width/mask-offset/error-call normalization;954 OFFLINE original-x86 differential cases pass. No external callee or live game code executed. Protected1564B0 uses members of this family during hook construction; full caller graph/startup remains unresolved. Evidence masked-scan-family-model-validation.json.",
+      "byte_sha256": "30738d515731eeceae64f1560c412120a415f832e32e18cefe13922c447728f2"
+    },
+    {
+      "address": "0x44132da0",
+      "end_address": "0x44132e2b",
+      "name": "masked_pattern12_find_first",
+      "aliases": [
+        "sub_44132DA0"
+      ],
+      "prototype": "unsigned int *__thiscall masked_pattern12_find_first(const void *pattern, unsigned int *out_address, const unsigned char *start, unsigned int length);",
+      "comment": "Verified native fixed12-byte masked search. ECX=pattern bytes[0..11], DWORD wildcard mask at+Ch; stack outAddress,start,length;RET0Ch,EAX=outAddress. Checks candidate<start+length-12 strictly: final possible slot excluded. Byte0 ALWAYS exact, mask bit0 ignored; bits1..11 set mean wildcard. First match writes candidate to*out; none writes0. Preserves EBX/ESI/EDI/EBP. Defensive index>=12 callsD1C60; normal loop stays below bound. Invalid size/address can underflow/wrap; analysis model refuses unsupported ranges. Nine instantiations are byte-identical after exact width/mask-offset/error-call normalization;954 OFFLINE original-x86 differential cases pass. No external callee or live game code executed. Protected1564B0 uses members of this family during hook construction; full caller graph/startup remains unresolved. Evidence masked-scan-family-model-validation.json.",
+      "byte_sha256": "4fc0e8ce623f52fbd6385fa864ae8e5337308609821d2dede4d583261b7a834b"
+    },
+    {
+      "address": "0x44155720",
+      "end_address": "0x441557ab",
+      "name": "masked_pattern5_find_first",
+      "aliases": [
+        "sub_44155720"
+      ],
+      "prototype": "unsigned int *__thiscall masked_pattern5_find_first(const void *pattern, unsigned int *out_address, const unsigned char *start, unsigned int length);",
+      "comment": "Verified native fixed5-byte masked search. ECX=pattern bytes[0..4], DWORD wildcard mask at+8h; stack outAddress,start,length;RET0Ch,EAX=outAddress. Checks candidate<start+length-5 strictly: final possible slot excluded. Byte0 ALWAYS exact, mask bit0 ignored; bits1..4 set mean wildcard. First match writes candidate to*out; none writes0. Preserves EBX/ESI/EDI/EBP. Defensive index>=5 callsD1C60; normal loop stays below bound. Invalid size/address can underflow/wrap; analysis model refuses unsupported ranges. Nine instantiations are byte-identical after exact width/mask-offset/error-call normalization;954 OFFLINE original-x86 differential cases pass. No external callee or live game code executed. Protected1564B0 uses members of this family during hook construction; full caller graph/startup remains unresolved. Evidence masked-scan-family-model-validation.json.",
+      "byte_sha256": "c37bf122977d11bdf39c7a014da545145fb5d7451e71ea4d074a3ec4bfb36ae7"
+    },
+    {
+      "address": "0x441557b0",
+      "end_address": "0x4415583b",
+      "name": "masked_pattern9_find_first",
+      "aliases": [
+        "sub_441557B0"
+      ],
+      "prototype": "unsigned int *__thiscall masked_pattern9_find_first(const void *pattern, unsigned int *out_address, const unsigned char *start, unsigned int length);",
+      "comment": "Verified native fixed9-byte masked search. ECX=pattern bytes[0..8], DWORD wildcard mask at+Ch; stack outAddress,start,length;RET0Ch,EAX=outAddress. Checks candidate<start+length-9 strictly: final possible slot excluded. Byte0 ALWAYS exact, mask bit0 ignored; bits1..8 set mean wildcard. First match writes candidate to*out; none writes0. Preserves EBX/ESI/EDI/EBP. Defensive index>=9 callsD1C60; normal loop stays below bound. Invalid size/address can underflow/wrap; analysis model refuses unsupported ranges. Nine instantiations are byte-identical after exact width/mask-offset/error-call normalization;954 OFFLINE original-x86 differential cases pass. No external callee or live game code executed. Protected1564B0 uses members of this family during hook construction; full caller graph/startup remains unresolved. Evidence masked-scan-family-model-validation.json.",
+      "byte_sha256": "7a7036f8f5232adaa77fc58b5b914dd76449549622b1b05c2b5693b7152da8b4"
+    },
+    {
+      "address": "0x44155840",
+      "end_address": "0x441558cb",
+      "name": "masked_pattern18_find_first",
+      "aliases": [
+        "sub_44155840"
+      ],
+      "prototype": "unsigned int *__thiscall masked_pattern18_find_first(const void *pattern, unsigned int *out_address, const unsigned char *start, unsigned int length);",
+      "comment": "Verified native fixed18-byte masked search. ECX=pattern bytes[0..17], DWORD wildcard mask at+14h; stack outAddress,start,length;RET0Ch,EAX=outAddress. Checks candidate<start+length-18 strictly: final possible slot excluded. Byte0 ALWAYS exact, mask bit0 ignored; bits1..17 set mean wildcard. First match writes candidate to*out; none writes0. Preserves EBX/ESI/EDI/EBP. Defensive index>=18 callsD1C60; normal loop stays below bound. Invalid size/address can underflow/wrap; analysis model refuses unsupported ranges. Nine instantiations are byte-identical after exact width/mask-offset/error-call normalization;954 OFFLINE original-x86 differential cases pass. No external callee or live game code executed. Protected1564B0 uses members of this family during hook construction; full caller graph/startup remains unresolved. Evidence masked-scan-family-model-validation.json.",
+      "byte_sha256": "1edf9b490ef936b8eb320ea34cf8169e1728c25cc28d0cd6eb2caf14e46c0b84"
+    },
+    {
+      "address": "0x441558d0",
+      "end_address": "0x4415595b",
+      "name": "masked_pattern20_find_first",
+      "aliases": [
+        "sub_441558D0"
+      ],
+      "prototype": "unsigned int *__thiscall masked_pattern20_find_first(const void *pattern, unsigned int *out_address, const unsigned char *start, unsigned int length);",
+      "comment": "Verified native fixed20-byte masked search. ECX=pattern bytes[0..19], DWORD wildcard mask at+14h; stack outAddress,start,length;RET0Ch,EAX=outAddress. Checks candidate<start+length-20 strictly: final possible slot excluded. Byte0 ALWAYS exact, mask bit0 ignored; bits1..19 set mean wildcard. First match writes candidate to*out; none writes0. Preserves EBX/ESI/EDI/EBP. Defensive index>=20 callsD1C60; normal loop stays below bound. Invalid size/address can underflow/wrap; analysis model refuses unsupported ranges. Nine instantiations are byte-identical after exact width/mask-offset/error-call normalization;954 OFFLINE original-x86 differential cases pass. No external callee or live game code executed. Protected1564B0 uses members of this family during hook construction; full caller graph/startup remains unresolved. Evidence masked-scan-family-model-validation.json.",
+      "byte_sha256": "2d898fd6d35bd0b325c7135a0750c7f28189a38eecc6465ce5567d3c7ddb9776"
+    },
+    {
+      "address": "0x44155960",
+      "end_address": "0x441559eb",
+      "name": "masked_pattern11_find_first",
+      "aliases": [
+        "sub_44155960"
+      ],
+      "prototype": "unsigned int *__thiscall masked_pattern11_find_first(const void *pattern, unsigned int *out_address, const unsigned char *start, unsigned int length);",
+      "comment": "Verified native fixed11-byte masked search. ECX=pattern bytes[0..10], DWORD wildcard mask at+Ch; stack outAddress,start,length;RET0Ch,EAX=outAddress. Checks candidate<start+length-11 strictly: final possible slot excluded. Byte0 ALWAYS exact, mask bit0 ignored; bits1..10 set mean wildcard. First match writes candidate to*out; none writes0. Preserves EBX/ESI/EDI/EBP. Defensive index>=11 callsD1C60; normal loop stays below bound. Invalid size/address can underflow/wrap; analysis model refuses unsupported ranges. Nine instantiations are byte-identical after exact width/mask-offset/error-call normalization;954 OFFLINE original-x86 differential cases pass. No external callee or live game code executed. Protected1564B0 uses members of this family during hook construction; full caller graph/startup remains unresolved. Evidence masked-scan-family-model-validation.json.",
+      "byte_sha256": "e090c060b0fb1e6e9058df6509a1a0f35dba849ffa4c9babccd30cf6fbc905f4"
+    }
+  ],
+  "data_comments": []
+}

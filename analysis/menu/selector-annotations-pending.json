@@ -1,0 +1,35 @@
+{
+  "binary_sha256": "e16dd0ecf4f763be49139d5edff21f2e6106cff1040e2f6a684fabcb7eeb9768",
+  "functions": [
+    {
+      "address": "0x44343560",
+      "end_address": "0x443435F6",
+      "name": "selector_copy_option_label",
+      "prototype": "void *__thiscall selector_copy_option_label(void *selector, void *output, int index);",
+      "comment": "Option-label getter: ECX=selector, stack=(uninitialized24-byte output wstring,int index), RET8,EAX=output. Records are28-byte encrypted wstrings, vector begin/end at this+150h/+154h. Negative index returns empty. Captured JA at343592 compares index to unsigned(count-1); empty count underflows and index0 reaches null entry. Valid path calls333C60 to copy/decrypt; fallback constructs empty cap7 viaAEC80. Caller14DB50 uses4487A430/index4487A560 during menu-frame refresh; exact feature unresolved. Startup guards42 original bytes and changes JA77 to JG7F. Native x86 excerpt tests reproduce empty/index0 bug and verify repaired negative/valid/end/huge indices across six counts;19 tests pass in build/menu-render-guard. Not game-loaded; bootstrap unresolved. Evidence render-dependency-probe-11240-absent-crt-source-native-draw-config.json and fixed trace; tests/startup_tests.cpp.",
+      "byte_sha256": "f93a6a46d29dd9a4b640b6e03d45185f5947f2625ac7d2669e999f7e5c91d431"
+    },
+    {
+      "address": "0x44333C60",
+      "end_address": "0x44333CA4",
+      "name": "encrypted_wstring_copy_plaintext",
+      "prototype": "void *__thiscall encrypted_wstring_copy_plaintext(void *encrypted, void *output);",
+      "comment": "Copy/decrypt28-byte encrypted-wstring wrapper. ECX=source (24-byte MSVC x86 wstring plus XOR key byte+18h); one stack argument=uninitialized24-byte output; RET4,EAX=output. Calls9EC10 copy constructor, then loops source length+10h, selecting output inline buffer if capacity+14h<8 or heap pointer otherwise, XORing each UTF16 word with zero-extended source key byte+18h. Source unchanged. No null/ownership/length validation. Caller343560 passes indexed entries; its empty-count unsigned bound can pass source0 and fault in9EC10 at source+14h. Other callers draw UI labels. Evidence complete native333C60..333CA3 and offline render trace; live execution not observed.",
+      "byte_sha256": "a5e11e1fc06b92f23d1c293f0e34dfee78add525783bef093f3942bc28b7c7c7"
+    }
+  ],
+  "data_comments": [
+    {
+      "address": "0x44343592",
+      "comment": "Captured JA rel8(+20h) after CMP EDI,EAX(count-1). count0 produces EAXFFFFFFFF; unsigned JA incorrectly accepts index0. Byte-guarded loader correction JA77->signed JG7F targets the SAME empty fallback443435B4; prior JS still rejects negative indices. All feasible32-bit vector counts are below INT_MAX, so tested nonempty bounds are preserved. Tests execute original/repaired42-byte decisions with synthetic exits; no payload entry call. See startup.cpp and startup_tests.cpp; build/menu-render-guard passes19 tests, not game-validated."
+    },
+    {
+      "address": "0x444b3d58",
+      "comment": "Original embedded SFNT font primordial_menu_icons; RVA0x4b3d58, bytes13568, SHA256 c16d56dd1a7df483622655ace6e5be79c5dbe6e504ba1a344ae37b8860973bbd. Parsed table/name records; complete padded font checksumB1B0AFBA verifies intact SFNT data. Extracted unchanged to analysis\\menu\\fonts\\primordial_menu_icons.ttf. GDI32.AddFontMemResourceEx is present in the339 import profile, but its registration caller remains unresolved. No font was registered in the game. Evidence analysis/menu/embedded-font-scan.json; render-guard-and-font-findings.md."
+    },
+    {
+      "address": "0x444b7258",
+      "comment": "Original embedded SFNT font primordial_csgo_icons; RVA0x4b7258, bytes147108, SHA256 038af1b6b169097e0a426a872aab8693f9c8290ebd75c9dcb5be6ca51f58e451. Parsed table/name records; complete padded font checksumB1B0AFBA verifies intact SFNT data. Extracted unchanged to analysis\\menu\\fonts\\primordial_csgo_icons.ttf. GDI32.AddFontMemResourceEx is present in the339 import profile, but its registration caller remains unresolved. No font was registered in the game. Evidence analysis/menu/embedded-font-scan.json; render-guard-and-font-findings.md."
+    }
+  ]
+}

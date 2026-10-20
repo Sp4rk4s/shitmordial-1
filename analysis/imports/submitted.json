@@ -1,0 +1,223 @@
+{
+  "reference_base": "0x3cb10000",
+  "entry_va": "0x3ccafa70",
+  "status": "unverified-user-submission",
+  "patches": [
+    {
+      "kind": "relative",
+      "dll": "kernel32.dll",
+      "symbol": "GetTickCount",
+      "source_va": "0x3ccac366"
+    },
+    {
+      "kind": "relative",
+      "dll": "kernel32.dll",
+      "symbol": "AddVectoredExceptionHandler",
+      "source_va": "0x3cb781d6"
+    },
+    {
+      "kind": "relative",
+      "dll": "msvcp140.dll",
+      "symbol": "_Thrd_hardware_concurrency",
+      "source_va": "0x3cc98b2b"
+    },
+    {
+      "kind": "relative",
+      "dll": "kernel32.dll",
+      "symbol": "VirtualProtect",
+      "source_va": "0x3cc9d7ae"
+    },
+    {
+      "kind": "relative",
+      "dll": "user32.dll",
+      "symbol": "LoadCursorW",
+      "source_va": "0x3cc5b130"
+    },
+    {
+      "kind": "relative",
+      "dll": "user32.dll",
+      "symbol": "LoadCursorW",
+      "source_va": "0x3cc5b157"
+    },
+    {
+      "kind": "relative",
+      "dll": "user32.dll",
+      "symbol": "LoadCursorW",
+      "source_va": "0x3cc5b17e"
+    },
+    {
+      "kind": "relative",
+      "dll": "user32.dll",
+      "symbol": "LoadCursorW",
+      "source_va": "0x3cc5b1a5"
+    },
+    {
+      "kind": "relative",
+      "dll": "user32.dll",
+      "symbol": "LoadCursorW",
+      "source_va": "0x3cc5b1cc"
+    },
+    {
+      "kind": "relative",
+      "dll": "user32.dll",
+      "symbol": "LoadCursorW",
+      "source_va": "0x3cc5b1f3"
+    },
+    {
+      "kind": "relative",
+      "dll": "user32.dll",
+      "symbol": "LoadCursorW",
+      "source_va": "0x3cc5b21a"
+    },
+    {
+      "kind": "absolute",
+      "dll": "ucrtbase.dll",
+      "symbol": "_beginthreadex",
+      "source_va": "0x3cc98b57"
+    },
+    {
+      "kind": "absolute",
+      "dll": "ucrtbase.dll",
+      "symbol": "_errno",
+      "source_va": "0x3cc70521"
+    },
+    {
+      "kind": "absolute",
+      "dll": "ucrtbase.dll",
+      "symbol": "_errno",
+      "source_va": "0x3cbb1bf3"
+    },
+    {
+      "kind": "absolute",
+      "dll": "ucrtbase.dll",
+      "symbol": "fread",
+      "source_va": "0x3cb79c5b"
+    },
+    {
+      "kind": "absolute",
+      "dll": "ucrtbase.dll",
+      "symbol": "fread",
+      "source_va": "0x3cb79c96"
+    },
+    {
+      "kind": "absolute",
+      "dll": "msvcp140.dll",
+      "symbol": "_Thrd_detach",
+      "source_va": "0x3cc98b5d"
+    },
+    {
+      "kind": "absolute",
+      "dll": "gdi32.dll",
+      "symbol": "AddFontMemResourceEx",
+      "source_va": "0x3cc95f27"
+    },
+    {
+      "kind": "absolute",
+      "dll": "msvcp140.dll",
+      "symbol": "?id@?$codecvt@DDU_Mbstatet@@@std@@2V0locale@2@A",
+      "source_va": "0x3cb7d7e8"
+    },
+    {
+      "kind": "absolute",
+      "dll": "msvcp140.dll",
+      "symbol": "_Cnd_wait",
+      "source_va": "0x3cc989bc"
+    },
+    {
+      "kind": "absolute",
+      "dll": "msvcp140.dll",
+      "symbol": "_Cnd_wait",
+      "source_va": "0x3cc98d44"
+    },
+    {
+      "kind": "absolute",
+      "dll": "kernel32.dll",
+      "symbol": "VirtualProtect",
+      "source_va": "0x3cc14103"
+    },
+    {
+      "kind": "absolute",
+      "dll": "msvcp140.dll",
+      "symbol": "_Mtx_lock",
+      "source_va": "0x3cc98996"
+    },
+    {
+      "kind": "absolute",
+      "dll": "msvcp140.dll",
+      "symbol": "_Mtx_lock",
+      "source_va": "0x3cbba4c5"
+    },
+    {
+      "kind": "absolute",
+      "dll": "msvcp140.dll",
+      "symbol": "_Mtx_lock",
+      "source_va": "0x3cc98a47"
+    },
+    {
+      "kind": "absolute",
+      "dll": "msvcp140.dll",
+      "symbol": "_Mtx_unlock",
+      "source_va": "0x3cbba4dd"
+    },
+    {
+      "kind": "absolute",
+      "dll": "msvcp140.dll",
+      "symbol": "?id@?$ctype@_W@std@@2V0locale@2@A",
+      "source_va": "0x3cc8311f"
+    },
+    {
+      "kind": "absolute",
+      "dll": "msvcp140.dll",
+      "symbol": "?setprecision@std@@YA?AU?$_Smanip@_J@1@_J@Z",
+      "source_va": "0x3cc81e28"
+    },
+    {
+      "kind": "absolute",
+      "dll": "VCRUNTIME140.dll",
+      "symbol": "strstr",
+      "source_va": "0x3cbf3fa3"
+    },
+    {
+      "kind": "absolute",
+      "dll": "VCRUNTIME140.dll",
+      "symbol": "strstr",
+      "source_va": "0x3cbf404a"
+    },
+    {
+      "kind": "absolute",
+      "dll": "VCRUNTIME140.dll",
+      "symbol": "strstr",
+      "source_va": "0x3cc0fa1f"
+    },
+    {
+      "kind": "absolute",
+      "dll": "msvcp140.dll",
+      "symbol": "_Thrd_id",
+      "source_va": "0x3cc11ec0"
+    },
+    {
+      "kind": "absolute",
+      "dll": "dbghelp.dll",
+      "symbol": "SymGetModuleBase64",
+      "source_va": "0x3cb76e67"
+    },
+    {
+      "kind": "absolute",
+      "dll": "dbghelp.dll",
+      "symbol": "SymGetModuleBase64",
+      "source_va": "0x3cb7713b"
+    },
+    {
+      "kind": "absolute",
+      "dll": "dbghelp.dll",
+      "symbol": "SymFunctionTableAccess64",
+      "source_va": "0x3cb76e73"
+    },
+    {
+      "kind": "absolute",
+      "dll": "dbghelp.dll",
+      "symbol": "SymFunctionTableAccess64",
+      "source_va": "0x3cb77147"
+    }
+  ]
+}

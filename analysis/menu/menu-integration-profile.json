@@ -1,0 +1,166 @@
+{
+  "raw_sha256": "e16dd0ecf4f763be49139d5edff21f2e6106cff1040e2f6a684fabcb7eeb9768",
+  "source": "Installed on-disk PE files; no process access or target calls",
+  "modules": [
+    {
+      "name": "vgui2.dll",
+      "path": "c:\\program files (x86)\\steam\\steamapps\\common\\csgo legacy\\bin\\vgui2.dll",
+      "sha256": "0b5000f61187af4d7b5269772862bdd37908d6cd077af0fae9ace5e4a45bb65e",
+      "preferred_base": "0x10000000",
+      "timestamp": "0x64e7c478",
+      "image_size": "0x7b000"
+    },
+    {
+      "name": "vguimatsurface.dll",
+      "path": "c:\\program files (x86)\\steam\\steamapps\\common\\csgo legacy\\bin\\vguimatsurface.dll",
+      "sha256": "36885e6dbf39b7aa6aacd7d59710e885dac2b25eb57adead4047062b53f50d20",
+      "preferred_base": "0x10000000",
+      "timestamp": "0x64e7c47b",
+      "image_size": "0x149000"
+    },
+    {
+      "name": "engine.dll",
+      "path": "c:\\program files (x86)\\steam\\steamapps\\common\\csgo legacy\\bin\\engine.dll",
+      "sha256": "bcca98731eab8b72d1ef34fa5fe420f26ac98e8dd1d91698171d0ecd9935faa6",
+      "preferred_base": "0x10000000",
+      "timestamp": "0x64ee7e86",
+      "image_size": "0x39c0000"
+    },
+    {
+      "name": "client.dll",
+      "path": "c:\\program files (x86)\\steam\\steamapps\\common\\csgo legacy\\csgo\\bin\\client.dll",
+      "sha256": "183d42fac8a4ecc24dc02edf5f09122f37fe9e7533ca093a867718b25cfdeb03",
+      "preferred_base": "0x10000000",
+      "timestamp": "0x65272025",
+      "image_size": "0x5509000"
+    },
+    {
+      "name": "inputsystem.dll",
+      "path": "c:\\program files (x86)\\steam\\steamapps\\common\\csgo legacy\\bin\\inputsystem.dll",
+      "sha256": "43bbf7e726ffd511cd423538234bf3a30ec20eceec31987b0f867c0a6f17ef78",
+      "preferred_base": "0x10000000",
+      "timestamp": "0x64e7c41e",
+      "image_size": "0x77000"
+    }
+  ],
+  "methods": [
+    {
+      "module": "vgui2.dll",
+      "version": "VGUI_Panel009",
+      "slot": 36,
+      "rva": "0x19400",
+      "relocation_offsets": [],
+      "disk_bytes": "558bec8b4d088b01ff908c0000005dc20400cccccccccccccccccccc"
+    },
+    {
+      "module": "vgui2.dll",
+      "version": "VGUI_Panel009",
+      "slot": 41,
+      "rva": "0x19520",
+      "relocation_offsets": [],
+      "disk_bytes": "558bec8b01ff7508ff9004010000ff75108bc8ff750c8b10ff520c5d"
+    },
+    {
+      "module": "vguimatsurface.dll",
+      "version": "VGUI_Surface031",
+      "slot": 12,
+      "rva": "0xd670",
+      "relocation_offsets": [],
+      "disk_bytes": "558bec83ec30807d0c000f57c05356578b7d088bd90f1145d0741c8b"
+    },
+    {
+      "module": "vguimatsurface.dll",
+      "version": "VGUI_Surface031",
+      "slot": 13,
+      "rva": "0xd7c0",
+      "relocation_offsets": [],
+      "disk_bytes": "568bf15783beac020100007e058b06ff50788bbe800200008b968002"
+    },
+    {
+      "module": "vguimatsurface.dll",
+      "version": "VGUI_Surface031",
+      "slot": 71,
+      "rva": "0x10f80",
+      "relocation_offsets": [
+        2,
+        7
+      ],
+      "disk_bytes": "ff3594521010b988521010e800740000c3cccccccccccccccccccccc"
+    },
+    {
+      "module": "vguimatsurface.dll",
+      "version": "VGUI_Surface031",
+      "slot": 72,
+      "rva": "0x10fa0",
+      "relocation_offsets": [
+        4
+      ],
+      "disk_bytes": "558becb9885210105de9e2680000cccc558bec8b4508568d34c50000"
+    },
+    {
+      "module": "vguimatsurface.dll",
+      "version": "VGUI_Surface031",
+      "slot": 79,
+      "rva": "0x11180",
+      "relocation_offsets": [
+        4
+      ],
+      "disk_bytes": "558becb9885210105de9b26d0000cccc558bec83ec088b41f88d55f8"
+    },
+    {
+      "module": "vguimatsurface.dll",
+      "version": "VGUI_Surface031",
+      "slot": 147,
+      "rva": "0x148a0",
+      "relocation_offsets": [],
+      "disk_bytes": "558bec568bf183be8002000000747f8b86800200008d14c500000000"
+    },
+    {
+      "module": "engine.dll",
+      "version": "VEngineClient014",
+      "slot": 5,
+      "rva": "0xb63e0",
+      "relocation_offsets": [
+        5
+      ],
+      "disk_bytes": "558bec8b0d386e9213568b01ff90cc0100008bf085f674078b068bce"
+    },
+    {
+      "module": "engine.dll",
+      "version": "VEngineClient014",
+      "slot": 26,
+      "rva": "0xb6d40",
+      "relocation_offsets": [
+        1,
+        17
+      ],
+      "disk_bytes": "a19cf1591083b808010000060f94c0c3a07aad5a10c3cccccccccccc"
+    },
+    {
+      "module": "client.dll",
+      "version": "VClient018",
+      "slot": 0,
+      "rva": "0x25fc10",
+      "relocation_offsets": [],
+      "disk_bytes": "558bec83e4f881ec0c0100005683ec0ce82be360008b450c8d4d0883"
+    },
+    {
+      "module": "inputsystem.dll",
+      "version": "InputSystemVersion001",
+      "slot": 40,
+      "rva": "0x2b20",
+      "relocation_offsets": [],
+      "disk_bytes": "558bec8a91805700008b4d08e8bf3700005dc20400cccccccccccccc"
+    },
+    {
+      "module": "inputsystem.dll",
+      "version": "InputSystemVersion001",
+      "slot": 46,
+      "rva": "0x2c00",
+      "relocation_offsets": [
+        9
+      ],
+      "disk_bytes": "558bec8b45088b0485080607105dc20400cccccccccccccccccccccc"
+    }
+  ]
+}

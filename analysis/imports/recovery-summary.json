@@ -1,0 +1,28 @@
+{
+  "binary_sha256": "e16dd0ecf4f763be49139d5edff21f2e6106cff1040e2f6a684fabcb7eeb9768",
+  "vmp_source": {
+    "runtime/loader.h": {
+      "path": "C:\\Users\\k\\Desktop\\vmprotect-3.9.1-master\\runtime\\loader.h",
+      "sha256": "fe8c0e98e0d659f5b9d1feedffc553f27429c5c599a5c8a403047330bef1b023"
+    },
+    "runtime/loader.cc": {
+      "path": "C:\\Users\\k\\Desktop\\vmprotect-3.9.1-master\\runtime\\loader.cc",
+      "sha256": "9191f4c2c8d445274b2cfb08d9c9e63acc335a95acd831bf45026bba502a2436"
+    },
+    "core/intel.cc": {
+      "path": "C:\\Users\\k\\Desktop\\vmprotect-3.9.1-master\\core\\intel.cc",
+      "sha256": "51329b44406a5077943ee31f83490d10d7112e7b0b62c88a00dfa9a819362cb4"
+    }
+  },
+  "name_key": "0x357b2a2d",
+  "table_rva": "0x10ad0cf",
+  "table_size": "0x1074",
+  "dll_count": 18,
+  "import_count": 339,
+  "zero_key_imports": 16,
+  "ordinal_imports": 2,
+  "native_x86_resolution_verified": true,
+  "real_payload_executed": false,
+  "configured_entry_rva": "0x3ca002",
+  "submitted_entry_adopted": false
+}

@@ -1,0 +1,3167 @@
+{
+  "binary_sha256": "e16dd0ecf4f763be49139d5edff21f2e6106cff1040e2f6a684fabcb7eeb9768",
+  "key": "0x357b2a2d",
+  "table_rva": "0x10ad0cf",
+  "table_size": "0x1074",
+  "groups": [
+    {
+      "dll": "KERNEL32.dll",
+      "record_rva": "0x10ad0cf",
+      "imports": [
+        {
+          "record_rva": "0x10ad0d3",
+          "name_rva": "0x11508c5",
+          "symbol": "GetModuleHandleW",
+          "destination_rva": "0x9ce031",
+          "key": "0x205576e2",
+          "stored": "0x56bc19de",
+          "decoded_existing": "0x771190c0"
+        },
+        {
+          "record_rva": "0x10ad0df",
+          "name_rva": "0x1215883",
+          "symbol": "GetProcAddress",
+          "destination_rva": "0x40e00c",
+          "key": "0x0",
+          "stored": "0x771162d0",
+          "decoded_existing": "0x771162d0"
+        },
+        {
+          "record_rva": "0x10ad0eb",
+          "name_rva": "0x112f582",
+          "symbol": "GlobalUnlock",
+          "destination_rva": "0xabc7d5",
+          "key": "0x660e77af",
+          "stored": "0x1102d2d1",
+          "decoded_existing": "0x77114a80"
+        },
+        {
+          "record_rva": "0x10ad0f7",
+          "name_rva": "0x10d7ff1",
+          "symbol": "GlobalLock",
+          "destination_rva": "0xc544bf",
+          "key": "0x10452333",
+          "stored": "0x66cc202d",
+          "decoded_existing": "0x77114360"
+        },
+        {
+          "record_rva": "0x10ad103",
+          "name_rva": "0x127ddac",
+          "symbol": "GetTickCount",
+          "destination_rva": "0xe8dc34",
+          "key": "0x50f35aba",
+          "stored": "0x261ed1c6",
+          "decoded_existing": "0x77122c80"
+        },
+        {
+          "record_rva": "0x10ad10f",
+          "name_rva": "0x114e8dc",
+          "symbol": "GetLastError",
+          "destination_rva": "0xa343b9",
+          "key": "0x60a2ab5",
+          "stored": "0x71071efb",
+          "decoded_existing": "0x771149b0"
+        },
+        {
+          "record_rva": "0x10ad11b",
+          "name_rva": "0x1185294",
+          "symbol": "FreeLibrary",
+          "destination_rva": "0xa7e6bb",
+          "key": "0x12da4003",
+          "stored": "0x643749bd",
+          "decoded_existing": "0x771189c0"
+        },
+        {
+          "record_rva": "0x10ad127",
+          "name_rva": "0x12cb1d5",
+          "symbol": "GetModuleFileNameA",
+          "destination_rva": "0xabe76b",
+          "key": "0x52b80d48",
+          "stored": "0x24598398",
+          "decoded_existing": "0x771190e0"
+        },
+        {
+          "record_rva": "0x10ad133",
+          "name_rva": "0x11eaf5b",
+          "symbol": "GetModuleHandleA",
+          "destination_rva": "0xa5ad52",
+          "key": "0x197a07c7",
+          "stored": "0x5d978119",
+          "decoded_existing": "0x771188e0"
+        },
+        {
+          "record_rva": "0x10ad13f",
+          "name_rva": "0x11d0fa4",
+          "symbol": "GetModuleHandleExA",
+          "destination_rva": "0x40e02c",
+          "key": "0x0",
+          "stored": "0x7711f5a0",
+          "decoded_existing": "0x7711f5a0"
+        },
+        {
+          "record_rva": "0x10ad14b",
+          "name_rva": "0x11530e2",
+          "symbol": "LoadLibraryA",
+          "destination_rva": "0x40e030",
+          "key": "0x0",
+          "stored": "0x771224a0",
+          "decoded_existing": "0x771224a0"
+        },
+        {
+          "record_rva": "0x10ad157",
+          "name_rva": "0x12a2f07",
+          "symbol": "FormatMessageA",
+          "destination_rva": "0xad43c1",
+          "key": "0x34fa1ae8",
+          "stored": "0x4217de88",
+          "decoded_existing": "0x7711f970"
+        },
+        {
+          "record_rva": "0x10ad163",
+          "name_rva": "0x118a78d",
+          "symbol": "VirtualAlloc",
+          "destination_rva": "0xa7e4e0",
+          "key": "0x476d768d",
+          "stored": "0x2fa3ebf3",
+          "decoded_existing": "0x77116280"
+        },
+        {
+          "record_rva": "0x10ad16f",
+          "name_rva": "0x11bccd5",
+          "symbol": "VirtualFree",
+          "destination_rva": "0x40e03c",
+          "key": "0x0",
+          "stored": "0x771162a0",
+          "decoded_existing": "0x771162a0"
+        },
+        {
+          "record_rva": "0x10ad17b",
+          "name_rva": "0x120cf04",
+          "symbol": "VirtualQuery",
+          "destination_rva": "0xbac38a",
+          "key": "0x6165220a",
+          "stored": "0x15ac4756",
+          "decoded_existing": "0x77116960"
+        },
+        {
+          "record_rva": "0x10ad187",
+          "name_rva": "0x1266e1b",
+          "symbol": "CreateDirectoryW",
+          "destination_rva": "0xd28ee6",
+          "key": "0x716b58ca",
+          "stored": "0x5a6e196",
+          "decoded_existing": "0x77123a60"
+        },
+        {
+          "record_rva": "0x10ad193",
+          "name_rva": "0x11b0244",
+          "symbol": "CreateFileW",
+          "destination_rva": "0xd2ed91",
+          "key": "0x56593e86",
+          "stored": "0x20b8fc0a",
+          "decoded_existing": "0x77123a90"
+        },
+        {
+          "record_rva": "0x10ad19f",
+          "name_rva": "0x12a2376",
+          "symbol": "FindClose",
+          "destination_rva": "0xa414ae",
+          "key": "0x61b16a4a",
+          "stored": "0x1560d0a6",
+          "decoded_existing": "0x77123af0"
+        },
+        {
+          "record_rva": "0x10ad1ab",
+          "name_rva": "0x1084064",
+          "symbol": "FindFirstFileExW",
+          "destination_rva": "0xacb70a",
+          "key": "0x3c0f279a",
+          "stored": "0x3b0313b6",
+          "decoded_existing": "0x77123b50"
+        },
+        {
+          "record_rva": "0x10ad1b7",
+          "name_rva": "0x1154dda",
+          "symbol": "FindNextFileW",
+          "destination_rva": "0xdfeb98",
+          "key": "0x73980c49",
+          "stored": "0x37a2f77",
+          "decoded_existing": "0x77123bc0"
+        },
+        {
+          "record_rva": "0x10ad1c3",
+          "name_rva": "0x1178819",
+          "symbol": "GetFileAttributesExW",
+          "destination_rva": "0xb24b04",
+          "key": "0x3d40428d",
+          "stored": "0x39d1f9f3",
+          "decoded_existing": "0x77123c80"
+        },
+        {
+          "record_rva": "0x10ad1cf",
+          "name_rva": "0x113dfee",
+          "symbol": "SetLastError",
+          "destination_rva": "0xb38573",
+          "key": "0x5d92280c",
+          "stored": "0x197f1d54",
+          "decoded_existing": "0x77114560"
+        },
+        {
+          "record_rva": "0x10ad1db",
+          "name_rva": "0x11d4b6a",
+          "symbol": "VirtualProtect",
+          "destination_rva": "0xa13daa",
+          "key": "0x4f3d22b4",
+          "stored": "0x27d44b4c",
+          "decoded_existing": "0x77116e00"
+        },
+        {
+          "record_rva": "0x10ad1e7",
+          "name_rva": "0x10a716b",
+          "symbol": "GetFileInformationByHandle",
+          "destination_rva": "0xa8cdfc",
+          "key": "0x18643399",
+          "stored": "0x5eae0907",
+          "decoded_existing": "0x77123ca0"
+        },
+        {
+          "record_rva": "0x10ad1f3",
+          "name_rva": "0x109d9c3",
+          "symbol": "GetFullPathNameW",
+          "destination_rva": "0xbd973f",
+          "key": "0x2ec836fd",
+          "stored": "0x484a0623",
+          "decoded_existing": "0x77123d20"
+        },
+        {
+          "record_rva": "0x10ad1ff",
+          "name_rva": "0x110123e",
+          "symbol": "SetFileInformationByHandle",
+          "destination_rva": "0xf07bc3",
+          "key": "0x65fe55e1",
+          "stored": "0x1113e8cf",
+          "decoded_existing": "0x77123eb0"
+        },
+        {
+          "record_rva": "0x10ad20b",
+          "name_rva": "0x11e617f",
+          "symbol": "AreFileApisANSI",
+          "destination_rva": "0xf5579b",
+          "key": "0x52301453",
+          "stored": "0x24e2162d",
+          "decoded_existing": "0x77122a80"
+        },
+        {
+          "record_rva": "0x10ad217",
+          "name_rva": "0x120a498",
+          "symbol": "CloseHandle",
+          "destination_rva": "0xbbc8d8",
+          "key": "0x76492b08",
+          "stored": "0xc90d28",
+          "decoded_existing": "0x77123830"
+        },
+        {
+          "record_rva": "0x10ad223",
+          "name_rva": "0x10e14f8",
+          "symbol": "DeviceIoControl",
+          "destination_rva": "0xa1b68c",
+          "key": "0x87a600e",
+          "stored": "0x6e9719d2",
+          "decoded_existing": "0x771179e0"
+        },
+        {
+          "record_rva": "0x10ad22f",
+          "name_rva": "0x11a5a9e",
+          "symbol": "CopyFileW",
+          "destination_rva": "0xa66e76",
+          "key": "0x1e7601cd",
+          "stored": "0x589c3fb3",
+          "decoded_existing": "0x77124180"
+        },
+        {
+          "record_rva": "0x10ad23b",
+          "name_rva": "0x1236804",
+          "symbol": "CreateHardLinkW",
+          "destination_rva": "0xb80684",
+          "key": "0x4be20323",
+          "stored": "0x2b3169ed",
+          "decoded_existing": "0x77136d10"
+        },
+        {
+          "record_rva": "0x10ad247",
+          "name_rva": "0x1238e28",
+          "symbol": "GetFileInformationByHandleEx",
+          "destination_rva": "0x9d2a68",
+          "key": "0x6aad55e2",
+          "stored": "0xc64d63e",
+          "decoded_existing": "0x77122c20"
+        },
+        {
+          "record_rva": "0x10ad253",
+          "name_rva": "0x1184098",
+          "symbol": "CreateSymbolicLinkW",
+          "destination_rva": "0xa453cd",
+          "key": "0x6a8875ad",
+          "stored": "0xc8af883",
+          "decoded_existing": "0x77136e30"
+        },
+        {
+          "record_rva": "0x10ad25f",
+          "name_rva": "0x108db77",
+          "symbol": "MultiByteToWideChar",
+          "destination_rva": "0xacf527",
+          "key": "0x1e623484",
+          "stored": "0x58af0ebc",
+          "decoded_existing": "0x77114340"
+        },
+        {
+          "record_rva": "0x10ad26b",
+          "name_rva": "0x10ff291",
+          "symbol": "WideCharToMultiByte",
+          "destination_rva": "0xae9479",
+          "key": "0x67d921ac",
+          "stored": "0xf3827e4",
+          "decoded_existing": "0x77114990"
+        },
+        {
+          "record_rva": "0x10ad277",
+          "name_rva": "0x124b492",
+          "symbol": "IsProcessorFeaturePresent",
+          "destination_rva": "0xa0095d",
+          "key": "0x3f76312a",
+          "stored": "0x379b52c6",
+          "decoded_existing": "0x771183f0"
+        },
+        {
+          "record_rva": "0x10ad283",
+          "name_rva": "0x118cbec",
+          "symbol": "UnhandledExceptionFilter",
+          "destination_rva": "0xae9e11",
+          "key": "0x31dc3235",
+          "stored": "0x45375c7b",
+          "decoded_existing": "0x77138eb0"
+        },
+        {
+          "record_rva": "0x10ad28f",
+          "name_rva": "0x10d61f5",
+          "symbol": "SetUnhandledExceptionFilter",
+          "destination_rva": "0xbe73bc",
+          "key": "0x752b2073",
+          "stored": "0x1e677dd",
+          "decoded_existing": "0x77119850"
+        },
+        {
+          "record_rva": "0x10ad29b",
+          "name_rva": "0x1214ff5",
+          "symbol": "GetCurrentProcess",
+          "destination_rva": "0xaa1148",
+          "key": "0x19de75f8",
+          "stored": "0x5d33c1b8",
+          "decoded_existing": "0x771237b0"
+        },
+        {
+          "record_rva": "0x10ad2a7",
+          "name_rva": "0x1149e9c",
+          "symbol": "TerminateProcess",
+          "destination_rva": "0xaa8ea7",
+          "key": "0x167a3194",
+          "stored": "0x6097d25c",
+          "decoded_existing": "0x771203f0"
+        },
+        {
+          "record_rva": "0x10ad2b3",
+          "name_rva": "0x119aef9",
+          "symbol": "IsDebuggerPresent",
+          "destination_rva": "0xb72811",
+          "key": "0x44ff13b6",
+          "stored": "0x32128c8a",
+          "decoded_existing": "0x7711a040"
+        },
+        {
+          "record_rva": "0x10ad2bf",
+          "name_rva": "0x11ed5f4",
+          "symbol": "QueryPerformanceCounter",
+          "destination_rva": "0xc73737",
+          "key": "0x20e3bbb",
+          "stored": "0x750334d5",
+          "decoded_existing": "0x77117090"
+        },
+        {
+          "record_rva": "0x10ad2cb",
+          "name_rva": "0x11f685c",
+          "symbol": "GetCurrentProcessId",
+          "destination_rva": "0xae2dce",
+          "key": "0x5ec823cc",
+          "stored": "0x184a13f4",
+          "decoded_existing": "0x771237c0"
+        },
+        {
+          "record_rva": "0x10ad2d7",
+          "name_rva": "0x129d591",
+          "symbol": "GetCurrentThreadId",
+          "destination_rva": "0xaf2aed",
+          "key": "0x7a6637a1",
+          "stored": "0xfcaae52f",
+          "decoded_existing": "0x77111cd0"
+        },
+        {
+          "record_rva": "0x10ad2e3",
+          "name_rva": "0x12c124d",
+          "symbol": "GetSystemTimeAsFileTime",
+          "destination_rva": "0x9f9fe2",
+          "key": "0x66723f48",
+          "stored": "0x109f22c8",
+          "decoded_existing": "0x77116210"
+        },
+        {
+          "record_rva": "0x10ad2ef",
+          "name_rva": "0x11f5704",
+          "symbol": "InitializeSListHead",
+          "destination_rva": "0xd27ad7",
+          "key": "0x49b061f0",
+          "stored": "0x2e1f3850",
+          "decoded_existing": "0x77cf9a40"
+        },
+        {
+          "record_rva": "0x10ad2fb",
+          "name_rva": "0x1151cfc",
+          "symbol": "LocalFree",
+          "destination_rva": "0xbde4fa",
+          "key": "0x7ee26926",
+          "stored": "0xf82efffa",
+          "decoded_existing": "0x77116920"
+        }
+      ]
+    },
+    {
+      "dll": "USER32.dll",
+      "record_rva": "0x10ad30b",
+      "imports": [
+        {
+          "record_rva": "0x10ad30f",
+          "name_rva": "0x115c4c7",
+          "symbol": "CloseClipboard",
+          "destination_rva": "0xb25af9",
+          "key": "0x43d96711",
+          "stored": "0x3303dc2f",
+          "decoded_existing": "0x76dd4340"
+        },
+        {
+          "record_rva": "0x10ad31b",
+          "name_rva": "0x121b594",
+          "symbol": "GetClipboardData",
+          "destination_rva": "0xccaceb",
+          "key": "0x29d0287",
+          "stored": "0x74401a89",
+          "decoded_existing": "0x76dd1d10"
+        },
+        {
+          "record_rva": "0x10ad327",
+          "name_rva": "0x11627be",
+          "symbol": "GetActiveWindow",
+          "destination_rva": "0xb6e6ce",
+          "key": "0x2196020f",
+          "stored": "0x55471ad1",
+          "decoded_existing": "0x76dd1ce0"
+        },
+        {
+          "record_rva": "0x10ad333",
+          "name_rva": "0x12109f4",
+          "symbol": "GetFocus",
+          "destination_rva": "0xc3abf0",
+          "key": "0x68f14b33",
+          "stored": "0xdeab9ad",
+          "decoded_existing": "0x76dc04e0"
+        },
+        {
+          "record_rva": "0x10ad33f",
+          "name_rva": "0x11c3bca",
+          "symbol": "OpenClipboard",
+          "destination_rva": "0xa24a8e",
+          "key": "0x3ab97dad",
+          "stored": "0x3c23b233",
+          "decoded_existing": "0x76dd2fe0"
+        },
+        {
+          "record_rva": "0x10ad34b",
+          "name_rva": "0x1259ad4",
+          "symbol": "LoadCursorW",
+          "destination_rva": "0xb541d5",
+          "key": "0x68612a51",
+          "stored": "0xe79d9ff",
+          "decoded_existing": "0x76db0450"
+        },
+        {
+          "record_rva": "0x10ad357",
+          "name_rva": "0x1121693",
+          "symbol": "SetCursor",
+          "destination_rva": "0xdab6ed",
+          "key": "0x326166e3",
+          "stored": "0x447c1771",
+          "decoded_existing": "0x76dd7e54"
+        },
+        {
+          "record_rva": "0x10ad363",
+          "name_rva": "0x1150deb",
+          "symbol": "GetCursor",
+          "destination_rva": "0xa0f066",
+          "key": "0x41337d34",
+          "stored": "0x35aa09fc",
+          "decoded_existing": "0x76dd8730"
+        }
+      ]
+    },
+    {
+      "dll": "GDI32.dll",
+      "record_rva": "0x10ad373",
+      "imports": [
+        {
+          "record_rva": "0x10ad377",
+          "name_rva": "0x12bd453",
+          "symbol": "AddFontMemResourceEx",
+          "destination_rva": "0x9db1ad",
+          "key": "0xc3c6bbf",
+          "stored": "0x6a841981",
+          "decoded_existing": "0x76c08540"
+        }
+      ]
+    },
+    {
+      "dll": "SHELL32.dll",
+      "record_rva": "0x10ad387",
+      "imports": [
+        {
+          "record_rva": "0x10ad38b",
+          "name_rva": "0x12c676a",
+          "symbol": "ShellExecuteW",
+          "destination_rva": "0xaa9e92",
+          "key": "0x2ea50474",
+          "stored": "0x47803dbc",
+          "decoded_existing": "0x76254230"
+        }
+      ]
+    },
+    {
+      "dll": "MSVCP140.dll",
+      "record_rva": "0x10ad39b",
+      "imports": [
+        {
+          "record_rva": "0x10ad39f",
+          "name_rva": "0x113bf36",
+          "symbol": "?getloc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QBE?AVlocale@2@XZ",
+          "destination_rva": "0xaf72fe",
+          "key": "0x17924cba",
+          "stored": "0x4db63f66",
+          "decoded_existing": "0x65488c20"
+        },
+        {
+          "record_rva": "0x10ad3ab",
+          "name_rva": "0x113dc9c",
+          "symbol": "?_Pninc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IAEPADXZ",
+          "destination_rva": "0xd41d45",
+          "key": "0x58b63cc5",
+          "stored": "0xc8f8fdb",
+          "decoded_existing": "0x6545cca0"
+        },
+        {
+          "record_rva": "0x10ad3b7",
+          "name_rva": "0x111631f",
+          "symbol": "?_Init@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IAEXXZ",
+          "destination_rva": "0xc8f319",
+          "key": "0xae37f49",
+          "stored": "0x5a624b17",
+          "decoded_existing": "0x6545ca60"
+        },
+        {
+          "record_rva": "0x10ad3c3",
+          "name_rva": "0x112ca9d",
+          "symbol": "?xsgetn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAE_JPAD_J@Z",
+          "destination_rva": "0xa034da",
+          "key": "0x4c0c1c07",
+          "stored": "0x1939d669",
+          "decoded_existing": "0x6545f270"
+        },
+        {
+          "record_rva": "0x10ad3cf",
+          "name_rva": "0x122c5af",
+          "symbol": "?xsputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAE_JPBD_J@Z",
+          "destination_rva": "0xcc55c9",
+          "key": "0x4bfe50a4",
+          "stored": "0x1947a3ac",
+          "decoded_existing": "0x6545f450"
+        },
+        {
+          "record_rva": "0x10ad3db",
+          "name_rva": "0x1280514",
+          "symbol": "??0?$basic_streambuf@_WU?$char_traits@_W@std@@@std@@IAE@XZ",
+          "destination_rva": "0xadbff7",
+          "key": "0x34312363",
+          "stored": "0x3115541d",
+          "decoded_existing": "0x65467780"
+        },
+        {
+          "record_rva": "0x10ad3e7",
+          "name_rva": "0x11b44ad",
+          "symbol": "??1?$basic_streambuf@_WU?$char_traits@_W@std@@@std@@UAE@XZ",
+          "destination_rva": "0xc23423",
+          "key": "0x692679df",
+          "stored": "0xfc1ffea1",
+          "decoded_existing": "0x65467880"
+        },
+        {
+          "record_rva": "0x10ad3f3",
+          "name_rva": "0x12bc121",
+          "symbol": "?_Pninc@?$basic_streambuf@_WU?$char_traits@_W@std@@@std@@IAEPA_WXZ",
+          "destination_rva": "0xabf478",
+          "key": "0x3e7938e8",
+          "stored": "0x26cd2fc8",
+          "decoded_existing": "0x654668b0"
+        },
+        {
+          "record_rva": "0x10ad3ff",
+          "name_rva": "0x1149f40",
+          "symbol": "??1?$basic_ios@DU?$char_traits@D@std@@@std@@UAE@XZ",
+          "destination_rva": "0x9fb737",
+          "key": "0x7a3045ac",
+          "stored": "0xeb156e44",
+          "decoded_existing": "0x6545b3f0"
+        },
+        {
+          "record_rva": "0x10ad40b",
+          "name_rva": "0x11018a1",
+          "symbol": "?setstate@?$basic_ios@DU?$char_traits@D@std@@@std@@QAEXH_N@Z",
+          "destination_rva": "0xbf6ce7",
+          "key": "0x1189382d",
+          "stored": "0x53bcb283",
+          "decoded_existing": "0x6545eab0"
+        },
+        {
+          "record_rva": "0x10ad417",
+          "name_rva": "0x112b698",
+          "symbol": "??0?$basic_ios@DU?$char_traits@D@std@@@std@@IAE@XZ",
+          "destination_rva": "0xa540e1",
+          "key": "0x1f101564",
+          "stored": "0x4635923c",
+          "decoded_existing": "0x6545a7a0"
+        },
+        {
+          "record_rva": "0x10ad423",
+          "name_rva": "0x11a3bb0",
+          "symbol": "??1?$basic_ios@_WU?$char_traits@_W@std@@@std@@UAE@XZ",
+          "destination_rva": "0xc2c1c3",
+          "key": "0x9563031",
+          "stored": "0x5bef83bf",
+          "decoded_existing": "0x6545b3f0"
+        },
+        {
+          "record_rva": "0x10ad42f",
+          "name_rva": "0x1203cbc",
+          "symbol": "??0?$basic_ios@_WU?$char_traits@_W@std@@@std@@IAE@XZ",
+          "destination_rva": "0xb7578f",
+          "key": "0x75d662d4",
+          "stored": "0xef70140c",
+          "decoded_existing": "0x654676e0"
+        },
+        {
+          "record_rva": "0x10ad43b",
+          "name_rva": "0x119d818",
+          "symbol": "??0?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N@Z",
+          "destination_rva": "0xc59a7b",
+          "key": "0x6697155",
+          "stored": "0x5edc366b",
+          "decoded_existing": "0x6545a7c0"
+        },
+        {
+          "record_rva": "0x10ad447",
+          "name_rva": "0x123630d",
+          "symbol": "??1?$basic_ostream@DU?$char_traits@D@std@@@std@@UAE@XZ",
+          "destination_rva": "0xcbfca9",
+          "key": "0x4ea147e5",
+          "stored": "0x16a46c5b",
+          "decoded_existing": "0x6545b440"
+        },
+        {
+          "record_rva": "0x10ad453",
+          "name_rva": "0x1113a3f",
+          "symbol": "?write@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV12@PBD_J@Z",
+          "destination_rva": "0xbfca14",
+          "key": "0x297d7a50",
+          "stored": "0x3bcb43e0",
+          "decoded_existing": "0x6548be30"
+        },
+        {
+          "record_rva": "0x10ad45f",
+          "name_rva": "0x12cf876",
+          "symbol": "??0?$basic_iostream@_WU?$char_traits@_W@std@@@std@@QAE@PAV?$basic_streambuf@_WU?$char_traits@_W@std@@@1@@Z",
+          "destination_rva": "0xc1be1e",
+          "key": "0x1b522fd3",
+          "stored": "0x49f5ed4d",
+          "decoded_existing": "0x65481d20"
+        },
+        {
+          "record_rva": "0x10ad46b",
+          "name_rva": "0x118e434",
+          "symbol": "??1?$basic_iostream@_WU?$char_traits@_W@std@@@std@@UAE@XZ",
+          "destination_rva": "0xa9b45d",
+          "key": "0x3dba4127",
+          "stored": "0x278dec89",
+          "decoded_existing": "0x65482db0"
+        },
+        {
+          "record_rva": "0x10ad477",
+          "name_rva": "0x1266d55",
+          "symbol": "?_Fiopen@std@@YAPAU_iobuf@@PBDHH@Z",
+          "destination_rva": "0xda780a",
+          "key": "0x4703333c",
+          "stored": "0x1e42d224",
+          "decoded_existing": "0x65460560"
+        },
+        {
+          "record_rva": "0x10ad483",
+          "name_rva": "0x127d233",
+          "symbol": "?showmanyc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAE_JXZ",
+          "destination_rva": "0xb26003",
+          "key": "0x1b090a85",
+          "stored": "0x4a3ce08b",
+          "decoded_existing": "0x6545eb10"
+        },
+        {
+          "record_rva": "0x10ad48f",
+          "name_rva": "0x108ea9a",
+          "symbol": "?id@?$codecvt@DDU_Mbstatet@@@std@@2V0locale@2@A",
+          "destination_rva": "0x40e118",
+          "key": "0x0",
+          "stored": "0x654b47e8",
+          "decoded_existing": "0x654b47e8"
+        },
+        {
+          "record_rva": "0x10ad49b",
+          "name_rva": "0x10d18ea",
+          "symbol": "??0_Locinfo@std@@QAE@PBD@Z",
+          "destination_rva": "0xb47198",
+          "key": "0x4bf475dd",
+          "stored": "0x195139b3",
+          "decoded_existing": "0x6545af90"
+        },
+        {
+          "record_rva": "0x10ad4a7",
+          "name_rva": "0x11ee043",
+          "symbol": "??1_Locinfo@std@@QAE@XZ",
+          "destination_rva": "0xd09598",
+          "key": "0x5bae6eb3",
+          "stored": "0x997471d",
+          "decoded_existing": "0x6545b5d0"
+        },
+        {
+          "record_rva": "0x10ad4b3",
+          "name_rva": "0x12bd468",
+          "symbol": "?_Getfalse@_Locinfo@std@@QBEPBDXZ",
+          "destination_rva": "0xa81f26",
+          "key": "0x172c3912",
+          "stored": "0x4e198fae",
+          "decoded_existing": "0x6545c8c0"
+        },
+        {
+          "record_rva": "0x10ad4bf",
+          "name_rva": "0x10a9151",
+          "symbol": "?_Gettrue@_Locinfo@std@@QBEPBDXZ",
+          "destination_rva": "0xa3a571",
+          "key": "0x35047577",
+          "stored": "0x304153d9",
+          "decoded_existing": "0x6545c950"
+        },
+        {
+          "record_rva": "0x10ad4cb",
+          "name_rva": "0x10c0f42",
+          "symbol": "?c_str@?$_Yarn@D@std@@QBEPBDXZ",
+          "destination_rva": "0xa6f025",
+          "key": "0x592d0c0c",
+          "stored": "0xc18b4b4",
+          "decoded_existing": "0x6545c0c0"
+        },
+        {
+          "record_rva": "0x10ad4d7",
+          "name_rva": "0x11ae464",
+          "symbol": "??0facet@locale@std@@IAE@I@Z",
+          "destination_rva": "0xb40226",
+          "key": "0xa3423ad",
+          "stored": "0x5b118e43",
+          "decoded_existing": "0x6545b1f0"
+        },
+        {
+          "record_rva": "0x10ad4e3",
+          "name_rva": "0x10911d5",
+          "symbol": "??1facet@locale@std@@MAE@XZ",
+          "destination_rva": "0xdc1d44",
+          "key": "0x6294ca7",
+          "stored": "0x5f1c67e9",
+          "decoded_existing": "0x6545b490"
+        },
+        {
+          "record_rva": "0x10ad4ef",
+          "name_rva": "0x10a52d5",
+          "symbol": "?_Init@locale@std@@CAPAV_Locimp@12@_N@Z",
+          "destination_rva": "0xd83da1",
+          "key": "0x30a00ce7",
+          "stored": "0x34a63d19",
+          "decoded_existing": "0x65464a00"
+        },
+        {
+          "record_rva": "0x10ad4fb",
+          "name_rva": "0x12d4d4c",
+          "symbol": "?_Incref@facet@locale@std@@UAEXXZ",
+          "destination_rva": "0xbd0650",
+          "key": "0x2234130",
+          "stored": "0x63228870",
+          "decoded_existing": "0x6545c9a0"
+        },
+        {
+          "record_rva": "0x10ad507",
+          "name_rva": "0x10cd9b1",
+          "symbol": "?_Decref@facet@locale@std@@UAEPAV_Facet_base@3@XZ",
+          "destination_rva": "0xde6e77",
+          "key": "0x31802707",
+          "stored": "0x33c59a99",
+          "decoded_existing": "0x6545c1a0"
+        },
+        {
+          "record_rva": "0x10ad513",
+          "name_rva": "0x11c72e9",
+          "symbol": "?id@?$numpunct@_W@std@@2V0locale@2@A",
+          "destination_rva": "0x40e144",
+          "key": "0x0",
+          "stored": "0x654b4a20",
+          "decoded_existing": "0x654b4a20"
+        },
+        {
+          "record_rva": "0x10ad51f",
+          "name_rva": "0x1270396",
+          "symbol": "_Thrd_id",
+          "destination_rva": "0xc5c9bb",
+          "key": "0x6cbf24fa",
+          "stored": "0xf8873256",
+          "decoded_existing": "0x65465750"
+        },
+        {
+          "record_rva": "0x10ad52b",
+          "name_rva": "0x1252412",
+          "symbol": "_Mtx_lock",
+          "destination_rva": "0xb40833",
+          "key": "0x1f121226",
+          "stored": "0x46344a2a",
+          "decoded_existing": "0x65465c50"
+        },
+        {
+          "record_rva": "0x10ad537",
+          "name_rva": "0x1108663",
+          "symbol": "_Mtx_unlock",
+          "destination_rva": "0xb7ceec",
+          "key": "0x77541042",
+          "stored": "0xedf24cae",
+          "decoded_existing": "0x65465cf0"
+        },
+        {
+          "record_rva": "0x10ad543",
+          "name_rva": "0x12c6666",
+          "symbol": "?_Throw_C_error@std@@YAXH@Z",
+          "destination_rva": "0xab4878",
+          "key": "0x400e5507",
+          "stored": "0x25380dc9",
+          "decoded_existing": "0x654662d0"
+        },
+        {
+          "record_rva": "0x10ad54f",
+          "name_rva": "0x113a684",
+          "symbol": "?_Xbad_function_call@std@@YAXXZ",
+          "destination_rva": "0xa58cbd",
+          "key": "0x5ea0423d",
+          "stored": "0x6a79873",
+          "decoded_existing": "0x6547dab0"
+        },
+        {
+          "record_rva": "0x10ad55b",
+          "name_rva": "0x11e88a5",
+          "symbol": "??4?$_Yarn@D@std@@QAEAAV01@PBD@Z",
+          "destination_rva": "0x9f04bd",
+          "key": "0x4ee03451",
+          "stored": "0x166582ef",
+          "decoded_existing": "0x6545b740"
+        },
+        {
+          "record_rva": "0x10ad567",
+          "name_rva": "0x12391bc",
+          "symbol": "?_New_Locimp@_Locimp@locale@std@@CAPAV123@ABV123@@Z",
+          "destination_rva": "0xc72290",
+          "key": "0x11c129d3",
+          "stored": "0x538521ad",
+          "decoded_existing": "0x65464b80"
+        },
+        {
+          "record_rva": "0x10ad573",
+          "name_rva": "0x11c7ed9",
+          "symbol": "?_Locimp_Addfac@_Locimp@locale@std@@CAXPAV123@PAVfacet@23@I@Z",
+          "destination_rva": "0xb92f55",
+          "key": "0x69b9139d",
+          "stored": "0xfb8d1b83",
+          "decoded_existing": "0x65462f20"
+        },
+        {
+          "record_rva": "0x10ad57f",
+          "name_rva": "0x115d939",
+          "symbol": "?out@?$codecvt@_WDU_Mbstatet@@@std@@QBEHAAU_Mbstatet@@PB_W1AAPB_WPAD3AAPAD@Z",
+          "destination_rva": "0xa6c52e",
+          "key": "0x646e1cc1",
+          "stored": "0xd7c79f",
+          "decoded_existing": "0x6545e460"
+        },
+        {
+          "record_rva": "0x10ad58b",
+          "name_rva": "0x10d4fbb",
+          "symbol": "??0?$codecvt@_WDU_Mbstatet@@@std@@QAE@I@Z",
+          "destination_rva": "0xa347b2",
+          "key": "0x2ac063e5",
+          "stored": "0x3a8547db",
+          "decoded_existing": "0x6545abc0"
+        },
+        {
+          "record_rva": "0x10ad597",
+          "name_rva": "0x116a8ec",
+          "symbol": "??1?$codecvt@_WDU_Mbstatet@@@std@@MAE@XZ",
+          "destination_rva": "0xaecc0d",
+          "key": "0x383f1ef9",
+          "stored": "0x2d069597",
+          "decoded_existing": "0x6545b490"
+        },
+        {
+          "record_rva": "0x10ad5a3",
+          "name_rva": "0x1215ee5",
+          "symbol": "?id@?$codecvt@_WDU_Mbstatet@@@std@@2V0locale@2@A",
+          "destination_rva": "0x40e174",
+          "key": "0x0",
+          "stored": "0x654b4ad8",
+          "decoded_existing": "0x654b4ad8"
+        },
+        {
+          "record_rva": "0x10ad5af",
+          "name_rva": "0x129168a",
+          "symbol": "?id@?$numpunct@D@std@@2V0locale@2@A",
+          "destination_rva": "0x40e178",
+          "key": "0x0",
+          "stored": "0x654b4a24",
+          "decoded_existing": "0x654b4a24"
+        },
+        {
+          "record_rva": "0x10ad5bb",
+          "name_rva": "0x119d7d4",
+          "symbol": "?uncaught_exception@std@@YA_NXZ",
+          "destination_rva": "0x9f55c6",
+          "key": "0x649348c4",
+          "stored": "0xb31aac",
+          "decoded_existing": "0x65466370"
+        },
+        {
+          "record_rva": "0x10ad5c7",
+          "name_rva": "0x1240af5",
+          "symbol": "??7ios_base@std@@QBE_NXZ",
+          "destination_rva": "0xbca174",
+          "key": "0x2efa252f",
+          "stored": "0x364b9361",
+          "decoded_existing": "0x6545b890"
+        },
+        {
+          "record_rva": "0x10ad5d3",
+          "name_rva": "0x11ac031",
+          "symbol": "?sbumpc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ",
+          "destination_rva": "0xcac08a",
+          "key": "0x4706239",
+          "stored": "0x60d5e5f7",
+          "decoded_existing": "0x65464830"
+        },
+        {
+          "record_rva": "0x10ad5df",
+          "name_rva": "0x1108523",
+          "symbol": "?sgetc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ",
+          "destination_rva": "0xbd9d52",
+          "key": "0x152b6bb5",
+          "stored": "0x501adcbb",
+          "decoded_existing": "0x65464870"
+        },
+        {
+          "record_rva": "0x10ad5eb",
+          "name_rva": "0x11ed869",
+          "symbol": "?sputc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHD@Z",
+          "destination_rva": "0xac49e6",
+          "key": "0x84571eb",
+          "stored": "0x5d00d6b5",
+          "decoded_existing": "0x654648a0"
+        },
+        {
+          "record_rva": "0x10ad5f7",
+          "name_rva": "0x11c14a7",
+          "symbol": "?sputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAE_JPBD_J@Z",
+          "destination_rva": "0xb059af",
+          "key": "0x4c617497",
+          "stored": "0x18e73d79",
+          "decoded_existing": "0x6548b210"
+        },
+        {
+          "record_rva": "0x10ad603",
+          "name_rva": "0x11ed464",
+          "symbol": "?_Osfx@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEXXZ",
+          "destination_rva": "0xbad922",
+          "key": "0x4369365d",
+          "stored": "0x21dcd4f3",
+          "decoded_existing": "0x65460b50"
+        },
+        {
+          "record_rva": "0x10ad60f",
+          "name_rva": "0x10d4c98",
+          "symbol": "?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV12@XZ",
+          "destination_rva": "0xcdecde",
+          "key": "0x5c234740",
+          "stored": "0x922c470",
+          "decoded_existing": "0x65460bb0"
+        },
+        {
+          "record_rva": "0x10ad61b",
+          "name_rva": "0x114e966",
+          "symbol": "??0?$basic_istream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N@Z",
+          "destination_rva": "0xa9be29",
+          "key": "0x3b0a7cbb",
+          "stored": "0x2a3b7885",
+          "decoded_existing": "0x6545f540"
+        },
+        {
+          "record_rva": "0x10ad627",
+          "name_rva": "0x1238e7a",
+          "symbol": "??1?$basic_istream@DU?$char_traits@D@std@@@std@@UAE@XZ",
+          "destination_rva": "0xa4dd6b",
+          "key": "0x7b8341ec",
+          "stored": "0xe9c2b3d4",
+          "decoded_existing": "0x6545f5c0"
+        },
+        {
+          "record_rva": "0x10ad633",
+          "name_rva": "0x112c85d",
+          "symbol": "?peek@?$basic_istream@DU?$char_traits@D@std@@@std@@QAEHXZ",
+          "destination_rva": "0xcec236",
+          "key": "0x214f246e",
+          "stored": "0x43f96e12",
+          "decoded_existing": "0x65489280"
+        },
+        {
+          "record_rva": "0x10ad63f",
+          "name_rva": "0x11c5721",
+          "symbol": "?_Fiopen@std@@YAPAU_iobuf@@PB_WHH@Z",
+          "destination_rva": "0xb4411d",
+          "key": "0x49ad1e8f",
+          "stored": "0x1b98e6e1",
+          "decoded_existing": "0x65460570"
+        },
+        {
+          "record_rva": "0x10ad64b",
+          "name_rva": "0x1170a2a",
+          "symbol": "_Xtime_get_ticks",
+          "destination_rva": "0xbcc115",
+          "key": "0x423d33dd",
+          "stored": "0x23092e63",
+          "decoded_existing": "0x65466240"
+        },
+        {
+          "record_rva": "0x10ad657",
+          "name_rva": "0x12013e0",
+          "symbol": "_Query_perf_counter",
+          "destination_rva": "0xac158f",
+          "key": "0x1cf149b4",
+          "stored": "0x485517ac",
+          "decoded_existing": "0x65466160"
+        },
+        {
+          "record_rva": "0x10ad663",
+          "name_rva": "0x1108ef4",
+          "symbol": "_Query_perf_frequency",
+          "destination_rva": "0xc43a06",
+          "key": "0x569352e3",
+          "stored": "0xeb30e9d",
+          "decoded_existing": "0x65466180"
+        },
+        {
+          "record_rva": "0x10ad66f",
+          "name_rva": "0x1293ffe",
+          "symbol": "?_Random_device@std@@YAIXZ",
+          "destination_rva": "0xb6ac2e",
+          "key": "0x44e538f0",
+          "stored": "0x20628980",
+          "decoded_existing": "0x6547c270"
+        },
+        {
+          "record_rva": "0x10ad67b",
+          "name_rva": "0x112878b",
+          "symbol": "?widen@?$basic_ios@DU?$char_traits@D@std@@@std@@QBEDD@Z",
+          "destination_rva": "0xc1ec17",
+          "key": "0x63e865ae",
+          "stored": "0x15d8a92",
+          "decoded_existing": "0x6545f040"
+        },
+        {
+          "record_rva": "0x10ad687",
+          "name_rva": "0x128d294",
+          "symbol": "??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@P6AAAV01@AAV01@@Z@Z",
+          "destination_rva": "0xaa9d1e",
+          "key": "0xf0e4d2a",
+          "stored": "0x5639e466",
+          "decoded_existing": "0x65483190"
+        },
+        {
+          "record_rva": "0x10ad693",
+          "name_rva": "0x10df1be",
+          "symbol": "??0?$basic_streambuf@DU?$char_traits@D@std@@@std@@IAE@XZ",
+          "destination_rva": "0xb6dbb0",
+          "key": "0x26235877",
+          "stored": "0x3f224fc9",
+          "decoded_existing": "0x6545a840"
+        },
+        {
+          "record_rva": "0x10ad69f",
+          "name_rva": "0x1083a01",
+          "symbol": "?cerr@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A",
+          "destination_rva": "0x40e1c8",
+          "key": "0x0",
+          "stored": "0x654b4740",
+          "decoded_existing": "0x654b4740"
+        },
+        {
+          "record_rva": "0x10ad6ab",
+          "name_rva": "0x11e008e",
+          "symbol": "??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@_N@Z",
+          "destination_rva": "0xc42121",
+          "key": "0x697945b5",
+          "stored": "0xfbcefffb",
+          "decoded_existing": "0x654845b0"
+        },
+        {
+          "record_rva": "0x10ad6b7",
+          "name_rva": "0x127d8a3",
+          "symbol": "??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@M@Z",
+          "destination_rva": "0xb6ec20",
+          "key": "0xa760c20",
+          "stored": "0x5ad23200",
+          "decoded_existing": "0x65483e20"
+        },
+        {
+          "record_rva": "0x10ad6c3",
+          "name_rva": "0x10808e2",
+          "symbol": "?imbue@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEXABVlocale@2@@Z",
+          "destination_rva": "0xaf99cd",
+          "key": "0xc7e50b4",
+          "stored": "0x58c779ec",
+          "decoded_existing": "0x6545caa0"
+        },
+        {
+          "record_rva": "0x10ad6cf",
+          "name_rva": "0x10a37db",
+          "symbol": "?sync@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ",
+          "destination_rva": "0xaf31a2",
+          "key": "0x7bab520c",
+          "stored": "0xe99a8054",
+          "decoded_existing": "0x6545d260"
+        },
+        {
+          "record_rva": "0x10ad6db",
+          "name_rva": "0x11d66e0",
+          "symbol": "?setbuf@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEPAV12@PAD_J@Z",
+          "destination_rva": "0xbe8938",
+          "key": "0x79c037c7",
+          "stored": "0xeb85b239",
+          "decoded_existing": "0x6545ea00"
+        },
+        {
+          "record_rva": "0x10ad6e7",
+          "name_rva": "0x10fa07d",
+          "symbol": "?uflow@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ",
+          "destination_rva": "0xadd9f3",
+          "key": "0x1a45523d",
+          "stored": "0x4b009d33",
+          "decoded_existing": "0x6545ef70"
+        },
+        {
+          "record_rva": "0x10ad6f3",
+          "name_rva": "0x10fdb87",
+          "symbol": "?_Unlock@?$basic_streambuf@DU?$char_traits@D@std@@@std@@UAEXXZ",
+          "destination_rva": "0xa6af79",
+          "key": "0x3cef08d8",
+          "stored": "0x28568cc8",
+          "decoded_existing": "0x654595a0"
+        },
+        {
+          "record_rva": "0x10ad6ff",
+          "name_rva": "0x12c483e",
+          "symbol": "?_Lock@?$basic_streambuf@DU?$char_traits@D@std@@@std@@UAEXXZ",
+          "destination_rva": "0xb6a021",
+          "key": "0x29e766b6",
+          "stored": "0x3b5e2eea",
+          "decoded_existing": "0x654595a0"
+        },
+        {
+          "record_rva": "0x10ad70b",
+          "name_rva": "0x10997e8",
+          "symbol": "?swap@?$basic_streambuf@_WU?$char_traits@_W@std@@@std@@IAEXAAV12@@Z",
+          "destination_rva": "0xc63bb5",
+          "key": "0x569371c8",
+          "stored": "0xeb542d8",
+          "decoded_existing": "0x6548b4a0"
+        },
+        {
+          "record_rva": "0x10ad717",
+          "name_rva": "0x111602a",
+          "symbol": "?swap@?$basic_iostream@_WU?$char_traits@_W@std@@@std@@IAEXAAV12@@Z",
+          "destination_rva": "0xb8e1e2",
+          "key": "0x44a500c1",
+          "stored": "0x20a3b32f",
+          "decoded_existing": "0x6548b3f0"
+        },
+        {
+          "record_rva": "0x10ad723",
+          "name_rva": "0x1234e71",
+          "symbol": "?sputc@?$basic_streambuf@_WU?$char_traits@_W@std@@@std@@QAEG_W@Z",
+          "destination_rva": "0xa66f05",
+          "key": "0x6b204885",
+          "stored": "0xfa270d6b",
+          "decoded_existing": "0x654755f0"
+        },
+        {
+          "record_rva": "0x10ad72f",
+          "name_rva": "0x11db41c",
+          "symbol": "?sputn@?$basic_streambuf@_WU?$char_traits@_W@std@@@std@@QAE_JPB_W_J@Z",
+          "destination_rva": "0xaaf92c",
+          "key": "0x5fe538ea",
+          "stored": "0x5637926",
+          "decoded_existing": "0x6548b210"
+        },
+        {
+          "record_rva": "0x10ad73b",
+          "name_rva": "0x10f80a9",
+          "symbol": "?setstate@?$basic_ios@_WU?$char_traits@_W@std@@@std@@QAEXH_N@Z",
+          "destination_rva": "0xa66979",
+          "key": "0x7fd73d59",
+          "stored": "0xe56ead57",
+          "decoded_existing": "0x6545eab0"
+        },
+        {
+          "record_rva": "0x10ad747",
+          "name_rva": "0x11f5a50",
+          "symbol": "?_Osfx@?$basic_ostream@_WU?$char_traits@_W@std@@@std@@QAEXXZ",
+          "destination_rva": "0xa40e2d",
+          "key": "0x65df7d88",
+          "stored": "0xff668dc8",
+          "decoded_existing": "0x65460b50"
+        },
+        {
+          "record_rva": "0x10ad753",
+          "name_rva": "0x1164118",
+          "symbol": "??6?$basic_ostream@_WU?$char_traits@_W@std@@@std@@QAEAAV01@P6AAAVios_base@1@AAV21@@Z@Z",
+          "destination_rva": "0xa3ec7b",
+          "key": "0x8c9078c",
+          "stored": "0x5c7f2a24",
+          "decoded_existing": "0x654831b0"
+        },
+        {
+          "record_rva": "0x10ad75f",
+          "name_rva": "0x129c5e7",
+          "symbol": "??6?$basic_ostream@_WU?$char_traits@_W@std@@@std@@QAEAAV01@H@Z",
+          "destination_rva": "0xaaadf1",
+          "key": "0x791821e9",
+          "stored": "0xec303407",
+          "decoded_existing": "0x654855f0"
+        },
+        {
+          "record_rva": "0x10ad76b",
+          "name_rva": "0x129c4f1",
+          "symbol": "?flush@?$basic_ostream@_WU?$char_traits@_W@std@@@std@@QAEAAV12@XZ",
+          "destination_rva": "0xae7a55",
+          "key": "0x52fa63dc",
+          "stored": "0x124ba7d4",
+          "decoded_existing": "0x65460bb0"
+        },
+        {
+          "record_rva": "0x10ad777",
+          "name_rva": "0x11e3e15",
+          "symbol": "?setw@std@@YA?AU?$_Smanip@_J@1@_J@Z",
+          "destination_rva": "0xbdcb8f",
+          "key": "0x29d97a4e",
+          "stored": "0x3b6c8d92",
+          "decoded_existing": "0x654607e0"
+        },
+        {
+          "record_rva": "0x10ad783",
+          "name_rva": "0x10eeeac",
+          "symbol": "?widen@?$ctype@_W@std@@QBE_WD@Z",
+          "destination_rva": "0xbbd98c",
+          "key": "0x631c12d8",
+          "stored": "0x229dde8",
+          "decoded_existing": "0x6545f0c0"
+        },
+        {
+          "record_rva": "0x10ad78f",
+          "name_rva": "0x118ee02",
+          "symbol": "?_Getcat@?$ctype@_W@std@@SAIPAPBVfacet@locale@2@PBV42@@Z",
+          "destination_rva": "0xa81b12",
+          "key": "0x8f44057",
+          "stored": "0x5c5186d9",
+          "decoded_existing": "0x6545c730"
+        },
+        {
+          "record_rva": "0x10ad79b",
+          "name_rva": "0x111baa7",
+          "symbol": "?getloc@ios_base@std@@QBE?AVlocale@2@XZ",
+          "destination_rva": "0xd07ef2",
+          "key": "0x6a73142b",
+          "stored": "0xfad2ccc5",
+          "decoded_existing": "0x6545e0f0"
+        },
+        {
+          "record_rva": "0x10ad7a7",
+          "name_rva": "0x12935a3",
+          "symbol": "??6?$basic_ostream@_WU?$char_traits@_W@std@@@std@@QAEAAV01@M@Z",
+          "destination_rva": "0xcae19b",
+          "key": "0x697d31cd",
+          "stored": "0xfbcb2643",
+          "decoded_existing": "0x65485810"
+        },
+        {
+          "record_rva": "0x10ad7b3",
+          "name_rva": "0x10c8472",
+          "symbol": "?setprecision@std@@YA?AU?$_Smanip@_J@1@_J@Z",
+          "destination_rva": "0xbfcf34",
+          "key": "0x626125c6",
+          "stored": "0x2e4e1fa",
+          "decoded_existing": "0x654607c0"
+        },
+        {
+          "record_rva": "0x10ad7bf",
+          "name_rva": "0x11cb006",
+          "symbol": "?id@?$ctype@_W@std@@2V0locale@2@A",
+          "destination_rva": "0x40e228",
+          "key": "0x0",
+          "stored": "0x654b4ae0",
+          "decoded_existing": "0x654b4ae0"
+        },
+        {
+          "record_rva": "0x10ad7cb",
+          "name_rva": "0x12d4ce2",
+          "symbol": "?read@?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV12@PAD_J@Z",
+          "destination_rva": "0xd22cd1",
+          "key": "0x15281bd1",
+          "stored": "0x5020860f",
+          "decoded_existing": "0x6548a1e0"
+        },
+        {
+          "record_rva": "0x10ad7d7",
+          "name_rva": "0x121f8f8",
+          "symbol": "_Thrd_detach",
+          "destination_rva": "0xb98ceb",
+          "key": "0x75b0841",
+          "stored": "0x5deb4eaf",
+          "decoded_existing": "0x654656f0"
+        },
+        {
+          "record_rva": "0x10ad7e3",
+          "name_rva": "0x1156349",
+          "symbol": "_Thrd_hardware_concurrency",
+          "destination_rva": "0xd1801e",
+          "key": "0x44860b9c",
+          "stored": "0x20c04b94",
+          "decoded_existing": "0x65465730"
+        },
+        {
+          "record_rva": "0x10ad7ef",
+          "name_rva": "0x10e640b",
+          "symbol": "_Cnd_init_in_situ",
+          "destination_rva": "0xb4d12d",
+          "key": "0x445d6a17",
+          "stored": "0x20e8ea89",
+          "decoded_existing": "0x654654a0"
+        },
+        {
+          "record_rva": "0x10ad7fb",
+          "name_rva": "0x125b3ac",
+          "symbol": "_Cnd_destroy_in_situ",
+          "destination_rva": "0xd6e1be",
+          "key": "0x5a8025e7",
+          "stored": "0xac62e69",
+          "decoded_existing": "0x65465450"
+        },
+        {
+          "record_rva": "0x10ad807",
+          "name_rva": "0x123d819",
+          "symbol": "_Cnd_wait",
+          "destination_rva": "0xba2277",
+          "key": "0x6b211621",
+          "stored": "0xfa253f7f",
+          "decoded_existing": "0x654655a0"
+        },
+        {
+          "record_rva": "0x10ad813",
+          "name_rva": "0x11519c1",
+          "symbol": "_Cnd_broadcast",
+          "destination_rva": "0xad181b",
+          "key": "0x657c20c2",
+          "stored": "0xffca334e",
+          "decoded_existing": "0x65465410"
+        },
+        {
+          "record_rva": "0x10ad81f",
+          "name_rva": "0x1228669",
+          "symbol": "_Cnd_do_broadcast_at_thread_exit",
+          "destination_rva": "0xbb4db9",
+          "key": "0x350814a9",
+          "stored": "0x303e4a97",
+          "decoded_existing": "0x65465f40"
+        },
+        {
+          "record_rva": "0x10ad82b",
+          "name_rva": "0x119473d",
+          "symbol": "?_Throw_Cpp_error@std@@YAXH@Z",
+          "destination_rva": "0xc6d52a",
+          "key": "0x68af4573",
+          "stored": "0xfc971d8d",
+          "decoded_existing": "0x65466300"
+        },
+        {
+          "record_rva": "0x10ad837",
+          "name_rva": "0x1116127",
+          "symbol": "?seekg@?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV12@V?$fpos@U_Mbstatet@@@2@@Z",
+          "destination_rva": "0xa5e4e0",
+          "key": "0x31a16478",
+          "stored": "0x33a742d8",
+          "decoded_existing": "0x6548a750"
+        },
+        {
+          "record_rva": "0x10ad843",
+          "name_rva": "0x1221bb3",
+          "symbol": "??1?$basic_streambuf@DU?$char_traits@D@std@@@std@@UAE@XZ",
+          "destination_rva": "0xaa5f69",
+          "key": "0x23a43953",
+          "stored": "0x41a17b0d",
+          "decoded_existing": "0x6545b460"
+        },
+        {
+          "record_rva": "0x10ad84f",
+          "name_rva": "0x1131c93",
+          "symbol": "?imbue@?$basic_streambuf@_WU?$char_traits@_W@std@@@std@@MAEXABVlocale@2@@Z",
+          "destination_rva": "0xb6d7de",
+          "key": "0x2c3007e",
+          "stored": "0x6282ca22",
+          "decoded_existing": "0x6545caa0"
+        },
+        {
+          "record_rva": "0x10ad85b",
+          "name_rva": "0x12bb8e0",
+          "symbol": "?_Getcat@?$codecvt@DDU_Mbstatet@@@std@@SAIPAPBVfacet@locale@2@PBV42@@Z",
+          "destination_rva": "0xd3c292",
+          "key": "0x7ca337d4",
+          "stored": "0xe8a28c2c",
+          "decoded_existing": "0x6545c400"
+        },
+        {
+          "record_rva": "0x10ad867",
+          "name_rva": "0x124fa69",
+          "symbol": "?unshift@?$codecvt@DDU_Mbstatet@@@std@@QBEHAAU_Mbstatet@@PAD1AAPAD@Z",
+          "destination_rva": "0xaa3b8e",
+          "key": "0x1a214019",
+          "stored": "0x4b24aff7",
+          "decoded_existing": "0x6545f010"
+        },
+        {
+          "record_rva": "0x10ad873",
+          "name_rva": "0x1268f8b",
+          "symbol": "?out@?$codecvt@DDU_Mbstatet@@@std@@QBEHAAU_Mbstatet@@PBD1AAPBDPAD3AAPAD@Z",
+          "destination_rva": "0xc04a9f",
+          "key": "0x27773a88",
+          "stored": "0x3dcea9d8",
+          "decoded_existing": "0x6545e460"
+        },
+        {
+          "record_rva": "0x10ad87f",
+          "name_rva": "0x109db4c",
+          "symbol": "?in@?$codecvt@DDU_Mbstatet@@@std@@QBEHAAU_Mbstatet@@PBD1AAPBDPAD3AAPAD@Z",
+          "destination_rva": "0xbc3e0b",
+          "key": "0x11f24db8",
+          "stored": "0x535393e8",
+          "decoded_existing": "0x6545e1a0"
+        },
+        {
+          "record_rva": "0x10ad88b",
+          "name_rva": "0x1270ce6",
+          "symbol": "?always_noconv@codecvt_base@std@@QBE_NXZ",
+          "destination_rva": "0xb59aa4",
+          "key": "0x40f43623",
+          "stored": "0x245198bd",
+          "decoded_existing": "0x6545cee0"
+        },
+        {
+          "record_rva": "0x10ad897",
+          "name_rva": "0x10d312a",
+          "symbol": "?sync@?$basic_streambuf@_WU?$char_traits@_W@std@@@std@@MAEHXZ",
+          "destination_rva": "0xa9d880",
+          "key": "0x343f59d1",
+          "stored": "0x3106788f",
+          "decoded_existing": "0x6545d260"
+        },
+        {
+          "record_rva": "0x10ad8a3",
+          "name_rva": "0x108e8f7",
+          "symbol": "?setbuf@?$basic_streambuf@_WU?$char_traits@_W@std@@@std@@MAEPAV12@PA_W_J@Z",
+          "destination_rva": "0xb6266d",
+          "key": "0x4f334f7f",
+          "stored": "0x16129a81",
+          "decoded_existing": "0x6545ea00"
+        },
+        {
+          "record_rva": "0x10ad8af",
+          "name_rva": "0x1094a84",
+          "symbol": "?xsputn@?$basic_streambuf@_WU?$char_traits@_W@std@@@std@@MAE_JPB_W_J@Z",
+          "destination_rva": "0xb77711",
+          "key": "0x24594788",
+          "stored": "0x40ed2b38",
+          "decoded_existing": "0x654672c0"
+        },
+        {
+          "record_rva": "0x10ad8bb",
+          "name_rva": "0x10a1061",
+          "symbol": "?xsgetn@?$basic_streambuf@_WU?$char_traits@_W@std@@@std@@MAE_JPA_W_J@Z",
+          "destination_rva": "0xa64704",
+          "key": "0x38d715fd",
+          "stored": "0x2c6f5b93",
+          "decoded_existing": "0x65467190"
+        },
+        {
+          "record_rva": "0x10ad8c7",
+          "name_rva": "0x11428f7",
+          "symbol": "?uflow@?$basic_streambuf@_WU?$char_traits@_W@std@@@std@@MAEGXZ",
+          "destination_rva": "0xaaac08",
+          "key": "0x50062969",
+          "stored": "0x154046f7",
+          "decoded_existing": "0x65467060"
+        },
+        {
+          "record_rva": "0x10ad8d3",
+          "name_rva": "0x1131d94",
+          "symbol": "?showmanyc@?$basic_streambuf@_WU?$char_traits@_W@std@@@std@@MAE_JXZ",
+          "destination_rva": "0xcf262c",
+          "key": "0x148d74fd",
+          "stored": "0x50b87613",
+          "decoded_existing": "0x6545eb10"
+        },
+        {
+          "record_rva": "0x10ad8df",
+          "name_rva": "0x1156470",
+          "symbol": "?_Unlock@?$basic_streambuf@_WU?$char_traits@_W@std@@@std@@UAEXXZ",
+          "destination_rva": "0xaa156b",
+          "key": "0x14530638",
+          "stored": "0x50f28f68",
+          "decoded_existing": "0x654595a0"
+        },
+        {
+          "record_rva": "0x10ad8eb",
+          "name_rva": "0x125e0d8",
+          "symbol": "?_Lock@?$basic_streambuf@_WU?$char_traits@_W@std@@@std@@UAEXXZ",
+          "destination_rva": "0xbae31d",
+          "key": "0x206a72af",
+          "stored": "0x44db22f1",
+          "decoded_existing": "0x654595a0"
+        },
+        {
+          "record_rva": "0x10ad8f7",
+          "name_rva": "0x1288269",
+          "symbol": "??0_Lockit@std@@QAE@H@Z",
+          "destination_rva": "0xb04ca6",
+          "key": "0x7e35360c",
+          "stored": "0xe71277a4",
+          "decoded_existing": "0x6547adb0"
+        },
+        {
+          "record_rva": "0x10ad903",
+          "name_rva": "0x10c8ba7",
+          "symbol": "??1_Lockit@std@@QAE@XZ",
+          "destination_rva": "0xaadeca",
+          "key": "0x7f3e341b",
+          "stored": "0xe6097a15",
+          "decoded_existing": "0x6547ae30"
+        },
+        {
+          "record_rva": "0x10ad90f",
+          "name_rva": "0x12d3e71",
+          "symbol": "?_Xbad_alloc@std@@YAXXZ",
+          "destination_rva": "0xc03ce9",
+          "key": "0x20ff0d3d",
+          "stored": "0x4448cd53",
+          "decoded_existing": "0x6547da90"
+        },
+        {
+          "record_rva": "0x10ad91b",
+          "name_rva": "0x126ae65",
+          "symbol": "?_Xinvalid_argument@std@@YAXPBD@Z",
+          "destination_rva": "0xc5f560",
+          "key": "0x76490a9d",
+          "stored": "0xeefed033",
+          "decoded_existing": "0x6547dad0"
+        },
+        {
+          "record_rva": "0x10ad927",
+          "name_rva": "0x111ba82",
+          "symbol": "?_Xlength_error@std@@YAXPBD@Z",
+          "destination_rva": "0xddd95f",
+          "key": "0x7e053c09",
+          "stored": "0xe7429ee7",
+          "decoded_existing": "0x6547daf0"
+        },
+        {
+          "record_rva": "0x10ad933",
+          "name_rva": "0x11e6c02",
+          "symbol": "?_Xout_of_range@std@@YAXPBD@Z",
+          "destination_rva": "0xaa3a01",
+          "key": "0x6794631f",
+          "stored": "0xfdb377f1",
+          "decoded_existing": "0x6547db10"
+        },
+        {
+          "record_rva": "0x10ad93f",
+          "name_rva": "0x1235439",
+          "symbol": "_Mtx_init_in_situ",
+          "destination_rva": "0xd94ed1",
+          "key": "0x7c8b1e0b",
+          "stored": "0xe8bb3e15",
+          "decoded_existing": "0x65465c20"
+        },
+        {
+          "record_rva": "0x10ad94b",
+          "name_rva": "0x12bda59",
+          "symbol": "_Mtx_destroy_in_situ",
+          "destination_rva": "0xb84ad5",
+          "key": "0x72c667d",
+          "stored": "0x5e19f533",
+          "decoded_existing": "0x65465bb0"
+        },
+        {
+          "record_rva": "0x10ad957",
+          "name_rva": "0x12c1181",
+          "symbol": "?_Syserror_map@std@@YAPBDH@Z",
+          "destination_rva": "0xc24a2b",
+          "key": "0x731c4d99",
+          "stored": "0xf22a0477",
+          "decoded_existing": "0x65465210"
+        },
+        {
+          "record_rva": "0x10ad963",
+          "name_rva": "0x11dc87e",
+          "symbol": "?_Winerror_map@std@@YAHH@Z",
+          "destination_rva": "0xa6cda1",
+          "key": "0xb4606bd",
+          "stored": "0x5a004b83",
+          "decoded_existing": "0x65465240"
+        },
+        {
+          "record_rva": "0x10ad96f",
+          "name_rva": "0x1196abf",
+          "symbol": "_Mbrtowc",
+          "destination_rva": "0xd9974b",
+          "key": "0x1a650b25",
+          "stored": "0x4ae2ad2b",
+          "decoded_existing": "0x6547b850"
+        },
+        {
+          "record_rva": "0x10ad97b",
+          "name_rva": "0x12a2a60",
+          "symbol": "?_Getcvt@_Locinfo@std@@QBE?AU_Cvtvec@@XZ",
+          "destination_rva": "0xac9229",
+          "key": "0x74ca6522",
+          "stored": "0xf07b62de",
+          "decoded_existing": "0x6545c800"
+        },
+        {
+          "record_rva": "0x10ad987",
+          "name_rva": "0x1117c9c",
+          "symbol": "?_Getgloballocale@locale@std@@CAPAV_Locimp@12@XZ",
+          "destination_rva": "0xb5f382",
+          "key": "0x7ed3110e",
+          "stored": "0xe67338e2",
+          "decoded_existing": "0x654649f0"
+        },
+        {
+          "record_rva": "0x10ad993",
+          "name_rva": "0x1237ead",
+          "symbol": "??Bid@locale@std@@QAEIXZ",
+          "destination_rva": "0xbbaa84",
+          "key": "0x68df318d",
+          "stored": "0xfc668733",
+          "decoded_existing": "0x6545b8c0"
+        },
+        {
+          "record_rva": "0x10ad99f",
+          "name_rva": "0x12767f9",
+          "symbol": "?put@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV12@D@Z",
+          "destination_rva": "0xb19d58",
+          "key": "0x59b17d77",
+          "stored": "0xb971919",
+          "decoded_existing": "0x65489690"
+        }
+      ]
+    },
+    {
+      "dll": "WS2_32.dll",
+      "record_rva": "0x10ad9af",
+      "imports": [
+        {
+          "record_rva": "0x10ad9b3",
+          "name_rva": "0x80000074",
+          "symbol": "#116",
+          "destination_rva": "0xb4d131",
+          "key": "0x367155d",
+          "stored": "0x72902313",
+          "decoded_existing": "0x75f73870"
+        },
+        {
+          "record_rva": "0x10ad9bf",
+          "name_rva": "0x80000073",
+          "symbol": "#115",
+          "destination_rva": "0xcd57e0",
+          "key": "0x3a7c7c85",
+          "stored": "0x3b79dcdb",
+          "decoded_existing": "0x75f65960"
+        }
+      ]
+    },
+    {
+      "dll": "VCRUNTIME140.dll",
+      "record_rva": "0x10ad9cf",
+      "imports": [
+        {
+          "record_rva": "0x10ad9d3",
+          "name_rva": "0x11bafe0",
+          "symbol": "memset",
+          "destination_rva": "0xda02b8",
+          "key": "0x1dd85170",
+          "stored": "0x57ace790",
+          "decoded_existing": "0x75853900"
+        },
+        {
+          "record_rva": "0x10ad9df",
+          "name_rva": "0x12545fa",
+          "symbol": "memmove",
+          "destination_rva": "0xd33389",
+          "key": "0x2f2658e9",
+          "stored": "0x465eda97",
+          "decoded_existing": "0x75853380"
+        },
+        {
+          "record_rva": "0x10ad9eb",
+          "name_rva": "0x11ab38d",
+          "symbol": "memcpy",
+          "destination_rva": "0xe44560",
+          "key": "0x4af51471",
+          "stored": "0x2a901f0f",
+          "decoded_existing": "0x75853380"
+        },
+        {
+          "record_rva": "0x10ad9f7",
+          "name_rva": "0x11934c6",
+          "symbol": "__CxxFrameHandler3",
+          "destination_rva": "0xbe04b4",
+          "key": "0x59da5b8a",
+          "stored": "0x1bab91a6",
+          "decoded_existing": "0x7585ed30"
+        },
+        {
+          "record_rva": "0x10ada03",
+          "name_rva": "0x127d606",
+          "symbol": "memchr",
+          "destination_rva": "0xc3a148",
+          "key": "0x5a7e4ba1",
+          "stored": "0x1b06e72f",
+          "decoded_existing": "0x758532d0"
+        },
+        {
+          "record_rva": "0x10ada0f",
+          "name_rva": "0x12a3ae1",
+          "symbol": "__std_exception_destroy",
+          "destination_rva": "0xba6842",
+          "key": "0x2a2a3a3c",
+          "stored": "0x4b5b4204",
+          "decoded_existing": "0x75857c40"
+        },
+        {
+          "record_rva": "0x10ada1b",
+          "name_rva": "0x108c777",
+          "symbol": "__std_exception_copy",
+          "destination_rva": "0x9aaae8",
+          "key": "0xee3551b",
+          "stored": "0x66a226b5",
+          "decoded_existing": "0x75857bd0"
+        },
+        {
+          "record_rva": "0x10ada27",
+          "name_rva": "0x10bdecc",
+          "symbol": "__std_terminate",
+          "destination_rva": "0xb314fb",
+          "key": "0x11d418a8",
+          "stored": "0x63b14ac8",
+          "decoded_existing": "0x75856370"
+        },
+        {
+          "record_rva": "0x10ada33",
+          "name_rva": "0x10c894f",
+          "symbol": "_setjmp3",
+          "destination_rva": "0xafdec2",
+          "key": "0x20001740",
+          "stored": "0x55851ae0",
+          "decoded_existing": "0x75853220"
+        },
+        {
+          "record_rva": "0x10ada3f",
+          "name_rva": "0x115ce07",
+          "symbol": "_except_handler3",
+          "destination_rva": "0xc63500",
+          "key": "0x75c13985",
+          "stored": "0xffc3f44b",
+          "decoded_existing": "0x75852dd0"
+        },
+        {
+          "record_rva": "0x10ada4b",
+          "name_rva": "0x116e238",
+          "symbol": "strstr",
+          "destination_rva": "0xdce1df",
+          "key": "0x12b06837",
+          "stored": "0x62d4d499",
+          "decoded_existing": "0x75853cd0"
+        },
+        {
+          "record_rva": "0x10ada57",
+          "name_rva": "0x114514c",
+          "symbol": "_purecall",
+          "destination_rva": "0xb28e40",
+          "key": "0x1def4a84",
+          "stored": "0x5796398c",
+          "decoded_existing": "0x75858410"
+        },
+        {
+          "record_rva": "0x10ada63",
+          "name_rva": "0x1096f7a",
+          "symbol": "strchr",
+          "destination_rva": "0xb58fd5",
+          "key": "0x6184397c",
+          "stored": "0x140100e4",
+          "decoded_existing": "0x75853a60"
+        },
+        {
+          "record_rva": "0x10ada6f",
+          "name_rva": "0x1250a87",
+          "symbol": "wcsstr",
+          "destination_rva": "0xc06fbb",
+          "key": "0x7e922cf1",
+          "stored": "0xf6f3319f",
+          "decoded_existing": "0x75855e90"
+        },
+        {
+          "record_rva": "0x10ada7b",
+          "name_rva": "0x12a1c31",
+          "symbol": "__std_type_info_compare",
+          "destination_rva": "0xbd62ed",
+          "key": "0x7b7a1e87",
+          "stored": "0xfa0b5df9",
+          "decoded_existing": "0x75857c80"
+        },
+        {
+          "record_rva": "0x10ada87",
+          "name_rva": "0x12c10f4",
+          "symbol": "longjmp",
+          "destination_rva": "0xfac3ad",
+          "key": "0x29484aea",
+          "stored": "0x4c3cf4b6",
+          "decoded_existing": "0x75853fa0"
+        },
+        {
+          "record_rva": "0x10ada93",
+          "name_rva": "0x10bf27a",
+          "symbol": "strrchr",
+          "destination_rva": "0xc06c90",
+          "key": "0x10082260",
+          "stored": "0x657d1930",
+          "decoded_existing": "0x75853b90"
+        },
+        {
+          "record_rva": "0x10ada9f",
+          "name_rva": "0x1203e52",
+          "symbol": "__current_exception",
+          "destination_rva": "0xb3275c",
+          "key": "0x29ca712e",
+          "stored": "0x4bbaf212",
+          "decoded_existing": "0x75856340"
+        },
+        {
+          "record_rva": "0x10adaab",
+          "name_rva": "0x1194da1",
+          "symbol": "_except_handler4_common",
+          "destination_rva": "0xd9fb09",
+          "key": "0x427d1d8e",
+          "stored": "0x330822c2",
+          "decoded_existing": "0x75854050"
+        },
+        {
+          "record_rva": "0x10adab7",
+          "name_rva": "0x10cab28",
+          "symbol": "__current_exception_context",
+          "destination_rva": "0xb70a44",
+          "key": "0x66f01c26",
+          "stored": "0xe95472a",
+          "decoded_existing": "0x75856350"
+        },
+        {
+          "record_rva": "0x10adac3",
+          "name_rva": "0x10ea260",
+          "symbol": "_CxxThrowException",
+          "destination_rva": "0xbfed75",
+          "key": "0x77983d40",
+          "stored": "0xfded40b0",
+          "decoded_existing": "0x75857df0"
+        },
+        {
+          "record_rva": "0x10adacf",
+          "name_rva": "0x128359a",
+          "symbol": "__std_type_info_destroy_list",
+          "destination_rva": "0xcc281f",
+          "key": "0x43ea0433",
+          "stored": "0x319b788d",
+          "decoded_existing": "0x75857cc0"
+        }
+      ]
+    },
+    {
+      "dll": "api-ms-win-crt-runtime-l1-1-0.dll",
+      "record_rva": "0x10adadf",
+      "imports": [
+        {
+          "record_rva": "0x10adae3",
+          "name_rva": "0x114516f",
+          "symbol": "_wassert",
+          "destination_rva": "0xb2f621",
+          "key": "0x196927bc",
+          "stored": "0x5c42cb54",
+          "decoded_existing": "0x75abf310"
+        },
+        {
+          "record_rva": "0x10adaef",
+          "name_rva": "0x12be2ef",
+          "symbol": "exit",
+          "destination_rva": "0xd3133d",
+          "key": "0x33062838",
+          "stored": "0x429f3ce8",
+          "decoded_existing": "0x75a56520"
+        },
+        {
+          "record_rva": "0x10adafb",
+          "name_rva": "0x122d0b1",
+          "symbol": "_invalid_parameter_noinfo_noreturn",
+          "destination_rva": "0xe7858a",
+          "key": "0x5c34e02",
+          "stored": "0x6fe8676e",
+          "decoded_existing": "0x75abb570"
+        },
+        {
+          "record_rva": "0x10adb07",
+          "name_rva": "0x1225038",
+          "symbol": "_beginthreadex",
+          "destination_rva": "0x40e45c",
+          "key": "0x0",
+          "stored": "0x75a66320",
+          "decoded_existing": "0x75a66320"
+        },
+        {
+          "record_rva": "0x10adb13",
+          "name_rva": "0x12d39c1",
+          "symbol": "_errno",
+          "destination_rva": "0xf3b648",
+          "key": "0xef81583",
+          "stored": "0x66ac5fad",
+          "decoded_existing": "0x75a47530"
+        },
+        {
+          "record_rva": "0x10adb1f",
+          "name_rva": "0x10fce5b",
+          "symbol": "_initterm_e",
+          "destination_rva": "0xfda7d8",
+          "key": "0xe27042d",
+          "stored": "0x677e2843",
+          "decoded_existing": "0x75a52c70"
+        },
+        {
+          "record_rva": "0x10adb2b",
+          "name_rva": "0x10a349f",
+          "symbol": "system",
+          "destination_rva": "0xfa9ec6",
+          "key": "0x19727af8",
+          "stored": "0x5c3d9138",
+          "decoded_existing": "0x75b00c30"
+        },
+        {
+          "record_rva": "0x10adb37",
+          "name_rva": "0x11d4dd4",
+          "symbol": "_initterm",
+          "destination_rva": "0xf3b485",
+          "key": "0x7e75269a",
+          "stored": "0xf7300596",
+          "decoded_existing": "0x75a52c30"
+        },
+        {
+          "record_rva": "0x10adb43",
+          "name_rva": "0x116d9fe",
+          "symbol": "terminate",
+          "destination_rva": "0x87e8a8",
+          "key": "0x339c47b0",
+          "stored": "0x420f7e30",
+          "decoded_existing": "0x75abc5e0"
+        },
+        {
+          "record_rva": "0x10adb4f",
+          "name_rva": "0x12d9774",
+          "symbol": "_cexit",
+          "destination_rva": "0x910854",
+          "key": "0x7cb70690",
+          "stored": "0xf8f4ed60",
+          "decoded_existing": "0x75abf3f0"
+        },
+        {
+          "record_rva": "0x10adb5b",
+          "name_rva": "0x1259291",
+          "symbol": "_crt_atexit",
+          "destination_rva": "0xf354de",
+          "key": "0x233d62f4",
+          "stored": "0x5267c4ec",
+          "decoded_existing": "0x75a527e0"
+        },
+        {
+          "record_rva": "0x10adb67",
+          "name_rva": "0x10efb82",
+          "symbol": "_execute_onexit_table",
+          "destination_rva": "0xf3df64",
+          "key": "0x7f16a41",
+          "stored": "0x6db3bf8f",
+          "decoded_existing": "0x75a529d0"
+        },
+        {
+          "record_rva": "0x10adb73",
+          "name_rva": "0x12d43c0",
+          "symbol": "_register_onexit_function",
+          "destination_rva": "0x9536d9",
+          "key": "0x3e35cb6",
+          "stored": "0x71c1289a",
+          "decoded_existing": "0x75a48550"
+        },
+        {
+          "record_rva": "0x10adb7f",
+          "name_rva": "0x1088e1d",
+          "symbol": "_initialize_onexit_table",
+          "destination_rva": "0xf17174",
+          "key": "0x65322c38",
+          "stored": "0x1072fd68",
+          "decoded_existing": "0x75a529a0"
+        },
+        {
+          "record_rva": "0x10adb8b",
+          "name_rva": "0x10d5b7d",
+          "symbol": "strerror",
+          "destination_rva": "0x8d1c16",
+          "key": "0x4e172ea7",
+          "stored": "0x27949609",
+          "decoded_existing": "0x75abc4b0"
+        },
+        {
+          "record_rva": "0x10adb97",
+          "name_rva": "0x11aeb86",
+          "symbol": "_initialize_narrow_environment",
+          "destination_rva": "0xf89ea8",
+          "key": "0x1c6b4ad7",
+          "stored": "0x593b48b9",
+          "decoded_existing": "0x75a69390"
+        },
+        {
+          "record_rva": "0x10adba3",
+          "name_rva": "0x117785d",
+          "symbol": "_seh_filter_dll",
+          "destination_rva": "0x98b7fc",
+          "key": "0x7e541201",
+          "stored": "0xf7579fdf",
+          "decoded_existing": "0x75abb1e0"
+        },
+        {
+          "record_rva": "0x10adbaf",
+          "name_rva": "0x10b5662",
+          "symbol": "_configure_narrow_argv",
+          "destination_rva": "0x902913",
+          "key": "0x41d35c3",
+          "stored": "0x7188979d",
+          "decoded_existing": "0x75a5cd60"
+        }
+      ]
+    },
+    {
+      "dll": "api-ms-win-crt-heap-l1-1-0.dll",
+      "record_rva": "0x10adbbf",
+      "imports": [
+        {
+          "record_rva": "0x10adbc3",
+          "name_rva": "0x11c60a3",
+          "symbol": "malloc",
+          "destination_rva": "0x40e3ac",
+          "key": "0x0",
+          "stored": "0x75a4a5f0",
+          "decoded_existing": "0x75a4a5f0"
+        },
+        {
+          "record_rva": "0x10adbcf",
+          "name_rva": "0x12d9838",
+          "symbol": "realloc",
+          "destination_rva": "0xf41d46",
+          "key": "0x28674f0d",
+          "stored": "0x4d3d0f03",
+          "decoded_existing": "0x75a45e10"
+        },
+        {
+          "record_rva": "0x10adbdb",
+          "name_rva": "0x10fc637",
+          "symbol": "_aligned_free",
+          "destination_rva": "0xf02031",
+          "key": "0x2acd1f5c",
+          "stored": "0x4ad8c504",
+          "decoded_existing": "0x75a5e460"
+        },
+        {
+          "record_rva": "0x10adbe7",
+          "name_rva": "0x1214c1c",
+          "symbol": "_callnewh",
+          "destination_rva": "0xf76750",
+          "key": "0x72b9503d",
+          "stored": "0x2f226f3",
+          "decoded_existing": "0x75ab7730"
+        },
+        {
+          "record_rva": "0x10adbf3",
+          "name_rva": "0x120b43c",
+          "symbol": "_aligned_malloc",
+          "destination_rva": "0xf79b99",
+          "key": "0xf75107e",
+          "stored": "0x662fcb12",
+          "decoded_existing": "0x75a4db90"
+        },
+        {
+          "record_rva": "0x10adbff",
+          "name_rva": "0x110ea63",
+          "symbol": "free",
+          "destination_rva": "0x40e3c0",
+          "key": "0x0",
+          "stored": "0x75a49680",
+          "decoded_existing": "0x75a49680"
+        },
+        {
+          "record_rva": "0x10adc0b",
+          "name_rva": "0x11c3bf1",
+          "symbol": "calloc",
+          "destination_rva": "0xffe3e1",
+          "key": "0x58d17f72",
+          "stored": "0x1cd3042e",
+          "decoded_existing": "0x75a483a0"
+        }
+      ]
+    },
+    {
+      "dll": "api-ms-win-crt-convert-l1-1-0.dll",
+      "record_rva": "0x10adc1b",
+      "imports": [
+        {
+          "record_rva": "0x10adc1f",
+          "name_rva": "0x12702ff",
+          "symbol": "strtod",
+          "destination_rva": "0xfece84",
+          "key": "0x70ec68bd",
+          "stored": "0x4ba3c73",
+          "decoded_existing": "0x75a6a530"
+        },
+        {
+          "record_rva": "0x10adc2b",
+          "name_rva": "0x125ebb4",
+          "symbol": "strtoul",
+          "destination_rva": "0x40e374",
+          "key": "0x0",
+          "stored": "0x75a63ff0",
+          "decoded_existing": "0x75a63ff0"
+        },
+        {
+          "record_rva": "0x10adc37",
+          "name_rva": "0x1148478",
+          "symbol": "wcstol",
+          "destination_rva": "0x98f7df",
+          "key": "0x5b5a4cee",
+          "stored": "0x1a4b3802",
+          "decoded_existing": "0x75a584f0"
+        },
+        {
+          "record_rva": "0x10adc43",
+          "name_rva": "0x12c10fc",
+          "symbol": "strtoll",
+          "destination_rva": "0x1012ffb",
+          "key": "0xe6162ce",
+          "stored": "0x6744f002",
+          "decoded_existing": "0x75a652d0"
+        },
+        {
+          "record_rva": "0x10adc4f",
+          "name_rva": "0x10a97cf",
+          "symbol": "wcstof",
+          "destination_rva": "0x86ca53",
+          "key": "0x26c02cbc",
+          "stored": "0x4eeafe84",
+          "decoded_existing": "0x75ab2b40"
+        },
+        {
+          "record_rva": "0x10adc5b",
+          "name_rva": "0x11d6215",
+          "symbol": "strtol",
+          "destination_rva": "0x10283b9",
+          "key": "0x40e05526",
+          "stored": "0x34c472ea",
+          "decoded_existing": "0x75a4c810"
+        },
+        {
+          "record_rva": "0x10adc67",
+          "name_rva": "0x10e7c9a",
+          "symbol": "strtoull",
+          "destination_rva": "0x83a2cd",
+          "key": "0x71fc3d3b",
+          "stored": "0x3aab985",
+          "decoded_existing": "0x75a6f6c0"
+        }
+      ]
+    },
+    {
+      "dll": "api-ms-win-crt-stdio-l1-1-0.dll",
+      "record_rva": "0x10adc77",
+      "imports": [
+        {
+          "record_rva": "0x10adc7b",
+          "name_rva": "0x1119c9c",
+          "symbol": "putchar",
+          "destination_rva": "0xf941d9",
+          "key": "0x614d1506",
+          "stored": "0x145eedfa",
+          "decoded_existing": "0x75ac0300"
+        },
+        {
+          "record_rva": "0x10adc87",
+          "name_rva": "0x1099a61",
+          "symbol": "clearerr",
+          "destination_rva": "0xfbaaeb",
+          "key": "0x62814d5b",
+          "stored": "0x132aa7d5",
+          "decoded_existing": "0x75abf530"
+        },
+        {
+          "record_rva": "0x10adc93",
+          "name_rva": "0x1237935",
+          "symbol": "__p__fmode",
+          "destination_rva": "0xf1df91",
+          "key": "0x34691738",
+          "stored": "0x41461478",
+          "decoded_existing": "0x75af2bb0"
+        },
+        {
+          "record_rva": "0x10adc9f",
+          "name_rva": "0x1082dd6",
+          "symbol": "fgets",
+          "destination_rva": "0xf7536f",
+          "key": "0x42505efa",
+          "stored": "0x335b9f46",
+          "decoded_existing": "0x75abfe40"
+        },
+        {
+          "record_rva": "0x10adcab",
+          "name_rva": "0x12d9ed5",
+          "symbol": "_ftelli64",
+          "destination_rva": "0xf8d995",
+          "key": "0x3e274d59",
+          "stored": "0x377f4b27",
+          "decoded_existing": "0x75a69880"
+        },
+        {
+          "record_rva": "0x10adcb7",
+          "name_rva": "0x10a0e5b",
+          "symbol": "getc",
+          "destination_rva": "0x9a5b7e",
+          "key": "0x662d59fb",
+          "stored": "0xf7ea345",
+          "decoded_existing": "0x75abfd40"
+        },
+        {
+          "record_rva": "0x10adcc3",
+          "name_rva": "0x10a7cb3",
+          "symbol": "_pclose",
+          "destination_rva": "0xfb024d",
+          "key": "0x22b74989",
+          "stored": "0x52f722c7",
+          "decoded_existing": "0x75ae6c50"
+        },
+        {
+          "record_rva": "0x10adccf",
+          "name_rva": "0x109b56e",
+          "symbol": "__stdio_common_vfscanf",
+          "destination_rva": "0xf34580",
+          "key": "0x142f2f4b",
+          "stored": "0x617d5625",
+          "decoded_existing": "0x75ac8570"
+        },
+        {
+          "record_rva": "0x10adcdb",
+          "name_rva": "0x121a67d",
+          "symbol": "_popen",
+          "destination_rva": "0xf729b8",
+          "key": "0x125b4eb5",
+          "stored": "0x63531edb",
+          "decoded_existing": "0x75ae6d90"
+        },
+        {
+          "record_rva": "0x10adce7",
+          "name_rva": "0x10c146b",
+          "symbol": "tmpfile",
+          "destination_rva": "0x923fdd",
+          "key": "0x558c1375",
+          "stored": "0x2020d54b",
+          "decoded_existing": "0x75ace8c0"
+        },
+        {
+          "record_rva": "0x10adcf3",
+          "name_rva": "0x1291b4f",
+          "symbol": "__stdio_common_vfprintf_p",
+          "destination_rva": "0xf688e5",
+          "key": "0x574f56d2",
+          "stored": "0x1e5d741e",
+          "decoded_existing": "0x75accaf0"
+        },
+        {
+          "record_rva": "0x10adcff",
+          "name_rva": "0x10b96ec",
+          "symbol": "__stdio_common_vsscanf",
+          "destination_rva": "0xfb1192",
+          "key": "0x3ba65f85",
+          "stored": "0x3a00727b",
+          "decoded_existing": "0x75a6d200"
+        },
+        {
+          "record_rva": "0x10add0b",
+          "name_rva": "0x11f8658",
+          "symbol": "__stdio_common_vfprintf_s",
+          "destination_rva": "0xf005be",
+          "key": "0x14fd0558",
+          "stored": "0x60afc5e8",
+          "decoded_existing": "0x75accb40"
+        },
+        {
+          "record_rva": "0x10add17",
+          "name_rva": "0x10d6247",
+          "symbol": "fputs",
+          "destination_rva": "0xfb2be9",
+          "key": "0x64563422",
+          "stored": "0x11501f0e",
+          "decoded_existing": "0x75a65330"
+        },
+        {
+          "record_rva": "0x10add23",
+          "name_rva": "0x11f7057",
+          "symbol": "fflush",
+          "destination_rva": "0xf4cbee",
+          "key": "0x24614202",
+          "stored": "0x5143f31e",
+          "decoded_existing": "0x75a53520"
+        },
+        {
+          "record_rva": "0x10add2f",
+          "name_rva": "0x126c125",
+          "symbol": "__stdio_common_vswscanf",
+          "destination_rva": "0xf1057e",
+          "key": "0x1eac5c53",
+          "stored": "0x56f8061d",
+          "decoded_existing": "0x75a46270"
+        },
+        {
+          "record_rva": "0x10add3b",
+          "name_rva": "0x11e6692",
+          "symbol": "tmpnam",
+          "destination_rva": "0xf46b57",
+          "key": "0x47152e7e",
+          "stored": "0x2e97ba82",
+          "decoded_existing": "0x75ace900"
+        },
+        {
+          "record_rva": "0x10add47",
+          "name_rva": "0x1131c6d",
+          "symbol": "__stdio_common_vswprintf_p",
+          "destination_rva": "0x836046",
+          "key": "0x589b028f",
+          "stored": "0x1d11c9a1",
+          "decoded_existing": "0x75accc30"
+        },
+        {
+          "record_rva": "0x10add53",
+          "name_rva": "0x12db630",
+          "symbol": "fgetc",
+          "destination_rva": "0x97fbdf",
+          "key": "0x20b2120c",
+          "stored": "0x54f287e4",
+          "decoded_existing": "0x75a499f0"
+        },
+        {
+          "record_rva": "0x10add5f",
+          "name_rva": "0x127a20b",
+          "symbol": "fgetpos",
+          "destination_rva": "0x986dda",
+          "key": "0x2c974abc",
+          "stored": "0x490f3034",
+          "decoded_existing": "0x75a67af0"
+        },
+        {
+          "record_rva": "0x10add6b",
+          "name_rva": "0x10cd9ab",
+          "symbol": "fputc",
+          "destination_rva": "0x87af64",
+          "key": "0x402a06ef",
+          "stored": "0x357bff21",
+          "decoded_existing": "0x75a60610"
+        },
+        {
+          "record_rva": "0x10add77",
+          "name_rva": "0x1202f2c",
+          "symbol": "__stdio_common_vsprintf",
+          "destination_rva": "0x881e2d",
+          "key": "0x7921304c",
+          "stored": "0xfc84b7d4",
+          "decoded_existing": "0x75a5e820"
+        },
+        {
+          "record_rva": "0x10add83",
+          "name_rva": "0x11d9a32",
+          "symbol": "fread",
+          "destination_rva": "0xfd127b",
+          "key": "0x35f27a9f",
+          "stored": "0x3fb2ef81",
+          "decoded_existing": "0x75a56a20"
+        },
+        {
+          "record_rva": "0x10add8f",
+          "name_rva": "0x110b9d8",
+          "symbol": "__stdio_common_vsnwprintf_s",
+          "destination_rva": "0x1003868",
+          "key": "0x586f1f26",
+          "stored": "0x1d374b0a",
+          "decoded_existing": "0x75a66a30"
+        },
+        {
+          "record_rva": "0x10add9b",
+          "name_rva": "0x11ea8aa",
+          "symbol": "__stdio_common_vfwscanf",
+          "destination_rva": "0x82fddf",
+          "key": "0x115601cf",
+          "stored": "0x645683d1",
+          "decoded_existing": "0x75ac85a0"
+        },
+        {
+          "record_rva": "0x10adda7",
+          "name_rva": "0x125a28d",
+          "symbol": "__stdio_common_vfwprintf_p",
+          "destination_rva": "0xfb2bad",
+          "key": "0x44213e3",
+          "stored": "0x716ab7ad",
+          "decoded_existing": "0x75accb90"
+        },
+        {
+          "record_rva": "0x10addb3",
+          "name_rva": "0x1238279",
+          "symbol": "__stdio_common_vfwprintf_s",
+          "destination_rva": "0xf27dab",
+          "key": "0x1c950a07",
+          "stored": "0x590f17c9",
+          "decoded_existing": "0x75a421d0"
+        },
+        {
+          "record_rva": "0x10addbf",
+          "name_rva": "0x118a7fe",
+          "symbol": "__stdio_common_vfwprintf",
+          "destination_rva": "0xf45141",
+          "key": "0x4f0466be",
+          "stored": "0x26a1f772",
+          "decoded_existing": "0x75a65e30"
+        },
+        {
+          "record_rva": "0x10addcb",
+          "name_rva": "0x10ee211",
+          "symbol": "__acrt_iob_func",
+          "destination_rva": "0xf96b06",
+          "key": "0x3306158f",
+          "stored": "0x429fe561",
+          "decoded_existing": "0x75a5faf0"
+        },
+        {
+          "record_rva": "0x10addd7",
+          "name_rva": "0x1141f18",
+          "symbol": "_get_stream_buffer_pointers",
+          "destination_rva": "0xf01330",
+          "key": "0x32dd1662",
+          "stored": "0x42c8ed3e",
+          "decoded_existing": "0x75a603a0"
+        },
+        {
+          "record_rva": "0x10adde3",
+          "name_rva": "0x11d2a68",
+          "symbol": "__stdio_common_vsprintf_s",
+          "destination_rva": "0xf18aa0",
+          "key": "0x767d598e",
+          "stored": "0xff288ee2",
+          "decoded_existing": "0x75a5e870"
+        },
+        {
+          "record_rva": "0x10addef",
+          "name_rva": "0x111496e",
+          "symbol": "fopen",
+          "destination_rva": "0xf0fb55",
+          "key": "0x7c2b42ba",
+          "stored": "0xf97a38e6",
+          "decoded_existing": "0x75a57ba0"
+        },
+        {
+          "record_rva": "0x10addfb",
+          "name_rva": "0x1188256",
+          "symbol": "__stdio_common_vfprintf",
+          "destination_rva": "0xfad875",
+          "key": "0x58a43b63",
+          "stored": "0x1d0249fd",
+          "decoded_existing": "0x75a68560"
+        },
+        {
+          "record_rva": "0x10ade07",
+          "name_rva": "0x11187c5",
+          "symbol": "__stdio_common_vsprintf_p",
+          "destination_rva": "0x10206df",
+          "key": "0x36a71e9c",
+          "stored": "0x3f05ad44",
+          "decoded_existing": "0x75accbe0"
+        },
+        {
+          "record_rva": "0x10ade13",
+          "name_rva": "0x1155fb9",
+          "symbol": "__stdio_common_vsnprintf_s",
+          "destination_rva": "0xfa19ad",
+          "key": "0x1a53194e",
+          "stored": "0x5b52d362",
+          "decoded_existing": "0x75a5ecb0"
+        },
+        {
+          "record_rva": "0x10ade1f",
+          "name_rva": "0x11cbf02",
+          "symbol": "__stdio_common_vswprintf_s",
+          "destination_rva": "0xfabbdd",
+          "key": "0x6e01565e",
+          "stored": "0x7a4fbf2",
+          "decoded_existing": "0x75a65250"
+        },
+        {
+          "record_rva": "0x10ade2b",
+          "name_rva": "0x1156a22",
+          "symbol": "__stdio_common_vswprintf",
+          "destination_rva": "0xf8f81d",
+          "key": "0x70f57711",
+          "stored": "0x4b0673f",
+          "decoded_existing": "0x75a5de50"
+        },
+        {
+          "record_rva": "0x10ade37",
+          "name_rva": "0x1238e23",
+          "symbol": "feof",
+          "destination_rva": "0xfed678",
+          "key": "0x6ff45197",
+          "stored": "0x5b7a849",
+          "decoded_existing": "0x75abf9e0"
+        },
+        {
+          "record_rva": "0x10ade43",
+          "name_rva": "0x11ee05b",
+          "symbol": "fseek",
+          "destination_rva": "0xf77f1e",
+          "key": "0x27173e24",
+          "stored": "0x4e8f28ec",
+          "decoded_existing": "0x75a66710"
+        },
+        {
+          "record_rva": "0x10ade4f",
+          "name_rva": "0x12c829c",
+          "symbol": "fclose",
+          "destination_rva": "0xf86657",
+          "key": "0x5ef7ce4",
+          "stored": "0x6fb5e10c",
+          "decoded_existing": "0x75a55df0"
+        },
+        {
+          "record_rva": "0x10ade5b",
+          "name_rva": "0x11fe769",
+          "symbol": "ferror",
+          "destination_rva": "0xf9ad13",
+          "key": "0x77b33055",
+          "stored": "0xfdf8ca8b",
+          "decoded_existing": "0x75abfae0"
+        },
+        {
+          "record_rva": "0x10ade67",
+          "name_rva": "0x11dadab",
+          "symbol": "ungetc",
+          "destination_rva": "0xf88c1d",
+          "key": "0x204e3363",
+          "stored": "0x555eb8ad",
+          "decoded_existing": "0x75acec10"
+        },
+        {
+          "record_rva": "0x10ade73",
+          "name_rva": "0x12615ad",
+          "symbol": "setvbuf",
+          "destination_rva": "0xf28038",
+          "key": "0xc234d92",
+          "stored": "0x698984ae",
+          "decoded_existing": "0x75acd240"
+        },
+        {
+          "record_rva": "0x10ade7f",
+          "name_rva": "0x1214b9b",
+          "symbol": "fwrite",
+          "destination_rva": "0x100352c",
+          "key": "0x3c4f2aaf",
+          "stored": "0x39559601",
+          "decoded_existing": "0x75a4c0b0"
+        },
+        {
+          "record_rva": "0x10ade8b",
+          "name_rva": "0x12943d3",
+          "symbol": "_fseeki64",
+          "destination_rva": "0x9077bb",
+          "key": "0x28ff728d",
+          "stored": "0x4ca4ad03",
+          "decoded_existing": "0x75a41f90"
+        },
+        {
+          "record_rva": "0x10ade97",
+          "name_rva": "0x1235540",
+          "symbol": "fsetpos",
+          "destination_rva": "0x1034dce",
+          "key": "0x1a744083",
+          "stored": "0x5b2fdfcd",
+          "decoded_existing": "0x75a42050"
+        }
+      ]
+    },
+    {
+      "dll": "api-ms-win-crt-filesystem-l1-1-0.dll",
+      "record_rva": "0x10adea7",
+      "imports": [
+        {
+          "record_rva": "0x10adeab",
+          "name_rva": "0x1144a3e",
+          "symbol": "rename",
+          "destination_rva": "0xf3e6b1",
+          "key": "0x25ce2c19",
+          "stored": "0x4fe084f7",
+          "decoded_existing": "0x75aeb110"
+        },
+        {
+          "record_rva": "0x10adeb7",
+          "name_rva": "0x10fc91f",
+          "symbol": "_unlock_file",
+          "destination_rva": "0xf9c1aa",
+          "key": "0x296a1927",
+          "stored": "0x4c3ab4d9",
+          "decoded_existing": "0x75a4ce00"
+        },
+        {
+          "record_rva": "0x10adec3",
+          "name_rva": "0x10eb957",
+          "symbol": "remove",
+          "destination_rva": "0xfa75f7",
+          "key": "0x6e516555",
+          "stored": "0x75d92fb",
+          "decoded_existing": "0x75aef850"
+        },
+        {
+          "record_rva": "0x10adecf",
+          "name_rva": "0x11a905f",
+          "symbol": "_lock_file",
+          "destination_rva": "0xf3a31b",
+          "key": "0x3a0e12ac",
+          "stored": "0x3b96bb34",
+          "decoded_existing": "0x75a4cde0"
+        }
+      ]
+    },
+    {
+      "dll": "api-ms-win-crt-math-l1-1-0.dll",
+      "record_rva": "0x10adedf",
+      "imports": [
+        {
+          "record_rva": "0x10adee3",
+          "name_rva": "0x116c23b",
+          "symbol": "_fdclass",
+          "destination_rva": "0x36e166",
+          "key": "0xd37734f",
+          "stored": "0x68763a01",
+          "decoded_existing": "0x75adad50"
+        },
+        {
+          "record_rva": "0x10adeef",
+          "name_rva": "0x11dbcd0",
+          "symbol": "_ldclass",
+          "destination_rva": "0x1039fdd",
+          "key": "0x5f8e30b9",
+          "stored": "0x161f7be7",
+          "decoded_existing": "0x75adaca0"
+        },
+        {
+          "record_rva": "0x10adefb",
+          "name_rva": "0x10f825e",
+          "symbol": "_libm_sse2_cos_precise",
+          "destination_rva": "0xf782d9",
+          "key": "0x63d36fba",
+          "stored": "0x11d41866",
+          "decoded_existing": "0x75a78820"
+        },
+        {
+          "record_rva": "0x10adf07",
+          "name_rva": "0x1092110",
+          "symbol": "_libm_sse2_pow_precise",
+          "destination_rva": "0xf8ee9a",
+          "key": "0x487947b4",
+          "stored": "0x2d2e665c",
+          "decoded_existing": "0x75a7ae10"
+        },
+        {
+          "record_rva": "0x10adf13",
+          "name_rva": "0x123fcb2",
+          "symbol": "_libm_sse2_sin_precise",
+          "destination_rva": "0x1022792",
+          "key": "0x38500ba5",
+          "stored": "0x3d57b0eb",
+          "decoded_existing": "0x75a7bc90"
+        },
+        {
+          "record_rva": "0x10adf1f",
+          "name_rva": "0x12257f5",
+          "symbol": "_libm_sse2_sqrt_precise",
+          "destination_rva": "0xfbe331",
+          "key": "0x63ea716b",
+          "stored": "0x11bd4dd5",
+          "decoded_existing": "0x75a7bf40"
+        },
+        {
+          "record_rva": "0x10adf2b",
+          "name_rva": "0x1213730",
+          "symbol": "floor",
+          "destination_rva": "0xf29a5c",
+          "key": "0x31b136b1",
+          "stored": "0x43f6593f",
+          "decoded_existing": "0x75a78ff0"
+        },
+        {
+          "record_rva": "0x10adf37",
+          "name_rva": "0x11b8d21",
+          "symbol": "roundf",
+          "destination_rva": "0xf71989",
+          "key": "0x70c7406a",
+          "stored": "0x4deb186",
+          "decoded_existing": "0x75a5f1f0"
+        },
+        {
+          "record_rva": "0x10adf43",
+          "name_rva": "0x11b0dcd",
+          "symbol": "round",
+          "destination_rva": "0xf6c86e",
+          "key": "0x4ec854ea",
+          "stored": "0x26dd9b36",
+          "decoded_existing": "0x75a5f020"
+        },
+        {
+          "record_rva": "0x10adf4f",
+          "name_rva": "0x1142f77",
+          "symbol": "_dclass",
+          "destination_rva": "0x925a33",
+          "key": "0x10ed5fae",
+          "stored": "0x64c04cf2",
+          "decoded_existing": "0x75adaca0"
+        },
+        {
+          "record_rva": "0x10adf5b",
+          "name_rva": "0x1110570",
+          "symbol": "_libm_sse2_acos_precise",
+          "destination_rva": "0xf6130d",
+          "key": "0x15f02b6e",
+          "stored": "0x5fb73e32",
+          "decoded_existing": "0x75a769a0"
+        },
+        {
+          "record_rva": "0x10adf67",
+          "name_rva": "0x11a0057",
+          "symbol": "_libm_sse2_exp_precise",
+          "destination_rva": "0xfacf7e",
+          "key": "0x24b00290",
+          "stored": "0x50f78a70",
+          "decoded_existing": "0x75a78d00"
+        },
+        {
+          "record_rva": "0x10adf73",
+          "name_rva": "0x12138a2",
+          "symbol": "_CIatan2",
+          "destination_rva": "0x9439af",
+          "key": "0x5e3553",
+          "stored": "0x7549264d",
+          "decoded_existing": "0x75a75ba0"
+        },
+        {
+          "record_rva": "0x10adf7f",
+          "name_rva": "0x1203f7b",
+          "symbol": "fmaxf",
+          "destination_rva": "0xf9b347",
+          "key": "0x4dba610d",
+          "stored": "0x27f31dd3",
+          "decoded_existing": "0x75ad7ee0"
+        },
+        {
+          "record_rva": "0x10adf8b",
+          "name_rva": "0x1218d15",
+          "symbol": "_fdsign",
+          "destination_rva": "0xf8c5b1",
+          "key": "0x7e4109ae",
+          "stored": "0xf76ca422",
+          "decoded_existing": "0x75adadd0"
+        },
+        {
+          "record_rva": "0x10adf97",
+          "name_rva": "0x12d0ad4",
+          "symbol": "_ldsign",
+          "destination_rva": "0x1079a01",
+          "key": "0x3b214ad2",
+          "stored": "0x3a8c624e",
+          "decoded_existing": "0x75adad20"
+        },
+        {
+          "record_rva": "0x10adfa3",
+          "name_rva": "0x12c65f8",
+          "symbol": "ldexp",
+          "destination_rva": "0xfa3223",
+          "key": "0x6e41054a",
+          "stored": "0x76c8476",
+          "decoded_existing": "0x75ad89c0"
+        },
+        {
+          "record_rva": "0x10adfaf",
+          "name_rva": "0x117df82",
+          "symbol": "_CItanh",
+          "destination_rva": "0xf3b4da",
+          "key": "0x7a76983",
+          "stored": "0x6dfff24d",
+          "decoded_existing": "0x75a75bd0"
+        },
+        {
+          "record_rva": "0x10adfbb",
+          "name_rva": "0x11d1e90",
+          "symbol": "_CIsinh",
+          "destination_rva": "0xf4b782",
+          "key": "0x105279ff",
+          "stored": "0x6554e1b1",
+          "decoded_existing": "0x75a75bb0"
+        },
+        {
+          "record_rva": "0x10adfc7",
+          "name_rva": "0x110d476",
+          "symbol": "_CIcosh",
+          "destination_rva": "0xfa137d",
+          "key": "0x35d84c1d",
+          "stored": "0x3fcf0fa3",
+          "decoded_existing": "0x75a75bc0"
+        },
+        {
+          "record_rva": "0x10adfd3",
+          "name_rva": "0x11cd6b5",
+          "symbol": "tanh",
+          "destination_rva": "0xfcb7c4",
+          "key": "0x5b854d3",
+          "stored": "0x6fef6bcd",
+          "decoded_existing": "0x75a7c0a0"
+        },
+        {
+          "record_rva": "0x10adfdf",
+          "name_rva": "0x1194eb2",
+          "symbol": "_CIfmod",
+          "destination_rva": "0x86219b",
+          "key": "0x1306391e",
+          "stored": "0x62a12532",
+          "decoded_existing": "0x75a75e50"
+        },
+        {
+          "record_rva": "0x10adfeb",
+          "name_rva": "0x10d61de",
+          "symbol": "sinh",
+          "destination_rva": "0x955c86",
+          "key": "0x3a275f1",
+          "stored": "0x720543cf",
+          "decoded_existing": "0x75a7b9c0"
+        },
+        {
+          "record_rva": "0x10adff7",
+          "name_rva": "0x10c8aba",
+          "symbol": "cosh",
+          "destination_rva": "0x10137c9",
+          "key": "0x50d401cd",
+          "stored": "0x24d38393",
+          "decoded_existing": "0x75a78560"
+        },
+        {
+          "record_rva": "0x10ae003",
+          "name_rva": "0x1173ad4",
+          "symbol": "_dsign",
+          "destination_rva": "0x1010cbe",
+          "key": "0x282001d7",
+          "stored": "0x4d8dab49",
+          "decoded_existing": "0x75adad20"
+        },
+        {
+          "record_rva": "0x10ae00f",
+          "name_rva": "0x11546a1",
+          "symbol": "ceil",
+          "destination_rva": "0xf8a865",
+          "key": "0x4dc57be2",
+          "stored": "0x27e2065e",
+          "decoded_existing": "0x75a78240"
+        },
+        {
+          "record_rva": "0x10ae01b",
+          "name_rva": "0x112d3c5",
+          "symbol": "llround",
+          "destination_rva": "0xf9adca",
+          "key": "0x48b11dd1",
+          "stored": "0x2cfc870f",
+          "decoded_existing": "0x75ada4e0"
+        },
+        {
+          "record_rva": "0x10ae027",
+          "name_rva": "0x10ee25c",
+          "symbol": "_libm_sse2_tan_precise",
+          "destination_rva": "0xf6dff1",
+          "key": "0x632d4ba2",
+          "stored": "0x127a786e",
+          "decoded_existing": "0x75a7c410"
+        }
+      ]
+    },
+    {
+      "dll": "api-ms-win-crt-locale-l1-1-0.dll",
+      "record_rva": "0x10ae037",
+      "imports": [
+        {
+          "record_rva": "0x10ae03b",
+          "name_rva": "0x1137a7d",
+          "symbol": "setlocale",
+          "destination_rva": "0x85eeae",
+          "key": "0x56b1337d",
+          "stored": "0x1ef32d33",
+          "decoded_existing": "0x75a460b0"
+        },
+        {
+          "record_rva": "0x10ae047",
+          "name_rva": "0x10b21ce",
+          "symbol": "___lc_codepage_func",
+          "destination_rva": "0x1008895",
+          "key": "0x2e3d01",
+          "stored": "0x7576496f",
+          "decoded_existing": "0x75a48670"
+        },
+        {
+          "record_rva": "0x10ae053",
+          "name_rva": "0x119fe1b",
+          "symbol": "localeconv",
+          "destination_rva": "0xf83cb4",
+          "key": "0x1962768a",
+          "stored": "0x5c4203d6",
+          "decoded_existing": "0x75a47a60"
+        }
+      ]
+    },
+    {
+      "dll": "api-ms-win-crt-string-l1-1-0.dll",
+      "record_rva": "0x10ae063",
+      "imports": [
+        {
+          "record_rva": "0x10ae067",
+          "name_rva": "0x12175ef",
+          "symbol": "isdigit",
+          "destination_rva": "0xfaa025",
+          "key": "0x1e997355",
+          "stored": "0x570b3d6b",
+          "decoded_existing": "0x75a4b0c0"
+        },
+        {
+          "record_rva": "0x10ae073",
+          "name_rva": "0x10d208c",
+          "symbol": "strncpy",
+          "destination_rva": "0x106b646",
+          "key": "0x242757f2",
+          "stored": "0x517fd70e",
+          "decoded_existing": "0x75a72f00"
+        },
+        {
+          "record_rva": "0x10ae07f",
+          "name_rva": "0x10c67be",
+          "symbol": "strncmp",
+          "destination_rva": "0xf5caf5",
+          "key": "0x12775c6c",
+          "stored": "0x632fd084",
+          "decoded_existing": "0x75a72cf0"
+        },
+        {
+          "record_rva": "0x10ae08b",
+          "name_rva": "0x10a9887",
+          "symbol": "isblank",
+          "destination_rva": "0xfd1aa1",
+          "key": "0x155774c9",
+          "stored": "0x6053d597",
+          "decoded_existing": "0x75ab4a60"
+        },
+        {
+          "record_rva": "0x10ae097",
+          "name_rva": "0x12c110e",
+          "symbol": "strlen",
+          "destination_rva": "0xfc8124",
+          "key": "0x719e6815",
+          "stored": "0x408bf9b",
+          "decoded_existing": "0x75a727b0"
+        },
+        {
+          "record_rva": "0x10ae0a3",
+          "name_rva": "0x1203dfe",
+          "symbol": "strpbrk",
+          "destination_rva": "0x999c23",
+          "key": "0x55e83b06",
+          "stored": "0x1fbefd4a",
+          "decoded_existing": "0x75a73850"
+        },
+        {
+          "record_rva": "0x10ae0af",
+          "name_rva": "0x10840a2",
+          "symbol": "tolower",
+          "destination_rva": "0x40e570",
+          "key": "0x0",
+          "stored": "0x75a4c190",
+          "decoded_existing": "0x75a4c190"
+        }
+      ]
+    },
+    {
+      "dll": "api-ms-win-crt-utility-l1-1-0.dll",
+      "record_rva": "0x10ae0bf",
+      "imports": [
+        {
+          "record_rva": "0x10ae0c3",
+          "name_rva": "0x119684d",
+          "symbol": "rand",
+          "destination_rva": "0x40e598",
+          "key": "0x0",
+          "stored": "0x75a60da0",
+          "decoded_existing": "0x75a60da0"
+        }
+      ]
+    },
+    {
+      "dll": "api-ms-win-crt-time-l1-1-0.dll",
+      "record_rva": "0x10ae0d3",
+      "imports": [
+        {
+          "record_rva": "0x10ae0d7",
+          "name_rva": "0x1205039",
+          "symbol": "clock",
+          "destination_rva": "0xfe6067",
+          "key": "0x4a424816",
+          "stored": "0x2b63b9fa",
+          "decoded_existing": "0x75a60210"
+        },
+        {
+          "record_rva": "0x10ae0e3",
+          "name_rva": "0x118d55e",
+          "symbol": "strftime",
+          "destination_rva": "0xf795c6",
+          "key": "0x40c94573",
+          "stored": "0x34e6114d",
+          "decoded_existing": "0x75af56c0"
+        },
+        {
+          "record_rva": "0x10ae0ef",
+          "name_rva": "0x1223837",
+          "symbol": "_mktime64",
+          "destination_rva": "0xfcf43b",
+          "key": "0x44130cf2",
+          "stored": "0x3193998e",
+          "decoded_existing": "0x75a6a680"
+        },
+        {
+          "record_rva": "0x10ae0fb",
+          "name_rva": "0x12d5bff",
+          "symbol": "_gmtime64",
+          "destination_rva": "0xf5566e",
+          "key": "0x27583110",
+          "stored": "0x4e4e1940",
+          "decoded_existing": "0x75a64a50"
+        },
+        {
+          "record_rva": "0x10ae107",
+          "name_rva": "0x11bb073",
+          "symbol": "_difftime64",
+          "destination_rva": "0x10063d6",
+          "key": "0x1ef97ce0",
+          "stored": "0x56ad11a0",
+          "decoded_existing": "0x75a68e80"
+        },
+        {
+          "record_rva": "0x10ae113",
+          "name_rva": "0x11a8423",
+          "symbol": "_localtime64",
+          "destination_rva": "0x10276b0",
+          "key": "0x76741fae",
+          "stored": "0xff32f9b2",
+          "decoded_existing": "0x75a71960"
+        },
+        {
+          "record_rva": "0x10ae11f",
+          "name_rva": "0x1106339",
+          "symbol": "_time64",
+          "destination_rva": "0x1005a10",
+          "key": "0x4f7e28d7",
+          "stored": "0x262828e9",
+          "decoded_existing": "0x75a651c0"
+        }
+      ]
+    },
+    {
+      "dll": "api-ms-win-crt-environment-l1-1-0.dll",
+      "record_rva": "0x10ae12f",
+      "imports": [
+        {
+          "record_rva": "0x10ae133",
+          "name_rva": "0x11bff2d",
+          "symbol": "getenv",
+          "destination_rva": "0x1035592",
+          "key": "0x29ba3590",
+          "stored": "0x4bebc7a0",
+          "decoded_existing": "0x75a5fd30"
+        }
+      ]
+    }
+  ]
+}

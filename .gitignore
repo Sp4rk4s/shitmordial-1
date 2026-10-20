@@ -1,0 +1,87 @@
+# Generated builds, CMake files and Visual Studio caches (at any depth).
+build/
+out/
+Debug/
+Release/
+RelWithDebInfo/
+MinSizeRel/
+.vs/
+.vscode/
+.idea/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+Testing/
+Makefile
+*.sln.docstates
+*.vcxproj.user
+*.suo
+*.VC.db*
+*.VC.opendb
+*.ipch
+
+# Compiler/linker outputs. The vendored MinHook libraries are build inputs.
+*.obj
+*.o
+*.dll
+*.exe
+*.pdb
+*.ilk
+*.exp
+*.lib
+!third_party/minhook/lib/minhook-x86-release.lib
+!third_party/minhook/lib/minhook-x86-debug.lib
+*.res
+*.tlog/
+
+# IDA/debugger databases, crash dumps, logs and local backups.
+*.i64
+*.idb
+*.id0
+*.id1
+*.id2
+*.nam
+*.til
+*.id0.bak
+*.id1.bak
+*.dmp
+*.mdmp
+*.log
+*.bak
+*.tmp
+
+# Python environments and caches.
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Machine-specific captures/emulator snapshots stay local. Keep research notes,
+# source snippets, annotation indexes and inputs to the profile generator.
+/analysis/**
+!/analysis/**/
+!/analysis/**/*.md
+!/analysis/**/*.py
+!/analysis/menu/menu-interactive-2-tested-source.cpp
+!/analysis/menu/menu-interactive-2-tested-profile.h
+!/analysis/ida/project-index.json
+!/analysis/ida/mutable-dump-segment-applied.json
+!/analysis/imports/*.json
+!/analysis/menu/*annotations-pending.json
+!/analysis/menu/*ida-pending.json
+!/analysis/menu/menu-integration-profile.json
+!/analysis/menu/source-interface-state-10836.json
+!/analysis/menu/all-default-font-record-associations.json
+# Exceptions above must not include Python caches.
+/analysis/**/__pycache__/
+
+# Local application state and credentials.
+.env
+.env.*
+!.env.example
+Thumbs.db
+Desktop.ini

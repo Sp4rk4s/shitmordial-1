@@ -1,0 +1,24 @@
+{
+  "binary_sha256": "e16dd0ecf4f763be49139d5edff21f2e6106cff1040e2f6a684fabcb7eeb9768",
+  "analysis_base": "0x44000000",
+  "before": {
+    "start": "0x44000000",
+    "end": "0x4540c000",
+    "name": "seg000",
+    "class": "CODE",
+    "permissions": 0,
+    "type": 2
+  },
+  "after": {
+    "start": "0x44000000",
+    "end": "0x4540c000",
+    "name": "seg000",
+    "class": "PRMDUMP",
+    "permissions": 2,
+    "type": 2
+  },
+  "evidence": "analysis/menu/runtime-image-protections-11240.json",
+  "database": "C:\\Users\\k\\Desktop\\Primordial_revival\\primordial.bin.i64",
+  "database_disk_save_verified": true,
+  "scope": "IDA metadata only; no input or target process byte changes"
+}

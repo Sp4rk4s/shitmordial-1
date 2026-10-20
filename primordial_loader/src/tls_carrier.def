@@ -1,0 +1,2 @@
+EXPORTS
+    primordial_tls_get_index

@@ -1,0 +1,81 @@
+{
+  "binary_sha256": "e16dd0ecf4f763be49139d5edff21f2e6106cff1040e2f6a684fabcb7eeb9768",
+  "analysis_base": "0x44000000",
+  "status": "prepared_only_not_applied_live_or_indexed",
+  "reason": "Existing IDA GUI/RPC unresponsive; do not overwrite live database components",
+  "functions": [
+    {
+      "address": "0x4435f040",
+      "name": "surface_font_construct_cached",
+      "prototype": "unsigned int *__thiscall surface_font_construct_cached(unsigned int *font, const char *face, unsigned int length, int tall, int weight, int flags, int range_min, int range_max);",
+      "comment": "Verified cached font-record constructor: ECX points to12-byte {handle,A_width,ABCDEF_height};7 stackargs face,length,tall,weight,flags,rangeMin,rangeMax;RET1Ch,EAX=this. Searches48-byte records in vector runtime44B487D0/D4/D8 matching face bytes/length and5 numeric settings. Hit reuses+2Ch handle. Miss calls SourceSurface4481E15C virtual+11Ch(CreateFont) and+120h(SetFontGlyphSet with blur=scanlines=0); ignores bool result. Temporarily replaces[global4481E1E8+28h] with english447940AC, then restores; FontManager candidate from installed Surface71/72/79 thunks; current manager69AA5288+28h is INLINE english, so old pointer-write semantics are not proven compatible. Caches string/settings/handle via35EDE0 or35EFD0. Calls35FE60 twice for UTF16 A/ABCDEF dimensions. Null Surface is NOT safely handled. Sole direct E8 caller29E365 isLua-facing; protected callers unresolved. Evidence surface-font-create-native.txt,font-render-dependencies-findings.md. Definition pending: live IDA unresponsive.",
+      "end_address": "0x4435f259",
+      "byte_sha256": "fd1741f716b03c6a90b24d4ea2fe4faf90c6497428bf55ec7b9045276ca2ca1f",
+      "saved_ida_function": null
+    },
+    {
+      "address": "0x4435fe60",
+      "name": "surface_font_measure",
+      "prototype": "int *__thiscall surface_font_measure(const unsigned int *font, int *output_xy, const unsigned short *text, unsigned int length);",
+      "comment": "Verified thiscall text size wrapper. ECX points to font handle record;stack output int[2],UTF16 NUL-terminated text,length;RET0Ch,EAX=output. If length0 returns{0,0};AEF90 zero-count comparison returns0 without reading text. Otherwise calls SourceSurface4481E15C virtual+13Ch(GetTextSize) with font[0],text,&width,&height, then copies locals to output. Length is only empty check, not a bound supplied to Surface. Null interface is not safely handled. Called71 direct byte-scan sites including font constructor35F218/35F23A. Evidence font-related-35fe60.txt; font-render-dependencies-findings.md. Existing IDA name/prototype/comment must be preserved/extended. Live annotation pending because IDA unresponsive.",
+      "end_address": "0x4435fedf",
+      "byte_sha256": "149e0aa59846223ac9e7c5f632c5748f33bce5f0ff9744ac3d8e453bb310ee26",
+      "saved_ida_function": {
+        "address": "0x4435fe60",
+        "name": "sub_4435FE60",
+        "size": "0x7f"
+      }
+    },
+    {
+      "address": "0x44082dd0",
+      "name": "compare_byte_spans_lex",
+      "prototype": "int __cdecl compare_byte_spans_lex(const unsigned char *left, unsigned int left_length, const unsigned char *right, unsigned int right_length);",
+      "comment": "Verified byte-span lexical comparison: compares min lengths unsigned bytewise (DWORD fast prefix, then byte mismatch), returns-1/0/+1; equal prefixes ordered by lengths. Four caller-cleaned stack args, plainRET. No allocation/global/API dependency. Relevant caller35F085 compares cached font face against requested face; equality requires identical content andlength. Candidate was inspected to verify font-cache key semantics. Evidence font-render-dependencies-findings.md. Live annotations pending due unresponsive IDA.",
+      "end_address": "0x44082e55",
+      "byte_sha256": "a4a76dd5b23c0666c5c5cd2fe50f62fa3ed3c77e2c79448342c444523b833a3e",
+      "saved_ida_function": {
+        "address": "0x44082dd0",
+        "name": "sub_44082DD0",
+        "size": "0x85"
+      },
+      "aliases": [
+        "sub_44082DD0"
+      ]
+    },
+    {
+      "address": "0x440aef90",
+      "name": "wide_spans_lex_compare",
+      "prototype": "int __cdecl wide_spans_lex_compare(const unsigned short *left, const unsigned short *right, unsigned int count);",
+      "comment": "Verified bounded UTF16-code-unit lexical comparison: three caller-cleaned stack args, unsigned16bit ordering, returns-1/0/+1, plainRET. Count0 returns0 before any input reads. Relevant caller35FE79 uses count0 when font text length0, making its empty branch deterministic. No allocation/global/API dependency. Evidence font-render-dependencies-findings.md. Live annotations pending due unresponsive IDA.",
+      "end_address": "0x440aefe4",
+      "byte_sha256": "4f8bff0cbaaab1a76fd785a4adba63f5c98349fca9b1aedf57644295bb4e7bce",
+      "saved_ida_function": {
+        "address": "0x440aef90",
+        "name": "sub_440AEF90",
+        "size": "0x54"
+      }
+    },
+    {
+      "address": "0x4435f260",
+      "name": "surface_scope_arc_texture_create",
+      "prototype": "int __cdecl surface_scope_arc_texture_create(void);",
+      "comment": "Verified no-argument native texture creator, plainRET,EAX texture ID. Calls SourceSurface4481E15C virtual+ACh(CreateNewTextureID) with procedural1, decodes XOR-byte sprites/scope_arc literal from44794170 andstack words, calls virtual+90h(DrawSetTextureFile) with(id,path,hardwareFilter1,forceReload0), returns ID. No other persistent writes. Sole direct caller35F8A9 in lazily initialized shape renderer; does not establish menu renderer setup. Null Surface not safely handled. Evidence surface-texture-35f260.txt. Live annotations pending due unresponsive IDA.",
+      "end_address": "0x4435f2da",
+      "byte_sha256": "86fbae7d608eaa39cfa173a3be751341e956dd95f88754182d264443a427379a",
+      "saved_ida_function": {
+        "address": "0x4435f260",
+        "name": "sub_4435F260",
+        "size": "0x7a"
+      }
+    }
+  ],
+  "proposed_pending_functions": [
+    {
+      "address": "0x4435f040",
+      "end": "0x4435f259",
+      "guard_hex": "558bec6aff68eddd704464a100000000506489250000000083ec40a1d087b444",
+      "tail_guard_address": "0x4435f251",
+      "tail_guard_hex": "005e8be55dc21c00"
+    }
+  ]
+}

@@ -1,0 +1,676 @@
+{
+  "pid": 10836,
+  "mode": "read-only, non-atomic snapshot",
+  "factories": {
+    "vgui2.dll": {
+      "base": "0x69920000",
+      "path": "c:\\program files (x86)\\steam\\steamapps\\common\\csgo legacy\\bin\\vgui2.dll",
+      "disk_sha256": "0b5000f61187af4d7b5269772862bdd37908d6cd077af0fae9ace5e4a45bb65e",
+      "export": "0x6993cbd0",
+      "wrapper_bytes": "558bec5de987ffffff",
+      "internal": "0x6993cb60",
+      "internal_bytes": "558bec568b3568af98695785f674388b7d088b4e048bc78a113a10751a84d274128a51013a5001750e83c10283c00284d275e433c0eb051bc083c80185c0741a8b760885f675cb8b450c85c07406c700010000005f33c05e5dc38b450c85c07406c700000000008b065f5e5dffe0cccc",
+      "registry_head_slot": "0x6998af68",
+      "entries": [
+        {
+          "record": "0x699808b8",
+          "name": "VGUI_Panel009",
+          "create": "0x69939850",
+          "next": "0x699808a8",
+          "factory_bytes": "b8c4089869c3",
+          "singleton": "0x699808c4",
+          "singleton_bytes": "d8f29669f4eb0b00ffffffff0c050c0068020000f0040c00ffffffff8c030c00ffffffff6002000098910b00a4140c00fc140c0000000000000000000000000000000000000000000000000000000000",
+          "vtable": "0x6996f2d8",
+          "methods": {
+            "36": {
+              "address": "0x69939400",
+              "bytes": "558bec8b4d088b01ff908c0000005dc20400cccccccccccccccccccccccccccc558bec8b4d088b01ff90900000005dc20400cccccccccccccccccccccccccccc"
+            },
+            "40": {
+              "address": "0x69939500",
+              "bytes": "558bec8b01ff7508ff90040100008bc88b10ff52085dc20400cccccccccccccc558bec8b01ff7508ff9004010000ff75108bc8ff750c8b10ff520c5dc20c00cc"
+            },
+            "41": {
+              "address": "0x69939520",
+              "bytes": "558bec8b01ff7508ff9004010000ff75108bc8ff750c8b10ff520c5dc20c00cc558bec8b01ff7508ff90040100008bc88b10ff52105dc20400cccccccccccccc"
+            },
+            "42": {
+              "address": "0x69939540",
+              "bytes": "558bec8b01ff7508ff90040100008bc88b10ff52105dc20400cccccccccccccc558bec8b01ff7508ff9004010000ff75148bc8ff75108b10ff750cff52145dc2"
+            }
+          }
+        },
+        {
+          "record": "0x699808a8",
+          "name": "VGUI_ivgui008",
+          "create": "0x69935b00",
+          "next": "0x69980660"
+        },
+        {
+          "record": "0x69980660",
+          "name": "VGUI_System010",
+          "create": "0x69934950",
+          "next": "0x69980654"
+        },
+        {
+          "record": "0x69980654",
+          "name": "SchemeSurface001",
+          "create": "0x6992cbc0",
+          "next": "0x69980648"
+        },
+        {
+          "record": "0x69980648",
+          "name": "VGUI_Surface031",
+          "create": "0x6992cbb0",
+          "next": "0x6998063c",
+          "factory_bytes": "b810c39869c3",
+          "singleton": "0x6998c310",
+          "singleton_bytes": "c4e8966910e8966988e8966900ca9269000000000000000000000000ffff0000ffffffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "vtable": "0x6996e8c4",
+          "methods": {
+            "0": {
+              "address": "0x6992e250",
+              "bytes": "b001c20400cccccccccccccccccccccc558bec53568b75088bd957bf10000000ba70eb96698bc68a084f3a0a751384c97423404285ff7fef5f5e8bc35b5dc204"
+            },
+            "1": {
+              "address": "0x69926e20",
+              "bytes": "c3cccccccccccccccccccccccccccccc558bec81ec4802000053578bf98b07ff506050ff15cc4096698bd8895dfc85db0f843d0100008b45088b0dbc40966956"
+            },
+            "2": {
+              "address": "0x6992e260",
+              "bytes": "558bec53568b75088bd957bf10000000ba70eb96698bc68a084f3a0a751384c97423404285ff7fef5f5e8bc35b5dc204008a0033c93a020f9dc18d0c4dffffff"
+            }
+          }
+        },
+        {
+          "record": "0x6998063c",
+          "name": "VGUI_Scheme010",
+          "create": "0x69928520",
+          "next": "0x699805d0"
+        },
+        {
+          "record": "0x699805d0",
+          "name": "VGUI_InputInternal001",
+          "create": "0x69923410",
+          "next": "0x699805b4"
+        },
+        {
+          "record": "0x699805b4",
+          "name": "VGUI_Input005",
+          "create": "0x69923410",
+          "next": "0x0"
+        }
+      ]
+    },
+    "vguimatsurface.dll": {
+      "base": "0x699a0000",
+      "path": "c:\\program files (x86)\\steam\\steamapps\\common\\csgo legacy\\bin\\vguimatsurface.dll",
+      "disk_sha256": "36885e6dbf39b7aa6aacd7d59710e885dac2b25eb57adead4047062b53f50d20",
+      "export": "0x699cb360",
+      "wrapper_bytes": "558bec5de987ffffff",
+      "internal": "0x699cb2f0",
+      "internal_bytes": "558bec568b359833a9695785f674388b7d088b4e048bc78a113a10751a84d274128a51013a5001750e83c10283c00284d275e433c0eb051bc083c80185c0741a8b760885f675cb8b450c85c07406c700010000005f33c05e5dc38b450c85c07406c700000000008b065f5e5dffe0cccc",
+      "registry_head_slot": "0x69a93398",
+      "entries": [
+        {
+          "record": "0x69a79a10",
+          "name": "SchemeSurface001",
+          "create": "0x699abc40",
+          "next": "0x69a79a1c"
+        },
+        {
+          "record": "0x69a79a1c",
+          "name": "VGUI_Surface031",
+          "create": "0x699abc30",
+          "next": "0x0",
+          "factory_bytes": "b8d047a969c3",
+          "singleton": "0x69a947d0",
+          "singleton_bytes": "141ca569f01ea569681fa56900000000000000000000803f0000000000000000000000008007000038040000ffffffff0000000000000000000000000000000000000000000000000000000000000000",
+          "vtable": "0x69a51c14",
+          "methods": {
+            "0": {
+              "address": "0x699ac4a0",
+              "bytes": "558bec568b75088d4d08897508e8de910100e8b9150200833d5005ac69007515685423a569ff15d0b1a46983c40432c05e5dc20400833d4005ac690075156888"
+            },
+            "1": {
+              "address": "0x699ac570",
+              "bytes": "8b0d8c05ac69c705905fa8690000000085c9741a803d955aab690074118b01689c33a969ff5028c605955aab6900e90d920100cccccccccccccccccccccccccc"
+            },
+            "2": {
+              "address": "0x699ac5b0",
+              "bytes": "558bec538b5d08ba9824a56956578bf9be140000008bc38a084e3a0a751384c97423404285f67fef8bc75f5e5b5dc204008a0033c93a020f9dc18d0c4dffffff"
+            }
+          }
+        }
+      ]
+    },
+    "engine.dll": {
+      "base": "0x6c090000",
+      "path": "c:\\program files (x86)\\steam\\steamapps\\common\\csgo legacy\\bin\\engine.dll",
+      "disk_sha256": "bcca98731eab8b72d1ef34fa5fe420f26ac98e8dd1d91698171d0ecd9935faa6",
+      "export": "0x6c38c730",
+      "wrapper_bytes": "558bec5de987ffffff",
+      "internal": "0x6c38c6c0",
+      "internal_bytes": "558bec568b35e00b6d6c5785f674388b7d088b4e048bc78a113a10751a84d274128a51013a5001750e83c10283c00284d275e433c0eb051bc083c80185c0741a8b760885f675cb8b450c85c07406c700010000005f33c05e5dc38b450c85c07406c700000000008b065f5e5dffe0cccc",
+      "registry_head_slot": "0x6c6d0be0",
+      "entries": [
+        {
+          "record": "0x6c641310",
+          "name": "VEngineVGui001",
+          "create": "0x6c340330",
+          "next": "0x6c640f2c",
+          "factory_bytes": "b878d1976fc3",
+          "singleton": "0x6f97d178",
+          "singleton_bytes": "b01e566c0000000000000000000000000000000000000000000000000000000040f8ab57c04d190440101904e01119048013190440838b0220151904c016190400000000204f190400b4250400de1f04",
+          "vtable": "0x6c561eb0",
+          "methods": {
+            "0": {
+              "address": "0x6c340400",
+              "bytes": "558bec568bf18d4e70c706b01e566ce8cc23d7fff6450801c7069c1e566c740e689800000056e8f87d140083c4088bc65e5dc20400cccccccccccccccccccccc"
+            },
+            "1": {
+              "address": "0x6c3412a0",
+              "bytes": "558becff7508e865ffffff8bc88b10ff125dc20400cccccccccccccccccccccca15064636cb95064636c8b400cffd084c07514a1dc0f646cb9dc0f646c8b400c"
+            },
+            "2": {
+              "address": "0x6c3415c0",
+              "bytes": "8b493085c974118b018b8088000000ffd084c07403b001c332c0c3cccccccccc568b35186d9b6f33d2390e7d148b069083f81b7413428bc203c08b04c63bc17c"
+            }
+          },
+          "panel_tools": {
+            "method": "0x6c3412a0",
+            "method_bytes": "558becff7508e865ffffff8bc88b10ff125dc20400",
+            "helper": "0x6c341210",
+            "helper_bytes": "558bec803d881d856c00740633c05dc204008b45084883f808773fff24857412346c8b41285dc204008b41305dc204008b413c5dc204008b41385dc204008b412c5dc204008b41345dc204008b41485dc204008b41405dc204008b41245dc204000f1f003912346c3212346c4012346c6a12346c4712346c4e12346c5512346c5c12346c6312346ccccccccccccccccc",
+            "early_return_flag": "0x6c851d88",
+            "flag_value": 0,
+            "switch_branch": "0x6c341240",
+            "branch_bytes": "8b413c5dc20400",
+            "object": "0x41916c0",
+            "getter": "0x6c15b360",
+            "getter_bytes": "8b414cc3",
+            "handle": "0x2aaccb8"
+          }
+        },
+        {
+          "record": "0x6c640f2c",
+          "name": "VSERVERENGINETOOLS001",
+          "create": "0x6c33c8d0",
+          "next": "0x6c640fc0"
+        },
+        {
+          "record": "0x6c640fc0",
+          "name": "VCLIENTENGINETOOLS001",
+          "create": "0x6c33c640",
+          "next": "0x6c640fcc"
+        },
+        {
+          "record": "0x6c640fcc",
+          "name": "VTOOLFRAMEWORKVERSION002",
+          "create": "0x6c33c630",
+          "next": "0x6c640f20"
+        },
+        {
+          "record": "0x6c640f20",
+          "name": "VENGINETOOLFRAMEWORK003",
+          "create": "0x6c33aae0",
+          "next": "0x6c640f14"
+        },
+        {
+          "record": "0x6c640f14",
+          "name": "VENGINETOOL003",
+          "create": "0x6c33aae0",
+          "next": "0x6c640ee8"
+        },
+        {
+          "record": "0x6c640ee8",
+          "name": "XboxSystemInterface002",
+          "create": "0x6c3354d0",
+          "next": "0x6c640760"
+        },
+        {
+          "record": "0x6c640760",
+          "name": "VProfExport001",
+          "create": "0x6c331ca0",
+          "next": "0x6c640754"
+        },
+        {
+          "record": "0x6c640754",
+          "name": "VoiceServer002",
+          "create": "0x6c32ff40",
+          "next": "0x6c63fffc"
+        },
+        {
+          "record": "0x6c63fffc",
+          "name": "VENGINE_GAMEUIFUNCS_VERSION005",
+          "create": "0x6c328d10",
+          "next": "0x6c63fff0"
+        },
+        {
+          "record": "0x6c63fff0",
+          "name": "VENGINE_HLDS_API_VERSION002",
+          "create": "0x6c3281d0",
+          "next": "0x6c63ffe4"
+        },
+        {
+          "record": "0x6c63ffe4",
+          "name": "VENGINE_LAUNCHER_API_VERSION004",
+          "create": "0x6c3259d0",
+          "next": "0x6c63fe28"
+        },
+        {
+          "record": "0x6c63fe28",
+          "name": "FileLoggingListener001",
+          "create": "0x6c3248d0",
+          "next": "0x6c63f608"
+        },
+        {
+          "record": "0x6c63f608",
+          "name": "StaticPropMgrServer002",
+          "create": "0x6c31e850",
+          "next": "0x6c63f638"
+        },
+        {
+          "record": "0x6c63f638",
+          "name": "StaticPropMgrClient005",
+          "create": "0x6c31e840",
+          "next": "0x6c63f52c"
+        },
+        {
+          "record": "0x6c63f52c",
+          "name": "SpatialPartition001",
+          "create": "0x6c31c3e0",
+          "next": "0x6c63f0f0"
+        },
+        {
+          "record": "0x6c63f0f0",
+          "name": "VEngineRandom001",
+          "create": "0x6c310120",
+          "next": "0x6c63eee8"
+        },
+        {
+          "record": "0x6c63eee8",
+          "name": "VEngineServerStringTable001",
+          "create": "0x6c3063d0",
+          "next": "0x6c63eedc"
+        },
+        {
+          "record": "0x6c63eedc",
+          "name": "VEngineClientStringTable001",
+          "create": "0x6c305f30",
+          "next": "0x6c63e1c0"
+        },
+        {
+          "record": "0x6c63e1c0",
+          "name": "INETSUPPORT_003",
+          "create": "0x6c2ee200",
+          "next": "0x6c63d548"
+        },
+        {
+          "record": "0x6c63d548",
+          "name": "VModelInfoClient004",
+          "create": "0x6c2de950",
+          "next": "0x6c63d554"
+        },
+        {
+          "record": "0x6c63d554",
+          "name": "VModelInfoServer002",
+          "create": "0x6c2de000",
+          "next": "0x6c63781c"
+        },
+        {
+          "record": "0x6c63781c",
+          "name": "GAMEEVENTSMANAGER001",
+          "create": "0x6c2a36f0",
+          "next": "0x6c637738"
+        },
+        {
+          "record": "0x6c637738",
+          "name": "GAMEEVENTSMANAGER002",
+          "create": "0x6c2a0c20",
+          "next": "0x6c637430"
+        },
+        {
+          "record": "0x6c637430",
+          "name": "EngineTraceClient004",
+          "create": "0x6c299050",
+          "next": "0x6c637558"
+        },
+        {
+          "record": "0x6c637558",
+          "name": "EngineTraceServer004",
+          "create": "0x6c299040",
+          "next": "0x6c636c0c"
+        },
+        {
+          "record": "0x6c636c0c",
+          "name": "VCvarQuery001",
+          "create": "0x6c27da70",
+          "next": "0x6c636374"
+        },
+        {
+          "record": "0x6c636374",
+          "name": "BugReporterUserName001",
+          "create": "0x6c264f30",
+          "next": "0x6c636268"
+        },
+        {
+          "record": "0x6c636268",
+          "name": "BlackBoxVersion001",
+          "create": "0x6c25e6e0",
+          "next": "0x6c635b4c"
+        },
+        {
+          "record": "0x6c635b4c",
+          "name": "VEngineServer023",
+          "create": "0x6c252680",
+          "next": "0x6c6349a8"
+        },
+        {
+          "record": "0x6c6349a8",
+          "name": "GameServerData001",
+          "create": "0x6c24b550",
+          "next": "0x6c634534"
+        },
+        {
+          "record": "0x6c634534",
+          "name": "ISERVERPLUGINHELPERS001",
+          "create": "0x6c247b40",
+          "next": "0x6c631d1c"
+        },
+        {
+          "record": "0x6c631d1c",
+          "name": "VEngineRenderView014",
+          "create": "0x6c209620",
+          "next": "0x6c631d08"
+        },
+        {
+          "record": "0x6c631d08",
+          "name": "VEngineShadowMgr002",
+          "create": "0x6c1faeb0",
+          "next": "0x6c631cf8"
+        },
+        {
+          "record": "0x6c631cf8",
+          "name": "VEngineEffects001",
+          "create": "0x6c1fa9c0",
+          "next": "0x6c630eb8"
+        },
+        {
+          "record": "0x6c630eb8",
+          "name": "VEngineModel016",
+          "create": "0x6c1c9b90",
+          "next": "0x6c6302c8"
+        },
+        {
+          "record": "0x6c6302c8",
+          "name": "VPhysicsDebugOverlay001",
+          "create": "0x6c19c500",
+          "next": "0x6c6302bc"
+        },
+        {
+          "record": "0x6c6302bc",
+          "name": "VDebugOverlay004",
+          "create": "0x6c19c4f0",
+          "next": "0x6c62d3ec"
+        },
+        {
+          "record": "0x6c62d3ec",
+          "name": "VEngineClient014",
+          "create": "0x6c146080",
+          "next": "0x6c5be6d0",
+          "factory_bytes": "b8e8d3626cc3",
+          "singleton": "0x6c62d3e8",
+          "singleton_bytes": "50d8506c8060146c14d1506cd0e65b6c00000000000000000000000000000000ffffffff00000000ffffffffffffffff000000000000000058c0566c88d4626c010008009cdc506c08dc506c00000800",
+          "vtable": "0x6c50d850",
+          "methods": {
+            "0": {
+              "address": "0x6c146090",
+              "bytes": "558bec83e4f8b820200000e8302b3400568b75085785f6750a33c05f5e8be55dc218008b4d0c89742408894c240ce88d7912008bf885ff78083b3d44308a6c7c"
+            },
+            "5": {
+              "address": "0x6c1463e0",
+              "bytes": "558bec8b0d386e9b6f568b01ff90cc0100008bf085f674078b068bceff5008ff750c8b068bceff7508ff90c00100008b068bceff500c8b068bceff50045e5dc2"
+            },
+            "26": {
+              "address": "0x6c146d40",
+              "bytes": "a19cf1626c83b808010000060f94c0c3a07aad636cc3cccccccccccccccccccca016966c6cc3cccccccccccccccccccc803d16966c6c00750e6874d1506cff15"
+            }
+          }
+        },
+        {
+          "record": "0x6c5be6d0",
+          "name": "IEngineSoundServer003",
+          "create": "0x6c0b4650",
+          "next": "0x6c5be650"
+        },
+        {
+          "record": "0x6c5be650",
+          "name": "IEngineSoundClient003",
+          "create": "0x6c0b3680",
+          "next": "0x0"
+        }
+      ]
+    },
+    "client.dll": {
+      "base": "0x57120000",
+      "path": "c:\\program files (x86)\\steam\\steamapps\\common\\csgo legacy\\csgo\\bin\\client.dll",
+      "disk_sha256": "183d42fac8a4ecc24dc02edf5f09122f37fe9e7533ca093a867718b25cfdeb03",
+      "export": "0x57abf840",
+      "wrapper_bytes": "558bec5de987ffffff",
+      "internal": "0x57abf7d0",
+      "internal_bytes": "558bec568b3570a1375a5785f674388b7d088b4e048bc78a113a10751a84d274128a51013a5001750e83c10283c00284d275e433c0eb051bc083c80185c0741a8b760885f675cb8b450c85c07406c700010000005f33c05e5dc38b450c85c07406c700000000008b065f5e5dffe0cccc",
+      "registry_head_slot": "0x5a37a170",
+      "entries": [
+        {
+          "record": "0x57f310fc",
+          "name": "VCLIENTTOOLS001",
+          "create": "0x578eae50",
+          "next": "0x57f2dea4"
+        },
+        {
+          "record": "0x57f2dea4",
+          "name": "CustomSteamImageOnModel_IMaterialProxy003",
+          "create": "0x57867560",
+          "next": "0x57f2de1c"
+        },
+        {
+          "record": "0x57f2de1c",
+          "name": "ItemTintColor_IMaterialProxy003",
+          "create": "0x57843950",
+          "next": "0x57f268d8"
+        },
+        {
+          "record": "0x57f268d8",
+          "name": "VGuiModuleLoader003",
+          "create": "0x5759d420",
+          "next": "0x57f26790"
+        },
+        {
+          "record": "0x57f26790",
+          "name": "RunGameEngine005",
+          "create": "0x57596f10",
+          "next": "0x57f26630"
+        },
+        {
+          "record": "0x57f26630",
+          "name": "GameUI011",
+          "create": "0x5757fbe0",
+          "next": "0x57f265f4"
+        },
+        {
+          "record": "0x57f265f4",
+          "name": "GameConsole004",
+          "create": "0x5757f310",
+          "next": "0x57f26178"
+        },
+        {
+          "record": "0x57f26178",
+          "name": "VENGINE_GAMETYPES_VERSION002",
+          "create": "0x5756f0d0",
+          "next": "0x57f25550"
+        },
+        {
+          "record": "0x57f25550",
+          "name": "VClientPrediction001",
+          "create": "0x575564c0",
+          "next": "0x57f1e4a8"
+        },
+        {
+          "record": "0x57f1e4a8",
+          "name": "GameMovement001",
+          "create": "0x57529950",
+          "next": "0x57f175d8"
+        },
+        {
+          "record": "0x57f175d8",
+          "name": "RenderToRTHelper001",
+          "create": "0x57478c30",
+          "next": "0x57f16928"
+        },
+        {
+          "record": "0x57f16928",
+          "name": "VParticleSystemQuery004",
+          "create": "0x5744e990",
+          "next": "0x57f0f4a0"
+        },
+        {
+          "record": "0x57f0f4a0",
+          "name": "IEffects001",
+          "create": "0x573c70e0",
+          "next": "0x57f0df7c"
+        },
+        {
+          "record": "0x57f0df7c",
+          "name": "ClientAlphaPropertyMgrV001",
+          "create": "0x5738e970",
+          "next": "0x57f0df70"
+        },
+        {
+          "record": "0x57f0df70",
+          "name": "ClientLeafSystem002",
+          "create": "0x5738e960",
+          "next": "0x57f0dd90"
+        },
+        {
+          "record": "0x57f0dd90",
+          "name": "VClientEntityList003",
+          "create": "0x5738d640",
+          "next": "0x57f0dd18"
+        },
+        {
+          "record": "0x57f0dd18",
+          "name": "VCLIENTMATERIALSYSTEM001",
+          "create": "0x57387100",
+          "next": "0x57f0dad4"
+        },
+        {
+          "record": "0x57f0dad4",
+          "name": "VClient018",
+          "create": "0x5737f330",
+          "next": "0x57f0da40",
+          "factory_bytes": "b880fef15bc3",
+          "singleton": "0x5bf1fe80",
+          "singleton_bytes": "24f9cd57f04c3157000000000000000000000000ffff0000ffffffff000000000000000080e588021000000000000000ffff0000ffffffff80e588020000000000000000000000000800000000000000",
+          "vtable": "0x57cdf924",
+          "methods": {
+            "0": {
+              "address": "0x5737fc10",
+              "bytes": "558bec83e4f881ec0c0100005683ec0ce82be360008b450c8d4d0883c40ca3e0f8ec57e8c85f5d00e823a374008b0df8d6465c85c9740a8b016a01ff90140200"
+            },
+            "1": {
+              "address": "0x5737fd90",
+              "bytes": "8b0d90d7465c85c97439803d10d9465c0074308b01ff354477f057ff90840000008b0d90d7465cff354477f0578b01ff5030c7054477f057ffffffffc60510d9"
+            },
+            "2": {
+              "address": "0x5737fde0",
+              "bytes": "558bec51538b1d40a3c55756689402ce57894dfcffd38b75086a0068c802ce57ffd683c40ca38c47455c85c0750a5e33c05b8be55dc208006a0068b802ce57ff"
+            },
+            "3": {
+              "address": "0x57380370",
+              "bytes": "558bec83ec10682007ce57ff1540a3c55783ec0cc745f0cf3241578bc4c745f400000000c745f800000000c745fc000000000f1045f00f1100e8222a090068f4"
+            },
+            "4": {
+              "address": "0x57380400",
+              "bytes": "56578bf9b9a045385ce8a20520008b0de847455c85c974058b01ff50048b0de447455c85c974058b01ff50088b0dbcc6375ae879210c00e854b9f3ffe81fbaf3"
+            },
+            "5": {
+              "address": "0x57381670",
+              "bytes": "558bec83e4f883ec30803d6214f7570056570f85a60100008b0d8c47455cc6056214f757018b01ff9018030000833d6c4d385c0074328d4c2408e80106f3ff8d"
+            },
+            "8": {
+              "address": "0x57380a50",
+              "bytes": "a14048455cc3cccccccccccccccccccca1b027385cb9b027385cff605ccccccca1b027385cb9b027385cff6060cccccca1b027385cb9b027385c6a00ff5058c3"
+            }
+          }
+        },
+        {
+          "record": "0x57f0da40",
+          "name": "VClientDllSharedAppSystems001",
+          "create": "0x5737f250",
+          "next": "0x57f0da34"
+        },
+        {
+          "record": "0x57f0da34",
+          "name": "GameClientExports001",
+          "create": "0x5737f1a0",
+          "next": "0x57f09ef4"
+        },
+        {
+          "record": "0x57f09ef4",
+          "name": "ClientRenderTargets001",
+          "create": "0x572c5710",
+          "next": "0x0"
+        }
+      ]
+    },
+    "inputsystem.dll": {
+      "base": "0x6a4b0000",
+      "path": "c:\\program files (x86)\\steam\\steamapps\\common\\csgo legacy\\bin\\inputsystem.dll",
+      "disk_sha256": "43bbf7e726ffd511cd423538234bf3a30ec20eceec31987b0f867c0a6f17ef78",
+      "export": "0x6a4c1100",
+      "wrapper_bytes": "558bec5de987ffffff",
+      "internal": "0x6a4c1090",
+      "internal_bytes": "558bec568b3574d34e6a5785f674388b7d088b4e048bc78a113a10751a84d274128a51013a5001750e83c10283c00284d275e433c0eb051bc083c80185c0741a8b760885f675cb8b450c85c07406c700010000005f33c05e5dc38b450c85c07406c700000000008b065f5e5dffe0cccc",
+      "registry_head_slot": "0x6a4ed374",
+      "entries": [
+        {
+          "record": "0x6a4ead98",
+          "name": "InputSystemVersion001",
+          "create": "0x6a4b20b0",
+          "next": "0x6a4eac50",
+          "factory_bytes": "b888534f6ac3",
+          "singleton": "0x6a4f5388",
+          "singleton_bytes": "a00e4e6a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "vtable": "0x6a4e0ea0",
+          "methods": {
+            "0": {
+              "address": "0x6a4b2700",
+              "bytes": "558bec568b75088d4d08897508e8eed80000e8e92f01006a0068a00c4e6affd66a0068900c4e6aa3d01c526affd683c410a3d41c526ab0015e5dc20400cccccc"
+            },
+            "15": {
+              "address": "0x6a4b3330",
+              "bytes": "558bec8b5508b801000000568bf18bca83e11fc1fa05d3e0858496583500005e0f95c05dc20400cccccccccccccccccc558bec8b45088b8481dc5600005dc204"
+            },
+            "56": {
+              "address": "0x6a4b3840",
+              "bytes": "558bec83ec08568bf183be3c1300000075198b450c5ec700000000008b4508c700000000008be55dc208008d45f850ff1520b14d6a8d45f850ffb63c130000ff"
+            }
+          }
+        },
+        {
+          "record": "0x6a4eac50",
+          "name": "InputStackSystemVersion001",
+          "create": "0x6a4b1ae0",
+          "next": "0x0"
+        }
+      ]
+    }
+  },
+  "payload_fields": {
+    "0x4481e15c": "0x0",
+    "0x4481e16c": "0x0",
+    "0x44b3b884": "0x0",
+    "0x44b3b888": "0x0"
+  }
+}

@@ -1,0 +1,416 @@
+{
+  "binary_sha256": "e16dd0ecf4f763be49139d5edff21f2e6106cff1040e2f6a684fabcb7eeb9768",
+  "functions": [
+    {
+      "address": "0x44156250",
+      "end_address": "0x44156255",
+      "name": "return_true_pop_one_argument",
+      "prototype": "bool __stdcall return_true_pop_one_argument(unsigned int unused);",
+      "comment": "Verified5-byte helper B001C20400: setsAL=1 andRET4; one stackDWORD ignored, ECX/EDX ignored, EAX high24bits unspecified, flags unchanged. Returns boolean true without forwarding original. Bounded OFFLINE1564B0 hook setup uses this as detour destination for client/engine/studiorender/materialsystem targets. Their semantic purpose is unresolved; do not describe this as a renderer or bootstrap. Evidence candidate-1564b0-constructor-native-crt-38484-scan11-model-hook-memory.json. No such hook was applied in game.",
+      "aliases": [
+        "sub_44156250"
+      ],
+      "byte_sha256": "f4c6d7ae520f88aecb3ea65952e885437fa4a6ce4b5c3439a161d1c5d8e42863"
+    },
+    {
+      "address": "0x44155320",
+      "end_address": "0x441553A6",
+      "name": "module_find_unique_masked18",
+      "prototype": "unsigned int *__thiscall module_find_unique_masked18(void *module, unsigned int *out_address, unsigned int pattern0, unsigned int pattern1, unsigned int pattern2, unsigned int pattern3, unsigned int pattern4, unsigned int wildcard_mask, unsigned int section_hash);",
+      "comment": "Verified native unique18-byte masked section search. ECX=module object; stack outDWORD,24-byte by-value pattern (18 bytes+2padding+DWORD mask),sectionhash;RET20h,EAX=out. Requires module+4 HMODULE; calls6D210(sectionhash) for descriptor+8 RVA/+C length. Searches155840 then searches again starting firstMatch+1 with length(end-firstMatch), which includes one extra candidate relative to first strict scan. Exactly one match writes first address; absent module/section/no match/nonunique writes0. Patternword parameters in prototype express ABI packing, not separate semantic settings. Protected1564B0 uses it for missing old engine event-dispatch signature; do not substitute an approximate match. Evidence scan-family validation and game-event-private-target-38484.json.",
+      "aliases": [
+        "sub_44155320"
+      ],
+      "byte_sha256": "14874a226c606dcedd4829408849311a5939938c4bdaeeed49e4049adcce0392"
+    },
+    {
+      "address": "0x44155AD0",
+      "end_address": "0x44155B07",
+      "name": "forward_three_with_byte_flag_preprocess",
+      "prototype": "unsigned int __fastcall forward_three_with_byte_flag_preprocess(void *object, unsigned int preserved_edx, unsigned int first, unsigned int second, unsigned int third);",
+      "comment": "Verified native wrapper: preserves incomingECX/object andEDX, checks low byte of third stackDWORD; if nonzero calls356130(first) cdecl, then forwards all3 stackDWORDs and restoredECX/EDX through original pointer44B3B8EC. RET0Ch; EAX from original forwarded unchanged (prototype represents raw register result; higher-level return semantics incomplete). Protected1564B0 tries to install this at an engine18-byte signature that is missing in the current game. Two current GAMEEVENTSMANAGER002 public wrappers converge on6C2A1C70, a supported event-dispatch target candidate; full356130/dispatcher semantics remain partial. Do not call with missing original pointer or assert menu startup from this callback. No live hook applied.",
+      "aliases": [
+        "sub_44155AD0"
+      ],
+      "byte_sha256": "de52ddea3cbf9bde3775cb875758c5a5545de7c79e866b2cc154056f93cc8a1f"
+    },
+    {
+      "address": "0x44357F80",
+      "end_address": "0x44357FB7",
+      "name": "input_button_state_pointer",
+      "prototype": "int *__cdecl input_button_state_pointer(int button);",
+      "comment": "Verified complete native getter: clamps signed button to0..113; returns pointer44B47F08+4*button, caller-cleaned one stackDWORD, ordinaryRET (tail bounds-failure path is unreachable after clamp). Observed poll3582C0 states:0 up,1 just pressed,2 held,3 just released. Read-only getter; no callback/interface access.",
+      "aliases": [
+        "sub_44357F80"
+      ],
+      "byte_sha256": "d0f99de6a047ba689667a318bc0ae176f1e6f3ad1cb4df0619e0ffd56b99174b"
+    },
+    {
+      "address": "0x44358090",
+      "end_address": "0x443580C5",
+      "name": "input_button_pressed_this_frame",
+      "prototype": "bool __cdecl input_button_pressed_this_frame(int button);",
+      "comment": "Verified complete native predicate: clamps signed button to0..113 and returns AL=(DWORD[44B47F08+4*button]==1), caller-cleaned one stackDWORD, RET. State1 is the just-pressed transition in3582C0. High EAX bits unspecified. Used by native checkbox/tab/button input;107(6B) is left mouse. Preview feeds only observed cursor and left-button transitions and does not invoke callback-dispatch poll3582C0.",
+      "aliases": [
+        "sub_44358090"
+      ],
+      "byte_sha256": "a7c2ba0e6cfdaa0e527d6ba5236970b782e849da664e7a54391305e912292427"
+    },
+    {
+      "address": "0x44358100",
+      "end_address": "0x44358143",
+      "name": "input_cursor_inside_rectangle",
+      "prototype": "bool __cdecl input_cursor_inside_rectangle(const int *xy, const int *wh);",
+      "comment": "Verified complete signed integer rectangle hit test against current cursor44B47F00/+4: x>=xy[0],y>=xy[1],x<xy[0]+wh[0],y<xy[1]+wh[1]. Lower inclusive, upper exclusive; two caller-cleaned pointers, plainRET, ALbool. No allocation, callback or interface access. Signed overflow follows native32bit arithmetic; preview constrains actual geometry.",
+      "aliases": [
+        "sub_44358100"
+      ],
+      "byte_sha256": "b6ee1ccb99410257d5cf9ff141b9885d1a495fac710488682337393f9f58d940"
+    },
+    {
+      "address": "0x44335F10",
+      "end_address": "0x44335F56",
+      "name": "control_notify_value_observers",
+      "prototype": "void __thiscall control_notify_value_observers(void *control);",
+      "comment": "Verified native observer iteration: ECX=control, vectorbegin/end at+CC/+D0,40-byte records; record+24 callback object must be nonnull, invokes virtual2 with address of local pointer to control. PlainRET/no stackargs; malformed null invokes failure helper. No iteration/callback when begin==end. Native checkbox32EF80 toggles byte+138 then calls this on left-button edge. Interactive preview permits native value input only when this observer vector and attached-child vector+124/+128 are both empty; action callbacks are excluded.",
+      "aliases": [
+        "sub_44335F10"
+      ],
+      "byte_sha256": "d813aa6c22052c20ab26611d6dc95c1e220319dc3cb10986f0c894d1ab67d8ba"
+    },
+    {
+      "address": "0x4434B860",
+      "end_address": "0x4434B881",
+      "name": "group_set_content_rectangle",
+      "prototype": "void __thiscall group_set_content_rectangle(void *group, const int *rectangle_xywh);",
+      "comment": "Verified complete native four-DWORD assignment: ECX=group; one stack rectangle pointer; copies x,y,width,height into group+54/+58/+5C/+60, RET4. No allocation, callbacks, guard or interface access. Original tab updater34C9C0 calls it at34CEAE with tab rectangle after removing the130-pixel sidebar. Used by scoped menu-only content-layout probe; input updater remains partial.",
+      "aliases": [
+        "sub_4434B860"
+      ],
+      "byte_sha256": "c494a744431f104281a679f532c1d553260a5fda3872b49e0461bd45bbbc1352"
+    },
+    {
+      "address": "0x443372A0",
+      "end_address": "0x443372B0",
+      "name": "control_set_layout_width",
+      "prototype": "void __thiscall control_set_layout_width(void *control, int width);",
+      "comment": "Verified complete native setter: ECX=control; copies one stack DWORD into control+B8, RET4. No allocation, callbacks, guard or interface access. Original group layout34A4B0 calls it at34AA0F before invoking child position virtual slot3. High-level control classes remain partial.",
+      "aliases": [
+        "sub_443372A0"
+      ],
+      "byte_sha256": "3d4050a61f1bf0028ed565995e92681cd27439cd063a68f31f39252a10e7657d"
+    },
+    {
+      "address": "0x4434DB30",
+      "end_address": "0x4434DB51",
+      "name": "tab_set_content_rectangle",
+      "prototype": "void __thiscall tab_set_content_rectangle(void *tab, const int *rectangle_xywh);",
+      "comment": "Verified complete native assignment: ECX=tab, one stack pointer to four DWORDs x,y,width,height; stores them at tab+6C/+70/+74/+78, RET4. No allocation, callbacks, interface or guard access. Original window updater3504B0 calls it at351A5F with window+5C. Scoped menu-only layout probe uses this same helper after reproducing the native rectangle stores350DBC..350DFD. Full input updater remains partial and is not called by the preview.",
+      "aliases": [
+        "sub_4434DB30"
+      ],
+      "byte_sha256": "334edfbf94679969c43661901f5fc5daef8746c3ff49b4022108732b1de6a5ce"
+    },
+    {
+      "address": "0x44155BD0",
+      "end_address": "0x44155C23",
+      "name": "override_vector_result_for_current_object",
+      "prototype": "unsigned int *__thiscall override_vector_result_for_current_object(void *object, unsigned int *out_words3);",
+      "comment": "Verified native wrapper: ECX=this, one stack output pointer, RET4, EAX=output. First forwards this/output through original44B3B8E4. If this matches object returned by A06C0(4481E210), calls36A7C0 on that object with temporary12-byte output and zero flag, then copies three DWORDs from its return to caller output. Type/feature semantics of those words and identity of current object remain unverified; local-player/vector interpretation is an inference only. Protected1564B0 offline hook setup XORs captured globals44B474F0/F4 (2D01AF9A/00CEFC5A) into stale target2DCF53C0 and associates this wrapper. Current live fields are zero; no valid current target or hook established. Evidence candidate-1564b0-constructor-native-crt-38484-scan11-model-hook-memory-event-signature-captured-pair.json. No live callback applied.",
+      "aliases": [
+        "sub_44155BD0"
+      ],
+      "byte_sha256": "704e1b6bc116bb09b21c0b4c6147d667fdec55abeac5de592c57e83ff257523a"
+    },
+    {
+      "address": "0x443609A0",
+      "end_address": "0x443609D4",
+      "name": "renderer_clear_clip_storage_and_reset_rect",
+      "prototype": "void __cdecl renderer_clear_clip_storage_and_reset_rect(void);",
+      "comment": "Verified complete native no-argument helper, plainRET: calls35F650 on runtime44B487BC then ISurface slot147 from4481E15C with x0,y0,width44B487AC,height44B487B0.35F650 releases a nested owned collection including16-byte elements and pointer array (partial container type, not assigned). Requires valid current Surface and established dimensions/owned storage. Called by original panel callback154790. Authorized separate menu-only preview uses this helper inside PushMakeCurrent/PopMakeCurrent; this does not establish original bootstrap or gameplay hooks.",
+      "aliases": [
+        "sub_443609A0"
+      ],
+      "byte_sha256": "922d1072a979a17906e7574aa5a01a18207c103997f6d45fe3c7b172f37e837b"
+    },
+    {
+      "address": "0x4432d250",
+      "end_address": "0x4432d25d",
+      "name": "menu_set_focused_window",
+      "prototype": "void __cdecl menu_set_focused_window(void *window);",
+      "comment": "Stores single argument to44B44DF8; plainRET, caller cleans argument; no other effects.",
+      "aliases": [
+        "sub_4432D250"
+      ],
+      "byte_sha256": "4d5093254600e12f924c5c7b7ea19784bba756421a3f35dd1b3480c9273387f2"
+    },
+    {
+      "address": "0x4432d140",
+      "end_address": "0x4432d14d",
+      "name": "menu_set_current_group",
+      "prototype": "void __cdecl menu_set_current_group(void *group);",
+      "comment": "Stores single argument to44B44E38; plainRET, caller cleanup.",
+      "aliases": [
+        "sub_4432D140"
+      ],
+      "byte_sha256": "6634573440be1d30094ff5931c2f619da0554ac3f89e76b9cf5e5d4c61e4c595"
+    },
+    {
+      "address": "0x442df4d0",
+      "end_address": "0x442df4d8",
+      "name": "menu_mark_frame_visible",
+      "prototype": "void __cdecl menu_mark_frame_visible(void);",
+      "comment": "Sets byte44B44DF4=1; no arguments, plainRET. Coordinator uses it to decide whether UI input remains active.",
+      "aliases": [
+        "sub_442DF4D0"
+      ],
+      "byte_sha256": "91cba7134c01a98100a3359c6ab311e5deb7e7feda4c5f478f93e9d43fa6f637"
+    },
+    {
+      "address": "0x442df680",
+      "end_address": "0x442df686",
+      "name": "menu_get_active_control",
+      "prototype": "void *__cdecl menu_get_active_control(void);",
+      "comment": "Returns44B44DFC; no args, plainRET. Popup/edit/keybind control focus owner.",
+      "aliases": [
+        "sub_442DF680"
+      ],
+      "byte_sha256": "bef7d69a64204a703d3b4f2a2deefad1c1d946dcbd1dd71b6aca456102c9bef4"
+    },
+    {
+      "address": "0x442df690",
+      "end_address": "0x442df696",
+      "name": "menu_get_focused_window",
+      "prototype": "void *__cdecl menu_get_focused_window(void);",
+      "comment": "Returns44B44DF8; no args, plainRET.",
+      "aliases": [
+        "sub_442DF690"
+      ],
+      "byte_sha256": "cc5f1a4e366af91d0d67c5ba9817b7cd11b635e99a1f0ac7dc7137501ac58d23"
+    },
+    {
+      "address": "0x442df6f0",
+      "end_address": "0x442df6f6",
+      "name": "menu_get_search_results_group",
+      "prototype": "void *__cdecl menu_get_search_results_group(void);",
+      "comment": "Returns constant44B45070 address; no dereference/no args, plainRET. Search-group role established by native window updater3504B0 references.",
+      "aliases": [
+        "sub_442DF6F0"
+      ],
+      "byte_sha256": "390386ae599e069a18faee1692f14e3e050cd71f3364e72d8e902d7b4c11a2b1"
+    },
+    {
+      "address": "0x442df700",
+      "end_address": "0x442df706",
+      "name": "menu_get_search_field",
+      "prototype": "void *__cdecl menu_get_search_field(void);",
+      "comment": "Returns constant44B44EF8; noargs plainRET. Native window updater routes search editing to this object.",
+      "aliases": [
+        "sub_442DF700"
+      ],
+      "byte_sha256": "5bd9acdc7067a564ba888077a7bcb7b94ba1b99e19fd4aa6ff7ee0310ddf6775"
+    },
+    {
+      "address": "0x4432aba0",
+      "end_address": "0x4432aba6",
+      "name": "menu_get_previous_input_capture",
+      "prototype": "bool __cdecl menu_get_previous_input_capture(void);",
+      "comment": "Returns byte44B44DF5 in AL; higher EAX unspecified. Noargs plainRET; tested in native window toggle path.",
+      "aliases": [
+        "sub_4432ABA0"
+      ],
+      "byte_sha256": "9d0f77b5ee304cc57ed0db90a9a847c65ded8fcec57c35a2dac5f0ffdb0e9ae7"
+    },
+    {
+      "address": "0x4432abb0",
+      "end_address": "0x4432abb6",
+      "name": "menu_is_search_active",
+      "prototype": "bool __cdecl menu_is_search_active(void);",
+      "comment": "Returns byte44B44E07 in AL; higher EAX unspecified. Noargs plainRET.",
+      "aliases": [
+        "sub_4432ABB0"
+      ],
+      "byte_sha256": "9733e38b02a6ba14780c75452fd2f295a53e9aa41f9df12c92af7a4283f23e32"
+    },
+    {
+      "address": "0x4432d280",
+      "end_address": "0x4432d28d",
+      "name": "menu_set_search_active",
+      "prototype": "void __cdecl menu_set_search_active(bool active);",
+      "comment": "Copies low byte stackargument to44B44E07; caller cleanup, plainRET.",
+      "aliases": [
+        "sub_4432D280"
+      ],
+      "byte_sha256": "fd0be9715a715cf574ac887f3146608750f0a3b1c0677f5b36bdc0209544a56a"
+    },
+    {
+      "address": "0x44357fe0",
+      "end_address": "0x44357fe7",
+      "name": "input_get_frame_wheel_delta",
+      "prototype": "float __cdecl input_get_frame_wheel_delta(void);",
+      "comment": "FLD DWORD44B4869C, plainRET; noargs, returnsfloat ST0.",
+      "aliases": [
+        "sub_44357FE0"
+      ],
+      "byte_sha256": "f2b3e22dec79c31d7b1cd77a84f8ed736a0554f4188670eeb4d2c3d6162172d0"
+    },
+    {
+      "address": "0x443582a0",
+      "end_address": "0x443582ad",
+      "name": "input_set_ui_capture_flag",
+      "prototype": "void __cdecl input_set_ui_capture_flag(bool captured);",
+      "comment": "Copies low byte stackargument to44B4869B; no callbacks/interfaces; callercleanup, plainRET.",
+      "aliases": [
+        "sub_443582A0"
+      ],
+      "byte_sha256": "1a38374cc94fadcbc6f4e10fc137ff9e2c7ff326fd265abc9ac75ce5aae05fdd"
+    },
+    {
+      "address": "0x4433aef0",
+      "end_address": "0x4433aef7",
+      "name": "control_get_value_dword",
+      "prototype": "unsigned int __thiscall control_get_value_dword(void *control);",
+      "comment": "Returns DWORD[this+130], no stackargs, plainRET.32BA40 uses on menu-toggle keybind448803B0.",
+      "aliases": [
+        "sub_4433AEF0"
+      ],
+      "byte_sha256": "18f4ac2e5d900bfd416595f5b46659bf5bf1a189c2037646ee809f3316776bd3"
+    },
+    {
+      "address": "0x44352af0",
+      "end_address": "0x44352b00",
+      "name": "window_set_toggle_button",
+      "prototype": "void __thiscall window_set_toggle_button(void *window, unsigned int button);",
+      "comment": "Stores stackDWORD into this+9C, RET4.32BA40 copies menu keybind value into primary window before original update.",
+      "aliases": [
+        "sub_44352AF0"
+      ],
+      "byte_sha256": "0063e3b5c0485d2fe49cc97f7c922a2aef971270b3e117dba923e579d1224094"
+    },
+    {
+      "address": "0x44336ea0",
+      "end_address": "0x44336f0b",
+      "name": "control_reset_active_state",
+      "prototype": "void __thiscall control_reset_active_state(void *control, bool recursive);",
+      "comment": "Complete native helper. If this is current activecontrol44B44DFC, clears it through32D240. Zeroes control+E4/+E8/+EC and state+8. If recursive=true recursively resets attachedchild pointervector+124/+128. RET4. No feature callback; assumes valid menu-owned children.",
+      "aliases": [
+        "sub_44336EA0"
+      ],
+      "byte_sha256": "28aea5e721d6f34a9913b80c737710b04fb76698f7343457820e3192d797263d"
+    },
+    {
+      "address": "0x441554f0",
+      "end_address": "0x4415571b",
+      "name": "inline_hook_create_record",
+      "prototype": "void *__cdecl inline_hook_create_record(void *record12, void *target, void *detour, void **original_out);",
+      "comment": "Native four-argument cdecl inline-hook constructor, plainRET. Decodes whole instructions from target until >=5 bytes (bespoke legacy instruction-length decoder; all opcode cases not separately validated). VirtualAlloc(0,length+5,MEM_COMMIT,PAGE_EXECUTE_READWRITE), copies displaced bytes, appends E9 back, VirtualProtect target RWX, NOP fills displaced span, writes original_out=trampoline, writes E9detour, record12={target,trampoline,length}, restores protection, returns record. Allocation failure zeroes record12 and returns it; original_out is not written. No target-null check before decoder read. Copy does not visibly relocate displaced relative instructions. This is not MinHook and not atomic publication/thread-quiescence. Protected1564B0 repeatedly requests hooks through it. New offline failure model intentionally inventories requests without target decoding, allocation, original callbacks or Source writes; returning from that model is not hook success. No such original hook installed live.",
+      "aliases": [
+        "sub_441554F0"
+      ],
+      "byte_sha256": "91220e802cd2258cde3f2b59f7fbdba54f98919a603ac1c1a2afe36a45d2bd3b"
+    },
+    {
+      "address": "0x44354170",
+      "end_address": "0x443542be",
+      "name": "hash_keyed_pointer_cache_get_or_insert_null",
+      "prototype": "void *__cdecl hash_keyed_pointer_cache_get_or_insert_null(unsigned int key);",
+      "comment": "Native pointer map access at runtime44B47E88. FNV1a hashes all4 little-endian bytes of key, finds node via150420; if absent allocates16bytes, stores key atnode+8 and value0 atnode+C, may rehash via353EC0 then inserts via353E60. Returns node+C value (zero after missing insertion), caller-cleaned argument/plainRET. Map size limit0FFFFFFF throws. This helper does NOT itself resolve an interface or populate missing values; interpreting a call as automatic CreateInterface resolution is unsupported. Cache semantic role beyond callers remains partial. New offline3542C0 continuation reaches null payload4481E158; no live call applied.",
+      "aliases": [
+        "sub_44354170"
+      ],
+      "byte_sha256": "ede2cde574d69d5dab2fe3b4cbed4714d0ae3cba520aab09532bfc49900889b0"
+    }
+  ],
+  "data_comments": [
+    {
+      "address": "0x44350DBC",
+      "comment": "Bounded layout excerpt in partial updater3504B0: stores window+5C=x(+3C),+60=y(+40)+titleHeight(+D0),+64=width(+44),+68=height(+48)-titleHeight-(D4==D8?8:55). Constructor does not initialize these fields. Live38484 values were invalid and hid content. Scoped preview reproduces these stores; interactive preview repeats geometry on drag/tab change, without calling full3504B0. Pure34DB30 copies this rectangle into the selected tab."
+    },
+    {
+      "address": "0x4434CE73",
+      "comment": "Bounded tab-updater layout tail34CE73..34CEAE: selected group via tab+84 vector of20-byte entries and tab+80 index. Rectangle from tab+6C/+70/+74/+78 removes130-pixel sidebar (x+=130,width-=130), then calls pure34B860. Next34CEC8 calls34A4B0 forwarding blocked-input flag. Full updater includes input and remains partial; preview reproduces geometry and settled animation data only."
+    },
+    {
+      "address": "0x4434A4B0",
+      "comment": "Partial group input/layout updater, ECX=group, stack blocked-input flag, RET4 at34AB6C. Geometry34A8B0..34AA9E chooses1..4 columns with minimum276 width and16 gutters, calls width setter3372A0 and child position virtual3. Child input virtual1 gets true when caller flag set (34AB00..19). Top scroll branch may enter protected helpers if group+68 nonzero; contract unresolved. Working interactive preview first sets+68=0 to skip that branch, calls layout with blocked=true on initial layout/drag/tab changes, then ticks only known observer-free value controls separately. Gameplay callbacks/full3582C0 poll not invoked."
+    },
+    {
+      "address": "0x4433B631",
+      "comment": "Actual menu content test38484 faulted at runtime4467B646 readingA0. This branch loads missing input global4481E160 and invokes virtual40(vtable+A0) with button codeEDX to obtain a key name. Corrected preview binds independently verified current InputSystemVersion001 before layout and verifies72->INS. Contents visible and confirmed in25980; interactive follow-up10836. Full containing keybind routine remains partial. Evidence menu-content-fault-38484.log/dmp."
+    },
+    {
+      "address": "0x4432EF80",
+      "comment": "Partial native checkbox UI updater, ECX=control, one blocked-input stack flag, RET4. Geometry/attachment and hover updates precede blocked branch; unblocked rectangle hit plus input_button_pressed_this_frame(107) toggles local bytecontrol+138 then control_notify_value_observers335F10. Interactive preview permits this native updater only for empty observer vectorCC/D0 and empty attached-child vector124/128. Actual10836 UI click toggled object448202A0 byte0->1->0 and user confirmed controls work. Shared tooltip/attachment helpers remain partial; no claim of recovered gameplay binding."
+    },
+    {
+      "address": "0x4432DBC0",
+      "comment": "Partial action-button input updater. When unblocked and hit/left edge, paths call callback objectcontrol+154 virtual2, or enter confirmation statecontrol+8=2 when byte+158 set. Confirmation branch invokes same callback after hit test. These callback contracts are not recovered; current scoped interactive preview leaves action-button updates disabled while tabs/drag/basic values work. Do not equate callback rendering with validated config/gameplay actions."
+    },
+    {
+      "address": "0x443504B0",
+      "comment": "Native window UI updater remains partially reversed, ECX=window, no explicit stackargs, plainRET. Handles shown/fade, configured togglebutton+9C, native drag/resize, tab switching, search routing, and selected-group layout/input. Actual integrated menu23896 now calls this every paint instead of manually whitelisting observer-free widgets. Offline copied-state replays for misc, aimbot, and search completed with balanced stack and no loader_data field reads; allocations and text metrics were explicit models, not pixels. User confirmed multi-selects, keybinds, sliders and search work in23896. Does not recover gameplay startup. See native-ui-update-probe-39732-tab*-search*.json and native-ui-input-findings.md."
+    },
+    {
+      "address": "0x4432BA40",
+      "comment": "Partial full-frame coordinator. UI frame portions32BBA9..32BC0A clear transientflags, query cursor, save focusedwindow/activecontrol;32BC12..32BE35 copytogglekey, CtrlF/Escape search, update/draw nonfocusedwindows thenfocusedwindow, activecontrol virtual1(false)/virtual0 draw, deferredcallback finalization and searchfocuscleanup. Full function also calls cosmetic syncE3EF0, periodic2CBBB0/14DB50/14B330/164580 and configselectionupdate: these contracts remain unresolved and fullframe is NOT called live. Integrated menu_ui.cpp reconstructs only verified UI coordination around original3504B0/351AB0. User23896 confirms dropdown/keybind/slider/search. Original feature callback poll3582C0 remains excluded. No gameplay success claimed."
+    },
+    {
+      "address": "0x4434EB10",
+      "comment": "Partial native text editing updater, ECX=control, bool blocked stackarg/RET4. Uses114-button native state/duration arrays, InputSystem40 ButtonCodeToString forcodes1..62, timing+1C/+0 for repeat; Ctrl83+A11 selectall, Escape70, Enter64, Backspace66, Space65, Tab67. State+8==2 is editing,336EA0 resetsfocus and335F10 notifiesobservers. No WM_CHARqueue needed on observed path. Fullkeyboard states supplied by integratedUI from verified Source46 ButtonCodeToVirtualKey and Win32 key sampling. User23896 confirmed search typing. Native excerpt text-edit-input-native-excerpt.txt; other callbacks remain partial."
+    },
+    {
+      "address": "0x4434A776",
+      "comment": "Protected wrapper44A12A50 resolves current user32.GetFocus (observed39732 runtime775AF8D0); next44CEFB77 resolves user32.GetActiveWindow (77598B30), not loader_data CPUguard. Originalgroupupdater compares results, clearsgroup+74 wheelvelocity on mismatch. Earlier concern that this scroll branch required reconstructed loadercontext was not supported. Offline models use explicitly captured read-only GUI thread handles. Native scroll path now retained in integratedwindow update; group+68 no longer forcedzero."
+    },
+    {
+      "address": "0x443582C0",
+      "comment": "Partial fullbuttonpoll: pollsSource cursor/buttons, updates states/durations/wheel AND feature callback/toggle registries. IntegratedUI does NOT call this dispatcher: it supplies all114 Sourcebuttonstates0up/1pressed/2held/3released, helddurations andwheel using foreground-gatedWin32 sampling plusactualSource46 keyconversion. UI coordinator routes originalwindows/controls/popups without featurehotkeycallback dispatch. User23896 confirmsmulti-select/keybind/slider/search; gameplay bootstrap unresolved."
+    },
+    {
+      "address": "0x4481E160",
+      "comment": "Original inputsystem interface pointer, now bound to current InputSystemVersion001 by normal menuUI initialization. Verified installedinputsystem.dll slot40 RVA2B20 ButtonCodeToString,46 RVA2C00 ButtonCodeToVirtualKey. Actual46 body558BEC8B45088B0485<tableDWORD>5DC20400; 107-entrytable checked11->VK_A41 and72->VK_INSERT2D. Stable diskSHA and relocation-awareguards pin both methods. Copied table informs fullUI keyboardstates; no fullfeaturecallbackpoll called."
+    },
+    {
+      "address": "0x441564B0",
+      "comment": "PARTIAL protected hook/event setup, native ABI/caller not yet fully verified. OFFLINE copied-state23896 probe reaches balanced caller sentinel after5780155 instructions with explicit CPUguard/allocation models; inline_hook_create_record1554F0 intentionally modeled as allocation FAILURE for all requests, and Source AddListenerGlobal modeled as hypothetical success. Thus this is NOT successful hook setup and no hook was installed.24 requests enumerated,7target0. New offline field bindings:4481E168 VClient018,16C VEngineVGui001 (not IPanel),198 CClientState from currentEngine78getter,1AC VEngineRenderView014,1FC VFileSystem017,188 GAMEEVENTSMANAGER002. Field-role bindings are evidence-backed hypotheses, not live context. Seven missing targets include one old engine signature plus six cleared XORpointer pairs. Core CreateMove/other vtable installation remains unresolved. See analysis/menu/feature-readiness-23896.json. No live subsystem call applied."
+    },
+    {
+      "address": "0x444DE108",
+      "comment": "13th captured CModule object,40bytes: hash35153F28=FNV1a(panorama.dll), originalHMODULE1B290000, cache at+8. Constructor wrapper549A0 calls module_export_cache_construct9F790 on this object and registers destructor3EA520; neither shared cache constructor nor destructor binds hash/handle. Previously omitted from12-entry preserve/rebind manifest; actual23896 hash/handle0/0 despite panorama loaded. Source now validates/preserves this exact input and transactionally binds current module as14-module manifest. Build feature-resolver-14 tests22pass, NOT game-loaded."
+    },
+    {
+      "address": "0x444DE130",
+      "comment": "14th/final captured CModule object,40bytes endingRVA4DE158: hashFC70FD90=FNV1a(localize.dll), originalHMODULE1BAB0000; cache at+8. Constructor53E00 calls9F790 then registers destructor3E9E90. Shared constructor leaves first8bytes untouched. Previously omitted from12-entry manifest, actual23896 hash/handle0/0 with localize loaded. Source now preserves/rebinds; all22checks pass in feature-resolver-14, NOT live-loaded. Do not equate this prerequisite repair with working gameplay."
+    },
+    {
+      "address": "0x443560A0",
+      "comment": "Partial callback registration helper: hashes argument0 string FNV1a into map44B47EE0, updates stored callable via34FBC0 using stackarg8. If registrationflag44B47ED4 is0, calls interface4481E188 virtual6 with listener447F3D54 and flag0, then sets flag1. Installed GAMEEVENTSMANAGER002 virtual6=6C2A2900 is consistent with global listener registration; offline1564B0 can continue with explicit hypothetical success model after reaching Source locking boundaries. Original registration was NOT invoked live; full callback-map types remain partial."
+    },
+    {
+      "address": "0x444DE1AC",
+      "comment": "Render-view interface role strongly supported by native1330xx consumers: virtual4 float blend and virtual6 RGB pointer modulation; protected1564B0 readsvirtual9 and requests callback154690. Explicit OFFLINE binding of current engine VEngineRenderView014 constant singleton6C631D14 produces target6C208F40 and advances to next dependency. Not written live. Must preserve role uncertainty for untraced methods."
+    },
+    {
+      "address": "0x444DE198",
+      "comment": "Client-state pointer role corroborated by captured originalFC7F0010 and current EngineClient014 getters: slot26 loads[engine+59F19C] and tests[state+108]==6; slot78 loads same state and returns[state+9C]. Current observed stateFC2F0010. OFFLINE binding feeds protected1564B0 secondary vtable atstate+8, yielding target6C316110 with detour150350/original44B3B6D0. No live binding/hook applied."
+    }
+  ],
+  "pending_functions": [
+    {
+      "address": "0x440549a0",
+      "end_address": "0x440549b6",
+      "name": "panorama_module_cache_initializer",
+      "prototype": "void __cdecl panorama_module_cache_initializer(void);",
+      "comment": "Complete native22-byte CRT initializer wrapper. No arguments/plainRET. ECX=runtime4481E108, calls shared module_export_cache_construct9F790 then atexit3C9530 with destructor wrapperruntime4472A520, pops arg and returns. Does not bind first8byte module hash/handle; shared constructor starts at+8. This is the panorama resolver omitted from former12-entry manifest. Function definition/name/prototype pending guarded IDA replay because legacy bridge cannot create functions; live address comment retained.",
+      "expected_bytes": "b908e18144e8e6ad04006820a57244e87c4b370059c3"
+    },
+    {
+      "address": "0x44053e00",
+      "end_address": "0x44053e16",
+      "name": "localize_module_cache_initializer",
+      "prototype": "void __cdecl localize_module_cache_initializer(void);",
+      "comment": "Complete native22-byte CRT initializer wrapper. No arguments/plainRET. ECX=runtime4481E130, calls shared module_export_cache_construct9F790 then atexit3C9530 with destructor wrapperruntime44729E90, pops arg and returns. Does not bind first8byte module hash/handle; shared constructor starts at+8. This is the localize resolver omitted from former12-entry manifest. Function definition/name/prototype pending guarded IDA replay because legacy bridge cannot create functions; live address comment retained.",
+      "expected_bytes": "b930e18144e886b9040068909e7244e81c57370059c3"
+    }
+  ]
+}
