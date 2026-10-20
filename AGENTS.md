@@ -1,3 +1,19 @@
+## Mandatory feature implementation rule (explicit user requirement)
+
+ALL feature fixes and implementations MUST use the original feature logic from
+the repository's `primordial.bin`. LLMs/agents MUST NOT write their own gameplay
+or visual feature implementations, substitute approximate algorithms, or copy
+replacement feature logic from other projects. Restore and execute the original
+binary routines or their verified original code blocks.
+
+Adapter code may repair verified current-game patterns, field operands,
+interfaces, calling conventions and hook plumbing needed by those original
+routines. It MUST NOT invent feature decisions, formulas or behavior. Reference
+projects may provide investigation leads only. Explicit isolated test fixtures
+are permitted for dependency validation but MUST NOT become live substitutes.
+If an original feature's dependencies or logic remain unresolved, report that
+limit and continue recovery; do not fill the gap with a new implementation.
+
 ## Original movement gameplay test is loaded (2026-10-20; latest status)
 
 Latest user confirmation: "your movemant fix works". This confirms the original
