@@ -136,6 +136,19 @@ void guarded_constructor() {
     } __finally { at<unsigned>(0x91BC4B)=saved; }
     log("constructor returned guard restored=%08X windows=%08X..%08X",at<unsigned>(0x91BC4B),at<unsigned>(0x804E5C),at<unsigned>(0x804E60));
 }
+// Primary window title: MSVC wstring at RVA4B33B4 whose chars draw351AB0 XORs with
+// the key byte at +18h. Rewritten in place only if it decodes to the original title.
+void rename_title(const wchar_t* title) {
+    auto& size=at<unsigned>(0x4B33C4);auto capacity=at<unsigned>(0x4B33C8);auto key=at<unsigned char>(0x4B33CC);
+    auto* chars=capacity>=8?at<wchar_t*>(0x4B33B4):&at<wchar_t>(0x4B33B4);
+    size_t length=wcslen(title);
+    bool original=size==10;
+    for(unsigned i=0;original&&i<size;++i)original=(chars[i]^key)==L"primordial"[i];
+    if(!original||length>capacity){log("title rename skipped size=%u capacity=%u",size,capacity);return;}
+    for(size_t i=0;i<length;++i)chars[i]=static_cast<wchar_t>(title[i]^key);
+    chars[length]=0;size=static_cast<unsigned>(length);
+    log("title renamed to %ls",title);
+}
 bool initialize_menu() {
     at<void*>(0x4DE15C)=surface;
     at<void*>(0x4DE174)=engine;
@@ -162,6 +175,7 @@ bool initialize_menu() {
     bool primary=false;
     for(unsigned i=0;i<4;++i){auto object=reinterpret_cast<unsigned*>(begin)[i];log("window[%u]=%08X",i,object);primary|=(object==base+0x4B33B0);}
     if(!primary){log("FAILED primary window not in constructed tree");return false;}
+    rename_title(L"cyganmordial");
     at<void*>(0x804DF8)=reinterpret_cast<void*>(base+0x4B33B0);
     at<unsigned char>(0x4B3449)=1;at<float>(0x4B3444)=1.0f;
     InterlockedExchange(&initialized,1);
