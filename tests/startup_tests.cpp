@@ -94,7 +94,7 @@ int main(int argc, char** argv) {
         // instructions: these formerly used old-process heap addresses.
         static_assert(sizeof(std::wstring) == 24);
         constexpr size_t menu_strings[] = {0x4B33B4, 0x4B3D38, 0x4B349C, 0x4B3584,
-                                           0x4B366C, 0x4B3D14, 0x4B3C44};
+                                           0x4B366C, 0x4B3D14, 0x4B3C44, 0x4B3C74, 0x4B3C14};
         for (const size_t offset : menu_strings) {
             require(word(image, offset) == 0 && word(image, offset + 16) == 0 &&
                 word(image, offset + 20) == 7, "menu wstring was not made empty");
@@ -189,7 +189,7 @@ int main(int argc, char** argv) {
             "bad selector instruction profile partially changed the image");
         for (const size_t offset : {size_t(0x4B33B4), size_t(0x4B3484), size_t(0x4B3D38),
                                   size_t(0x4B349C), size_t(0x4B3584), size_t(0x4B366C),
-                                  size_t(0x4B3D14), size_t(0x4B3C44)}) {
+                                  size_t(0x4B3D14), size_t(0x4B3C44), size_t(0x4B3C74), size_t(0x4B3C14)}) {
             image = original; image[offset] ^= 1; snapshot = image;
             require(!startup::prepare(image.data(), image.size()).ok && image == snapshot,
                 "bad menu ownership profile partially changed the image");

@@ -25,6 +25,13 @@ Result prepare(uint8_t* image, size_t size) {
         // the second label through the same verified wstring storage helper.
         {0x4B3D14, {0x41C66620, 0, 0, 0, 18, 23}},
         {0x4B3C44, {0x417EADA0, 0x3C386838, 0x0097D52C, 0x443E11D5, 19, 23}},
+        // Original scripts-directory initializer162FA0 releases this captured
+        // object before assigning its native primordial/scripts literal.
+        {0x4B3C74, {0x1D865D48, 0x44D214EA, 0x34340000, 0x443E43D0, 18, 23}},
+        // Original periodic label/path refresh147ED0 releases this object.
+        // Native-frame12820 exposed the captured417EA748 heap free; the
+        // complete offline frame independently requires this same repair.
+        {0x4B3C14, {0x417EA748, 0, 0x44876B28, 0x42BEE840, 20, 23}},
     };
     constexpr size_t selector_guard = 0x34356A;
     constexpr uint8_t captured_selector_guard[] = {

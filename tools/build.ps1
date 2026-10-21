@@ -4,7 +4,9 @@ param(
     [string]$OutputDirectory = 'build',
     [switch]$SkipTests,
     [switch]$MenuPreview,
-    [switch]$FeatureProbe
+    [switch]$FeatureProbe,
+    [switch]$FovProbe,
+    [switch]$VisualProbe
 )
 $ErrorActionPreference = 'Stop'
 $workspace = Split-Path $PSScriptRoot -Parent
@@ -47,6 +49,10 @@ try {
             $extraArguments += "-DBUILD_MENU_PREVIEW=$previewSetting"
             $featureSetting = if ($FeatureProbe) { 'ON' } else { 'OFF' }
             $extraArguments += "-DBUILD_FEATURE_PROBE=$featureSetting"
+            $fovSetting = if ($FovProbe) { 'ON' } else { 'OFF' }
+            $extraArguments += "-DBUILD_FOV_PROBE=$fovSetting"
+            $visualSetting = if ($VisualProbe) { 'ON' } else { 'OFF' }
+            $extraArguments += "-DBUILD_VISUAL_PROBE=$visualSetting"
         }
         if ($component.Source -eq 'steam_module') {
             $probe = Join-Path $buildRoot 'primordial-x86-native\mapping probe\csgo.exe'

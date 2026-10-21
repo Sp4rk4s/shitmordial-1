@@ -213,7 +213,7 @@ def probe(process, image, teb, entry, marker, synthetic_fields=None, cpuid_overr
                             break
                         path.extend(char)
                     directory = path.decode('utf-16-le').replace('\\', '/')
-                    if directory != 'primordial/configs/*' or args[1] != 1 or any(args[3:]):
+                    if directory not in ('primordial/configs/*','primordial/scripts/*','primordial/nades/*') or args[1] != 1 or any(args[3:]):
                         result['stop_reason'] = 'unmodeled virtual FindFirstFileExW arguments'
                         event['path'] = directory
                         cpu.emu_stop()
@@ -258,7 +258,7 @@ def probe(process, image, teb, entry, marker, synthetic_fields=None, cpuid_overr
                     cpu.emu_stop()
                     return
                 directory = path.decode('utf-16-le')
-                if values[2] or directory.replace('\\', '/') not in ('primordial', 'primordial/configs'):
+                if values[2] or directory.replace('\\', '/') not in ('primordial', 'primordial/configs','primordial/scripts','primordial/scripts/include','primordial/nades'):
                     result['stop_reason'] = 'unexpected virtual config CreateDirectoryW arguments'
                     cpu.emu_stop()
                     return
@@ -281,6 +281,18 @@ def probe(process, image, teb, entry, marker, synthetic_fields=None, cpuid_overr
                     target=hex(target),replacement=hex(replacement),original_out=hex(original_out),
                     preceding_image_reads=list(image_data_reads)[-20:])
                 cpu.mem_write(output,bytes(12));value=output
+            elif name == 'synthetic_are_file_apis_ansi':
+                value=1
+                event['model']='Explicit OFFLINE ANSI-file-API case; not an observed target result'
+            elif name == 'synthetic_ascii_include_to_wide':
+                args=struct.unpack('<7I',bytes(cpu.mem_read(sp,28)))
+                if args[1:3]!=(0,8) or args[4]!=7 or bytes(cpu.mem_read(args[3],7))!=b'include' or (args[5] and args[6]<7):
+                    result['stop_reason']='outside exact include ASCII conversion fixture';cpu.emu_stop();return
+                if args[5]:cpu.mem_write(args[5],'include'.encode('utf-16-le'))
+                elif args[6]:
+                    result['stop_reason']='invalid include conversion output arguments';cpu.emu_stop();return
+                value=7;extra_pop=24
+                event['model']='Explicit OFFLINE exact ASCII include conversion/query; no target API call'
             elif name.startswith('observed_win32_handle:'):
                 value=int(name.split(':',1)[1],0)
                 event['model']='No-argument Win32 handle getter; result copied from explicit read-only UI focus observation, not a live target call'

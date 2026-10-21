@@ -3,17 +3,35 @@
 Windows C++20 loader for the supplied x86 Primordial dump and legacy CS:GO.
 The normal loader includes the original menu: Insert toggles it, and the user
 confirmed dragging, tabs, checkboxes, multi-selects, keybinds, sliders and search.
+The menu now runs the intact original frame from `primordial.bin`, replacing the
+reconstructed C++ coordinator. The user confirmed rendering and controls work
+with this path. Normal builds include the original config/script-directory
+initializers and verified current MaterialSystem binding. Latest default outputs:
+`build/original-visual-particles/` is the latest gameplay-confirmed visual build. See
+[native frame recovery](analysis/menu/native-frame-restoration-findings.md).
 **Gameplay test scope: original bunnyhop, infinite duck stamina, autostrafer and
 fast stop.** The normal loader executes original feature machine code with
 verified current Source field/interface bindings. The user confirmed this movement
 build works in gameplay; separate confirmation for each control was not supplied.
 Earlier bunnyhop/duck confirmation covered the old bridge.
 
+**Render FOV and viewmodel FOV are also confirmed working**, using original
+binary code. The normal loader includes both FOV controls; the optional
+`fov_probe.dll` is only a diagnostic extension for an older loaded normal loader. See
+[FOV recovery and test](analysis/menu/original-viewmodel-findings.md).
+
+**Original fire and smoke colours are confirmed working.** The normal loader
+hooks the current game's particle initializers directly to unchanged callbacks
+in `primordial.bin`. Enable “modulate fire” and select the smoke colour in the
+menu. Player ESP and chams are still being recovered; they are not enabled by
+this result. See [visual recovery](analysis/menu/original-chams-recovery-findings.md).
+
 Current source also repairs all fourteen module resolver inputs and one proven
-event-dispatch signature. All 27 native checks pass. Latest test DLLs are under
-`build/original-gameplay/`; its normal loader is injected into fresh CS:GO5336.
-To build the same version, run `tools/build.ps1 -OutputDirectory build/original-gameplay`;
-select it in the controller with `--release build/original-gameplay`.
+event-dispatch signature. The tested visual build passes31 checks; additional
+chams dependency tests are separate from gameplay validation. Its DLLs are under
+`build/original-visual-particles/`.
+Build with `tools/build.ps1 -OutputDirectory build/my-build`;
+select that directory in the controller with `--release build/my-build`.
 After loading a local map, run `joingame; jointeam 2` (T) or
 `joingame; jointeam 3` (CT). In the latest session, `jointeam` alone silently left
 the player unassigned; the user confirmed this initial join step resolves it.
@@ -43,7 +61,7 @@ Source DLL build documented in
 
 ## Compile
 
-Build the loader, TLS companion and x64 Steam stager, then run the 25 checks:
+Build the loader, TLS companion and x64 Steam stager, then run the checks:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\build.ps1
@@ -81,7 +99,10 @@ its TLS companion automatically.
 ## Inject automatically
 
 Start with Steam running and signed in, and CS:GO closed. If Steam already has a
-stager from another build folder pinned, restart Steam manually first.
+stager from another build folder pinned, select its build root explicitly with
+`--stager-release` when testing a new loader, or restart Steam to replace it.
+The existing stager must support the same staging protocol and raw binary;
+loader handoff/checksum/ownership checks still apply.
 
 Check current processes and any existing payload state:
 
@@ -107,8 +128,8 @@ Every automated launch passes **`-windowed -insecure -steam`**. Do not use Steam
 app 730 launch command here: on this installation that selects CS2.
 
 After the controller reports that the integrated menu completed its first draw,
-press **Insert** to show/hide it. Only the four movement features listed above
-are ready for gameplay testing; responding controls alone do not prove an effect.
+press **Insert** to show/hide it. The movement, FOV and particle colours listed
+above are ready for testing; responding controls alone do not prove an effect.
 
 If the correct Steam stager already prepared a fresh running game, inject just
 the normal loader through the controller:

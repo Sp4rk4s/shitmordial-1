@@ -1,3 +1,138 @@
+## Continued original visual dependencies (2026-10-21; latest follow-up)
+
+Read analysis/menu/original-visual-progress.md. User put11188 in a local map for
+read-only actual player method verification. Networkable9/10 and real resource
+pointer now captured; prior disconnected snapshot is superseded for these roles.
+Original team/observer capsule executes36B2B0/36ACC0/A06C0/36ABF0 with only field
+operands/rel32 repaired, not new classification.23 native cases pass. It is not
+yet invoked by a live chams hook. Original134810 material initialization has5
+native cases,132FF0 material passes11; latest build/original-visual-team-tests/
+passes34 CTests (28x86,6Steam), NOT injected. Preserve user-confirmed particle
+build in11188. Latest validation.json distinguishes these artifacts and scopes.
+
+Current ModelRender21/1 and RenderView4/6/9 roles independently captured. Actual
+CCSInput camera vectorAC/B0/B4 differs from original134B50'sB0/B4/B8; retain this
+verified repair requirement. OriginalSceneEnd154690 forwards saved original then
+jumps real134B50;134C00 is interior. Oldcall2DC6C5F0 on4DE200 at13502E remains
+unresolved; do not rebase captured object or skip the call. Actual133470 script
+vectors are naturally empty, but manual phase and remaining dependencies still
+prevent player chams. Original player ESP producers also remain unresolved.
+Completed helpers/material-pass contract retained/read back/indexed live in IDA;
+latest disk save unverified. No gameplay claims beyond confirmed fire/smoke.
+
+## Original fire/smoke visual effects confirmed (2026-10-21)
+
+User confirmed "Both colours change" for original modulate-fire and smoke
+colour controls in fresh game11188. Normal loader from build/original-visual-particles/
+executes complete unchanged155F40/155C30 callbacks and native6CF70 hash helper.
+particle_features.cpp supplies only guarded MinHook plumbing. Current client RTTI
+C_INIT_RandomColor vtableD09110 slots29/30 proves targets9597A0/959B30; complete
+callback/helper hashes, installed Source identity, native UI labels and layout
+guards checked before publication. No replacement feature behavior. User permits
+hazedumper, Valve source-sdk-2013 and morgandusty/Osiris-release as investigation
+references only; their feature implementations must never replace primordial.bin.
+
+Read analysis/menu/original-chams-recovery-findings.md and original-esp-recovery-findings.md.
+Actual player ESP chain154790->F06C0->13ACC0->ED330->138130->137310 needs original
+cache producersF0B30/F03E0. Actual chams hook152EF0->133470->132FF0/133C90 is
+outside earlier24-hook inventory; entity/phase/context dependencies unresolved.
+Do not describe particle tint as player ESP/chams.134C00 is an INTERIOR phase
+block with EBP live-ins, not a callable entry.133719 is another false IDA split.
+
+All31 CTests pass (25x86/6Steam), including24 unchanged native particle cases
+and13 original projection cases. Artifacts/live receipt/user confirmation are in
+build/original-visual-particles/validation.json. py -3 tools/capture_particle_state.py
+does read-only verification: state1, menu3, native callback bytes unchanged,
+both actual Source targets jump directly to original payload routines, saved
+trampolines valid, removed mouse slot7FB878=0. Discover PID before access.
+Preserve this working game. No push. Baseline3984 needed termination after
+WM_CLOSE timeout for the fresh test; Steam7460/IDA preserved.
+
+Original projection362810 and three particle/helper functions plus material
+initializer134810 named/prototyped/commented/read back/indexed in live IDA.
+Latest disk save unverified. Material initializer isolated tests prepared next;
+no live chams material initialization or model hook has been enabled.
+
+## Original native menu frame is confirmed working (2026-10-21; previous status)
+
+User confirmed "Renders and controls work" in fresh game10260. Read
+analysis/menu/native-frame-restoration-findings.md. Actual loaded normal loader:
+build/native-menu-frame/primordial-x86-native/primordial_loader.dll SHA
+490689ac9dedf655d517ff801323d96cd76ec4d3bec54a8f5a221bf34af0f28c.
+This executes intact original32BA40, original config2CAB40 and script-directory
+162FA0; there is no separate preview. Discover current PID before access.
+
+The reconstructed C++ frame coordinator has been removed from normal source.
+Source panel/font/input bindings remain compatibility adapters. New normal
+default build is build/native-menu-default/; no extra native-mode switch needed.
+It preserves the tested native path but has NOT replaced the running game DLL.
+All29 CTests pass in the native-frame build; see default-build validation.json
+for final source/default artifact checks. Full original paint154790/bootstrap
+and unrelated gameplay features remain unresolved, not enabled by this result.
+
+Native frame prerequisite repairs: original script directory4B3C74 and periodic
+label/path4B3C14 now have exact captured-wstring ownership guards in startup.
+4DE19C binds real current VMaterialSystem080, slot84/current+1AF30 independently
+matched to native effects/spark FindMaterial call. Six Source module identities
+and14 method guards now generated from exact installed DLLs. No own renderer or
+feature decisions substituted. Script initializer162FA0 assigns primordial/scripts
+and creates include; complete offline path changes only its string in image.
+
+First native-frame test12820 crashed freeing captured417EA748. Complete offline
+repair list was audited; missing4B3C14 profile added, then fresh10260 succeeded.
+Crash/minidump retained. Baseline21392 needed termination after WM_CLOSE timeout.
+Windows quarantined the injector before that test; user changed their security
+setting/requested reinjection. Same helper rebuilt; no agent security changes.
+Steam7460 and IDA preserved. No mouse hook restored:7FB878=0 live. No push.
+
+Live native-frame readback: handoff3/menu3, centered1, original frame bytes
+unchanged, actual config/scripts/hitsounds paths fresh, periodic refresh time
+103.01026, FOV state2. Read-only capture: tools/capture_native_menu_frame.py.
+Original config/script entry names/prototypes/comments applied through guarded
+IDA replay; user reported successful database save, names read back. Preserve
+this working game. Default-build cleanup does not require another restart.
+
+## Latest compiled upstream merge (2026-10-21; previous status)
+
+Cloned latest remote branch fix/menu-logo-accent-crashfix into
+build/upstream-698cd8d and fast-forwarded feature/movement-restoration to
+698cd8d03b84f01cb885f3c6b908bcb40fa92f79. Reapplied local original-FOV work
+without conflicts. Both remote feature branches are ancestors of this combined
+HEAD; main retains the user's intentional older feature revert. Latest upstream
+change enables the original ac-130 loader-input flag;
+its additional feature behavior has NOT been game-validated.
+
+Built combined sources with tools/build.ps1 -OutputDirectory
+build/upstream-merged -FovProbe; exit0, all28 CTests pass (22x86,6Steam).
+See build/upstream-merged/validation.json for artifact identities. This build
+has NOT been injected. Mouse hook remains removed from source/build targets;
+the earlier live cursor_probe hook still requires game exit to disappear.
+No restart/injection/push during this update. Local FOV changes remain
+uncommitted; backup stash "Backup merged FOV work without mouse hook before
+698cd8d update" retained. Do not reapply the older stash with cursor code.
+
+## Previous upstream merge and cursor-hook removal (2026-10-20)
+
+User requested latest remote changes merged with local work and removal of the
+newly recovered mouse hook. Current feature/movement-restoration fast-forwarded
+to origin/fix/menu-logo-accent-crashfix f79f153, then local original-FOV work was
+reapplied cleanly. Remote logo/accent/title/startup changes are retained. Backup
+stash "Backup local FOV and hook investigation before upstream merge" is kept.
+
+Removed native_cursor.cpp/.h, cursor_probe_entry.cpp, its isolated test, and all
+cursor build options/targets/menu installation calls. Do not reintroduce the
+original Surface67 LockCursor hook without a new user request. Read-only hook
+inventory and IDA findings remain research only. Current game5336 previously
+loaded cursor_probe.dll at33180000 and its pinned hook remains until game exit;
+source removal does not remove an already-installed live detour. No restart or
+new injection was performed for this merge. Discover current PID before access.
+
+Combined build target: build/upstream-merged/ (actual test/build status is in
+its validation.json when present). This merged build has NOT been game-loaded.
+Do not describe historical movement/FOV confirmations as merged-build validation.
+The upstream team/map patch remains part of the requested merge; tests do not
+establish its gameplay correctness. Nothing from this merge has been pushed.
+
 ## Mandatory feature implementation rule (explicit user requirement)
 
 ALL feature fixes and implementations MUST use the original feature logic from
@@ -14,7 +149,64 @@ are permitted for dependency validation but MUST NOT become live substitutes.
 If an original feature's dependencies or logic remain unresolved, report that
 limit and continue recovery; do not fill the gap with a new implementation.
 
-## Original movement gameplay test is loaded (2026-10-20; latest status)
+## Original FOV is gameplay-confirmed (2026-10-20; latest status)
+
+User confirmed BOTH render/viewmodel FOV controls change correctly. Read the
+latest section of analysis/menu/original-viewmodel-findings.md. New artifacts:
+build/original-fov/;28 CTests pass,20 production viewmodel scenarios and5 native
+render-FOV cases. fov_probe.dll is loaded at33200000 in preserved game5336,
+beside its existing original-gameplay normal loader. No restart, movement-hook
+replacement or full startup rerun. Discover current PID before access.
+
+Latest live state2, views/models9129/9129, world90->123 with render slider33,
+weapon60->43 with viewmodel slider16 (native90-world+baseline+slider behavior).
+Menu state3, movement commands63942/changes4181/state2; no reported FOV fault.
+User confirmation covers both FOV controls; other zoom/third-person/camera
+features remain unresolved and were not reimplemented.
+
+original_fov.cpp executes guarded copies of original14FE90,A1CD0,36ABF0,
+369370 and render leaf1500BD..1500DB. Only verified field operands/rel32 calls
+and Source binding plumbing change. fov_features.cpp hooks distinct current
+ClientMode18/35, supplies actual current camera bytes and public interfaces,
+scopes/restores all touched payload globals, and uses the real resource POINTER
+SLOT. Original code performs every feature calculation/gate. This is compiled
+into new normal loader as well; that new normal DLL is compiled but NOT loaded
+in current game. Optional extension is built with tools/build.ps1 -FovProbe.
+
+Current source35 role independently identified via viewmodel_fov ConVar. Resource
+slotclient+3231380 corroborated by unique diagnostic match, constructor writer,
+typed C_PlayerResource destructor references/RTTI and current m_bAlive1140 table.
+Native render leaf annotated/read back/indexed in existing14FF30; containing
+function remains partial and was not confidently renamed. Existing helper ABI/
+comments remain retained. Latest IDA disk save unverified. Use
+py -3 tools/capture_fov_state.py --pid 5336. Hashes/confirmation in
+build/original-fov/validation.json. These FOV changes are not committed/pushed.
+
+## Original movement gameplay test is loaded (2026-10-20; historical preparation)
+
+Latest next-feature preparation: read analysis/menu/original-viewmodel-findings.md.
+Newest follow-up: viewmodel test now executes original A1CD0/36ABF0/369370
+helpers instead of replacing them, and passes20 scenarios. All28 CTests pass.
+4DE1B0 is the ADDRESS OF the player-resource POINTER SLOT, not an object orNULL;
+initial isolated fixture fault identified this required indirection, now fixed.
+Current m_bAlive field1140 verified in PlayerResource RecvTables. Candidate
+current resource slotclient+3231380 has a unique diagnostic match and C_PlayerResource
+typed destructor writer evidence; objectNULL at capture, live RTTI still pending.
+A1CD0/36ABF0 now named/prototyped/commented/read back/indexed as completed native
+helpers; prior partial status below is superseded. Camera binding/call order and
+final production adapter remain unresolved. No new DLL/hook loaded in game5336.
+Movement/rule commits56d3850 and4f7378e pushed on feature/movement-restoration.
+Original viewmodel-FOV callback14FE90 now passes12 isolated native cases;
+build/original-viewmodel passes28 CTests (22x86,6Steam), NOT injected. No visual
+feature hook installed; preserve confirmed game5336. Original slider532030+130
+and callback linked; current ClientMode35 corroborated by native viewmodel_fov
+ConVar use. Current fields captured read-only with tools/capture_visual_fields.py:
+scoped9974,activeWeapon2F08,life25F,observerMode3388,observerTarget339C,item2FBA.
+Observer/player-resource helper dependencies and camera setup binding still need
+recovery. Do not replace them or the original FOV formula with new logic.
+Completed callback/weapon-handle helper retained/read back/indexed in IDA;
+A1CD0/36ABF0 are partial. Latest IDA disk save unverified. Next-feature changes
+after4f7378e remain uncommitted preparation.
 
 Latest user confirmation: "your movemant fix works". This confirms the original
 movement build generally; no separate result for each of the four controls was

@@ -185,6 +185,8 @@ def main():
     parser.add_argument('--game-pid', type=int)
     parser.add_argument('--game', type=Path, default=Path(r'C:\Program Files (x86)\Steam\steamapps\common\csgo legacy\csgo.exe'))
     parser.add_argument('--release', type=Path, default=ROOT / 'build')
+    parser.add_argument('--stager-release', type=Path,
+                        help='Explicit build root for an already pinned, compatible Steam stager; loader still comes from --release')
     parser.add_argument('--mcp', default='http://127.0.0.1:3000/mcp')
     parser.add_argument('--timeout', type=float, default=120)
     args = parser.parse_args()
@@ -211,7 +213,7 @@ def main():
         if state.get('state') != 'stopped':
             raise RuntimeError(f'x32dbg already has a session; preserving it: {state}')
     patcher = args.release.resolve() / 'primordial-x86-native/primordial_loader.dll'
-    stager = args.release.resolve() / 'steam-x64-native/steam_module.dll'
+    stager = (args.stager_release or args.release).resolve() / 'steam-x64-native/steam_module.dll'
     for path in (patcher, patcher.with_name('primordial_tls.dll'), stager):
         if not path.is_file(): raise RuntimeError(f'Missing required DLL: {path}')
     if not game_pid:

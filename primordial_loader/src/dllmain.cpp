@@ -4,6 +4,9 @@
 #include "menu_ui.h"
 #include "event_pattern.h"
 #include "movement_features.h"
+#include "fov_features.h"
+#include "particle_features.h"
+#include "visual_cvars.h"
 #include <windows.h>
 #include <algorithm>
 #include <cstdio>
@@ -60,6 +63,12 @@ static DWORD WINAPI init_thread(LPVOID hModule) {
             printf("[*] Menu hooks installed; waiting for the first UI paint.\n");
             if(!movement_features::install())
                 printf("[!] Movement feature profile refused; menu remains available.\n");
+            if(!fov_features::install(static_cast<HMODULE>(hModule)))
+                printf("[!] FOV installation worker could not start.\n");
+            if(!particle_features::install(static_cast<HMODULE>(hModule)))
+                printf("[!] Original particle installation worker could not start.\n");
+            if(!visual_cvars::install(static_cast<HMODULE>(hModule)))
+                printf("[!] Original visual ConVar installation worker could not start.\n");
         } else {
             printf("[!] Menu UI installation failed. Check primordial_menu.log in the game directory.\n");
         }

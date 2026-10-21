@@ -804,6 +804,171 @@
       "name": "keybind_is_active",
       "prototype": "unsigned char __thiscall keybind_is_active(void *control);",
       "comment": "Verified native control getter/plainRET, ECX=keybind control, returns AL. Key field+130, mode+134, one-shot flag+154. If one-shot and key nonzero and32C360 false, returns input_button_pressed_this_frame. Otherwise modes0..4 select table33AED0: latched state helper3580D0, held input state, inverse-held input state, always true, always false. Hold/inverse-held use input_button_state_pointer and32C360 suppression; zero key returns false. Table and full getter bytes SHA256 guarded in original movement backend. Autostrafer queries this via bind53D700 slot8; duck prefix uses bind5192B0. Test fixtures exercise actual always/never branches; current original menu supplies real key state live. Wider input subsystem meaning remains in existing input annotations."
+    },
+    {
+      "address": "0x4414fe90",
+      "aliases": [
+        "sub_4414FE90"
+      ],
+      "name": "original_viewmodel_fov",
+      "prototype": "float __thiscall original_viewmodel_fov(void *forwarded_this);",
+      "comment": "Verified92-byte original callback, no stack args/plainRET, float returned ST0. Forwards incoming ECX into saved original callback7FB6B8 and saves baseline. Resolves view entity through A1CD0, requires current camera setup4DE1E0 and weapon369370. Old Source operands2DBDB5D3(scoped-byte offset) and2DA842AE(item-definition-word offset) need current binding. Scoped item39/8 and any item49 return original baseline. Otherwise original arithmetic is90-cameraFov(view+B0)+baseline+slider532160. Slider object532030 has live decoded label viewmodel fov add. IDA pseudocode folds mutable slider into a garbage constant: assembly is authoritative. Current Source ClientMode35 is a candidate only; original startup hook/owner linkage and live camera/player dependencies remain unresolved. Isolated test executes original bytes with explicit dependency fixtures; no live hook installed."
+    },
+    {
+      "address": "0x44369370",
+      "aliases": [
+        "sub_44369370"
+      ],
+      "name": "lookup_player_weapon_handle_entity",
+      "prototype": "void *__thiscall lookup_player_weapon_handle_entity(void *player);",
+      "comment": "Verified21-byte native leaf/plainRET. ECX=player; reads field-offset DWORD from captured old-client2DA91016, reads handle at player+offset, calls current ClientEntityList003 slot4 through verified global4DE170, returns its result. Called by original viewmodel-FOV14FE90 and other weapon consumers. Active-weapon field identity is strongly indicated by consumers but exact current field binding remains pending; no stale address is rebased blindly. Null interface/method is not safely handled by original code. Original code must be retained when binding a current offset; not replaced by agent-authored weapon selection logic."
+    },
+    {
+      "address": "0x440a1cd0",
+      "aliases": [
+        "sub_440A1CD0"
+      ],
+      "name": "resolve_local_or_observed_player",
+      "prototype": "void *__thiscall resolve_local_or_observed_player(void *context);",
+      "comment": "Verified native98-byte helper/plainRET, ECX=context. Queries current local index via engine4DE174 slot12 and entity via list4DE170 slot3; caches local at context+2C. If absent returnsNULL. Calls36ABF0; true returns local. Otherwise old offset cells2DA9DC0C(mode),2DAF0360(target handle) select observer target only outside modes0/1/2/3/6, with handle!=-1 and nonnull list slot4 result; fallback local otherwise. Source RecvTables independently verify current observerMode3388/observerTarget339C. Original viewmodel callback14FE90 consumes this result. Native tests now execute this whole original helper with original alive/resource/weapon helpers, covering living local, observer4, mode6/0, invalid/null target and dormant/resource branches. No helper replacement is used in that test; public Source virtual calls remain explicit isolated fixtures. Live camera binding still pending."
+    },
+    {
+      "address": "0x4436abf0",
+      "aliases": [
+        "sub_4436ABF0"
+      ],
+      "name": "player_alive_with_resource_fallback",
+      "prototype": "unsigned char __thiscall player_alive_with_resource_fallback(void *player);",
+      "comment": "Verified66-byte native helper/plainRET, ECX=player, returnsAL. Calls networkable(player+8) slot9. Global4DE1B0 is a POINTER TO the current player-resource POINTER SLOT; helper dereferences it even if the resource object isNULL. It must not be set toNULL or directly to resource object. If dormant and resource exists, returns resource[old-offset2D9B7EE7+networkable.slot10 index]. Otherwise compares DWORD[player+old-offset2D8F9170] to0; nonzero false, zero uses resource alive byte if present, else true. Current RecvTables m_bAlive1140 and m_lifeState25F corroborate field roles; preserve original DWORD comparison and byte-array behavior. Actual original execution passes20 FOV integration cases including dormant alive/dead resources. Public networkable methods/resource storage are isolated fixtures, not live substitutes. Current candidate resource slot is derived independently and not yet bound live."
+    },
+    {
+      "address": "0x443582b0",
+      "end_address": "0x443582b6",
+      "name": "menu_input_capture_active",
+      "prototype": "unsigned char __cdecl menu_input_capture_active(void);",
+      "comment": "Complete six-byte native getter: MOV AL,[runtime44B4869B]; RET. No arguments; returns original menu input-capture byte RVA80869B, high EAX bits unspecified. Original surface LockCursor hook154730 calls this and chooses UnlockCursor when nonzero. Current menu coordinator supplies this flag from original UI state804DF4. This getter does not initialize input or a renderer.",
+      "byte_sha256": "5f2205230ae0bbb130026ec5e61a235485c2ecbed9e9f9349b71dd9fecf5bf05",
+      "aliases": [
+        "sub_443582B0"
+      ]
+    },
+    {
+      "address": "0x44155110",
+      "end_address": "0x44155116",
+      "name": "surface_unlock_cursor_forward",
+      "prototype": "void __fastcall surface_unlock_cursor_forward(void *surface, void *preserved_edx);",
+      "comment": "Complete six-byte native tail thunk: JMP DWORD PTR[runtime44B3B87C]. No stack arguments; passes incoming ECX/EDX unchanged to saved Source UnlockCursor. OFFLINE1564B0 inventory pairs this detour with the current VGUI_Surface031 slot66. No additional cursor behavior. Saved callback must be bound before execution; no live hook applied during this finding.",
+      "byte_sha256": "4264a3cab3eb4b18339fc876f332f5d9ed17aa6e0e8a2233400e7c07fa82bd47",
+      "aliases": [
+        "sub_44155110"
+      ]
+    },
+    {
+      "address": "0x44362810",
+      "aliases": [
+        "sub_44362810"
+      ],
+      "name": "original_project_world_to_screen",
+      "prototype": "void *__cdecl original_project_world_to_screen(void *screen_xy_valid, const float *world_xyz);",
+      "comment": "Verified original RVA362810, size95, cdecl two pointer arguments/plainRET; returns output pointer. Calls interface4DE184 virtual13(world,float[3]); nonzero status or x/y exactly0 or screen width/height8087AC/B0 clears output byte+8 and preserves coordinates. Otherwise truncates floats to int at+0/+4, sets byte+8=1; not a general viewport-bounds check. NaN passes original parity branches and cvttss2si yields INT_MIN. Current3984 VDebugOverlay004 factory engine+10C4F0 returns singleton; slot13 engine+10C380 RET8 forwards to +109E70. Native F06C0 consumes this helper for original ESP screen boxes. 13 isolated x86 cases verify ABI/status/edge/truncation/NaN behavior with unchanged helper bytes; Source projection fixture is test-only. ESP player cache/bootstrap is unresolved; no ESP drawing enabled. Evidence visual-renderer-dependencies-ida.json."
+    },
+    {
+      "address": "0x44155f40",
+      "aliases": [
+        "sub_44155F40"
+      ],
+      "name": "original_particle_random_color_single",
+      "prototype": "int __fastcall original_particle_random_color_single(void *initializer, void *preserved_edx, void *collection, unsigned int arg1, unsigned int arg2, unsigned int arg3, unsigned int arg4);",
+      "end_address": "0x44156247",
+      "byte_sha256": "a4c8e2d09759c9f6626caf27c91b396baf837455a985a8ca09fa795ef62747c5",
+      "comment": "Complete307-byte native RET14 wrapper, ECX=C_INIT_RandomColor initializer, EDX preserved, collection plus four opaque stack DWORDs. Saves/restores initializer RGB vectors+5C/+68 around saved original slot7FB8F8. Traverses collection parents+88; definition+48/name+134; count+30. Root12 fire hashes excluding seven child smoke hashes use5390C8 enable/RGB539328; two smoke root hashes use mode537420>0/RGB5376A8. Only calls signed-FNV6CF70 and saved original. Current client RTTI C_INIT_RandomColor vtable D09110 slot29=9597A0 independently matches vector/layout. All21 hashes matched installed PCF names. Native feature decisions unchanged; production adapter/tests being prepared, no gameplay success claimed."
+    },
+    {
+      "address": "0x44155c30",
+      "aliases": [
+        "sub_44155C30"
+      ],
+      "name": "original_particle_random_color_block",
+      "prototype": "int __fastcall original_particle_random_color_block(void *initializer, void *preserved_edx, void *collection, unsigned int arg1, unsigned int arg2, unsigned int arg3, unsigned int arg4, unsigned int arg5);",
+      "end_address": "0x44155f3a",
+      "byte_sha256": "52fe8cc5f20d9e68b1bb558032f6301086fb76eaeb387b5d64d33347fd1961f7",
+      "comment": "Complete30A-byte native RET18 wrapper, ECX=C_INIT_RandomColor initializer, EDX preserved, collection plus five opaque stack DWORDs. Same original fire/smoke gates, hash lists, RGB min/max writes and restoration as155F40; calls saved original slot7FB8FC. Only other calls are6CF70. Current client RTTI C_INIT_RandomColor vtable D09110 slot30=959B30; actual code reads initializer+5C..70 and collection four-wide attributes. No old Source field operand cells appear in this wrapper. Native decisions unchanged; adapter/native tests under preparation, actual effect unconfirmed."
+    },
+    {
+      "address": "0x4406cf70",
+      "aliases": [
+        "sub_4406CF70"
+      ],
+      "name": "hash_fnv1a_signed_cstr",
+      "prototype": "unsigned int __cdecl hash_fnv1a_signed_cstr(const char *text);",
+      "end_address": "0x4406cfa9",
+      "byte_sha256": "4dfe4697a93dca45c27473dba635b89d7bb4bd8dc4e0fbaf704ec709c95e3940",
+      "comment": "Complete39-byte leaf, one stack C-string argument, plain RET/caller cleanup. Scans NUL length; starts811C9DC5 and updates h=(h XOR sign_extended_char)*01000193 modulo32bits. MOVSX makes bytes80..FF signed; do not replace with unsigned-byte FNV. Empty string returns seed. No globals/imports/calls. Original particle color wrappers155C30/155F40 call this for definition names; all21 literal hashes independently matched installed particle assets."
+    },
+    {
+      "address": "0x44134810",
+      "aliases": [
+        "sub_44134810"
+      ],
+      "name": "original_chams_cache_builtin_materials",
+      "prototype": "void __cdecl original_chams_cache_builtin_materials(void);",
+      "end_address": "0x441348e5",
+      "byte_sha256": "5718c556fa802ef2ace33f60d16f5a3bdc71cf0721263113bd1470b920c6f9da",
+      "comment": "CompleteD5-byte no-argument native material-cache initializer, plain RET. XOR-decodes debug/debugambientcube and debug/debugdrawflat from original literals, calls MaterialSystem4DE19C slot84 FindMaterial(name,NULL,false,NULL), saves pointers7DC930/7DC934 and calls each material slot12 AddRef. NativeA287E calls this initializer. No null/error return guard: real verified interfaces/methods/materials required. These two cached pointers are consumed by original132FF0/133C90 model material passes. This bounded initializer is closed; full chams dispatcher152EF0/133470 and player-stage dependencies remain unresolved. No live chams hook or initialization enabled by retention."
+    },
+    {
+      "address": "0x4436b2b0",
+      "aliases": [
+        "sub_4436B2B0"
+      ],
+      "name": "original_entities_are_enemies",
+      "prototype": "bool __thiscall original_entities_are_enemies(void *entity, void *other);",
+      "comment": "Verified complete10C-byte original comparator, ECX=entity, one stack other, RET4/AL. NULL other or equal networkable indices return false. Networkable9 dormant/10 index; dormant teams read resource POINTER SLOT4DE1B0 with original operand2DB22972. Ordinary teams operand2D92D648. Mode4DE310==6 &&4DE314==0 uses survival operand2DB5D56F; negative survival team returns true. Otherwise4DE318 or differing teams select result. Current RecvTables independently identify resourceTeamF38/teamF4/survival10410; original354530 mode hashes identify actual game_type/game_mode/mp_teammates_are_enemies. original_team capsule executes native instructions; only5 operand cells repaired. 23 native comparator/observer/indirection/restoration cases pass. No live chams hook enabled."
+    },
+    {
+      "address": "0x4436acc0",
+      "aliases": [
+        "sub_4436ACC0"
+      ],
+      "name": "original_entity_is_enemy_to_local_or_observed",
+      "prototype": "bool __thiscall original_entity_is_enemy_to_local_or_observed(void *entity, bool direct_local);",
+      "comment": "Verified complete13D-byte original observer-aware gate, ECX=entity, stack bool direct_local, RET4/AL. Returns false if originalA06C0 local lookup or entity NULL. direct_local compares local directly through36B2B0; otherwise original36ABF0 alive or observer modes0/1/2/3/6 or invalid/missing target use local; remaining modes resolve actual observer handle via EntityList4 and compare observed entity. Old observer operand cells2DA9DC0C/2DAF0360 repaired to current RecvTable 3388/339C. Capsule executes originalA06C0,36ABF0,36B2B0 dependencies, repairing verified operand cells/rel32 only and scopes/restores interfaces/resource/local/modes. 23 isolated native cases pass, including modes4/5 and dormant resource fallback. Original132FF0 chams uses this gate; full chams runtime remains unresolved."
+    },
+    {
+      "address": "0x44132ff0",
+      "aliases": [
+        "sub_44132FF0"
+      ],
+      "name": "original_chams_entity_material_passes",
+      "prototype": "void __cdecl original_chams_entity_material_passes(void *render_context, const void *draw_state, const void *model_info, const void *bones);",
+      "comment": "Verified original477-byte material/pass routine, four caller-cleaned stack args/plainRET; native classification36ACC0/localA06C0 picks category0/1/2. Material type controls stride15C; RGBA/hidden checkbox stride260. Type1 chooses flat7DC934, other nonzero chooses lit7DC930. Original hidden+visible passes use IMaterial29 flag8000, ModelRender1 forced override, RenderView4/6 alpha/color, saved draw POINTER SLOT7DC950. Native scopes alpha by7DC940 and local thirdperson/scoped control. Nonzero-material path restores blend1/colorwhite/overrideNULL; type0 pass-through intentionally leaves requested alpha, null-material fallback only forwards.11 isolated native material/category/hidden/scoped/fallback/ABI cases pass with unchanged routine; external gate fixtures test-only.23 separate original-team/observer native cases pass. Full scene-phase/dispatcher dependencies unresolved; no live chams enabled."
+    },
+    {
+      "address": "0x4414b830",
+      "aliases": [
+        "sub_4414B830"
+      ],
+      "name": "original_update_aspect_ratio",
+      "prototype": "void __cdecl original_update_aspect_ratio(void);",
+      "comment": "Original no-argument89-byte routine resolves hashCC254CCD=r_aspectratio, then native14B884..14B8AA reads slider533FA8, multiplies by original float0.01 at412EC4 and calls realConVar15 floatsetter. Whole root includes lazy pointer-cache lookup354170; adapter supplies real verifiedConVar ECX to unchanged39-byte leaf with appendedRET, no translated math. Original14F740 invokes before SourceFrameStageNotify atstage5. CurrentClient37+262B20 and engineConVar15+2FBD50 guarded. Six nativeABI/scale cases pass; user confirmed aspect changes correctly in actual11188 using visual_probe frombuild/original-visual-aspect. No extra Source feature logic."
+    },
+    {
+      "address": "0x4414b8c0",
+      "aliases": [
+        "sub_4414B8C0"
+      ],
+      "name": "original_update_blood_spray_removal",
+      "prototype": "void __cdecl original_update_blood_spray_removal(void);",
+      "comment": "Original no-argument7F-byte routine resolves hashD2AB09A1=violence_hblood; native14B914..14B930 uses byte537E28(original blood spray checkbox+138), zeroesEDX, CMP/SETZ then realConVar16 intsetter. Adapter supplies actual SourceConVar ECX to unchanged29-byte leaf. Original14F740 invokes atstage5 afterdecal updater andbeforeaspect. No Source field operands. Four native combinations verify gates,receiver,stack anddecal-beforeblood order. Current normal-source restoration prepared; not loaded in11188. Blood ConVar only, not all possible blood/particle effects."
+    },
+    {
+      "address": "0x4414b940",
+      "aliases": [
+        "sub_4414B940"
+      ],
+      "name": "original_update_decal_removal",
+      "prototype": "void __cdecl original_update_decal_removal(void);",
+      "comment": "Original no-argument7F-byte routine resolves hash2AFB490A=r_drawdecals; native14B994..14B9B0 uses byte537CE8(original decals checkbox+138), zeroesEDX, CMP/SETZ then realConVar16 intsetter. Adapter supplies actual SourceConVar ECX to unchanged29-byte leaf. Original14F740 calls atstage5 beforeblood14B8C0 andaspect14B830. Current engine setter16+2FBE50 independently verified. Four native combinations testbooleaninversion andrealcallorder with isolatedSource fixtures. Normal source prepared; actualdecalbehavior awaitsnewbuildgameplaytest."
     }
   ],
   "data_comments": [
@@ -2446,6 +2611,42 @@
     {
       "address": "0x443798c1",
       "comment": "\n\n2026-10-20 partial original CreateMove-shaped callback: three stack args forwarded to original44B65FE0, derives sequence modulo150,100-byte commands and104-byte verified commands from payload CInput field4DE1A8. CallsF8510 at379A58 among many feature roots. Concrete game-build mismatch: original buffer reads Input+F4/F8; installed native CInput CreateMove atclient+305740 uses+F0/F4. Original XOR call at3799CE/D6 resolves stale client function2DBE2740; installed native checksum called atclient+307260 after verified-command copy. Do not install this whole callback from one corrected pattern or the incomplete decompiler prototype (bad stack warning). No original core hook installed live."
+    },
+    {
+      "address": "0x4414fe93",
+      "comment": "2026-10-20 Source target follow-up: current ClientMode35/client+278BD0 independently reads ConVar client+5245C18; its name pointer+C resolves to viewmodel_fov. Thus current target role is corroborated beyond a reference slot number. Read-only current RecvTables: scoped9974, activeWeapon2F08, life25F, observerMode3388, observerTarget339C, weapon item2FBA. Full native callback14FE90 passed12 isolated cases. Original startup hook linkage, live camera setup capture and A1CD0/36ABF0 observer/player-resource dependencies remain unresolved. No new visual hook installed; confirmed movement game preserved."
+    },
+    {
+      "address": "0x441500bd",
+      "comment": "2026-10-20 bounded original render-FOV block1500BD..1500DB: ESI=current CViewSetup, MOVSS value at+B0, ADDSS slider531EF8, MOVSS back+B0. Intervening MOV AL,[ESI+148] is preserved; no branch/call in this leaf. Native enclosing14FF30 first requires A1CD0 to resolve view entity; adapter preserves that original gate and runs this block before Source OverrideView, matching native order. Wrapper only supplies ESI and preserves it. Original scoped zoom, flag148 modification and third-person branches remain excluded/unresolved, not reimplemented. Production-capsule tests cover -10/0/+10/+20 and no-player gate. Distinct current ClientMode18/35 hooks now loaded via fov_probe in5336, current frame reports real camera90 and baseline weapon60, no reported fault; actual slider effect still requires in-map validation."
+    },
+    {
+      "address": "0x44154731",
+      "comment": "Complete54-byte original LockCursor replacement. Saves incoming ECX/EDX, calls menu_input_capture_active3582B0. When AL!=0 tail-calls virtual66 (+108h) of surface global4DE15C: UnlockCursor. Otherwise restores ECX/EDX and tail-calls saved LockCursor at runtime44B3B878. No stack arguments; ESI/EDI preserved. Native null branches still lead to an invalid call, so a valid surface/method is required. OFFLINE1564B0 inventory targets current VGUI_Surface031 slot67; current slots66/67 independently inspected. Legacy IDA lacks this function definition; guarded replay pending. No full startup or live hook success is implied."
+    },
+    {
+      "address": "0x4432BA43",
+      "comment": "2026-10-21 native-frame recovery: intact32BA40 calls E3EF0 (grenade/config synchronization, not merely cosmetic), then periodic2CBBB0/14DB50/14B330/164580 while menu visible and time delta>1. OFFLINE directory-handle models advance previously stopped filesystem discovery. Concrete missing dependency:14B330->147ED0->147F71 loads runtime4481E19C (fieldRVA4DE19C), calls virtual84 with effects/spark and3zero args. VMaterialSystem080 current factory/slot84 verified in game21392 (materialsystem+1AF30, diskSHA011e6fb5...92cce). Production test build binds the real public interface and initializes original config2CAB40 before original menu2E04D0; no replacement feature logic. Entire native frame still needs live validation. No mouse hook restored. Evidence native-frame-material-binding-21392.json."
+    },
+    {
+      "address": "0x4432BA4D",
+      "comment": "2026-10-21 completed bounded initialization findings retained here pending guarded entry definitions: original_config_directory_init2CAB40 and original_script_directories_init162FA0 have no observed stack/register-buffer inputs and balanced cdecl returns in retained OFFLINE fixtures.162FA0 assigns original primordial/scripts and creates include; only captured string field4B3C74 changes in image. Native full32BA40 now returns balanced after1092676 instructions under explicit CRT/empty-directory/opaque-material/SetCursor fixtures, no loader-context reads. Production native-frame test build uses intact32BA40, real VMaterialSystem080, original2CAB40/162FA0 and exact captured-wstring repair. Tests pass; live replacement not yet loaded. Pending function definitions/prototypes are in project-index; run tools/ida_cache_project.py inside IDA to apply/save. No successful full game bootstrap asserted."
+    },
+    {
+      "address": "0x4432BA4E",
+      "comment": "2026-10-21 LIVE CONFIRMED: user reports renders and controls work in fresh10260 using intact32BA40, original2CAB40/162FA0 and real VMaterialSystem080 binding4DE19C. Exact new ownership repairs4B3C74(script path) and4B3C14(periodic hitsounds label); first12820 crashed freeing417EA748 because second repair was omitted. Both originals initialize correctly after correction. Live raw frame bytes unchanged, menu3, centered1, fresh config/scripts/hitsounds strings, periodic refresh103.01,7FB878=0(no removed mouse hook). Reconstructed C++ coordinator removed from normal source; all29 tests pass. Surface/font/input adapters remain; full original paint154790/bootstrap not recovered. Evidence native-frame-restoration-findings.md and native-frame-live-10260.json."
+    },
+    {
+      "address": "0x44152ef0",
+      "comment": "PARTIAL model-draw hook: ECX/EDX plus four stack args, RET10; saved original is POINTER SLOT7DC950, not code at runtime44B1C950. Non-pass-through branch calls133470 and clears forced override via4DE1A0 slot1. DrawModelExecute-shaped ABI; current VEngineModel016 identity needs independent proof. Full133470 includes script/Lua callbacks, old owner/resource field operands and class IDs;133719 is an erroneous IDA split inside133470, not a callable entry. Actual native material passes132FF0/133C90 depend on original team/observer/thirdperson state. Do not activate from one interface binding or force7DC938/939 phase flags. See original-chams-recovery-findings.md."
+    },
+    {
+      "address": "0x44154690",
+      "comment": "Verified raw11-byte SceneEnd adapter: call saved original POINTER SLOT7FB854, then JMP134B50. Current VEngineRenderView014 slot9 engine+178F40.134B50 is real stack-aligning entry;134C00 is an interior block requiring its EBP locals. Full root sets/clears7DC939 around original trace/manual entity draws and calls stale2DC6C5F0 on4DE200 at13502E. CInput4DE1A8 camera offsets oldB0/B4/B8 differ from actualCCSInput AC/B0/B4, proved currentInput34/35; no live hook enabled. See chams-current-input-11188.json, chams-current-render-interfaces-11188.json."
+    },
+    {
+      "address": "0x44154bc5",
+      "comment": "PARTIAL original player ESP call chain: this call13ACC0 constructs callback and originalED330(flags22)->138130->137310; precedingF06C0 computes screen boxes through original362810. Native record array584120 stride95E0, bbox+152/156/160/164. ProducersF0B30(FrameStage14F916)/F03E0(CreateMove379A71) own category/opacity/position/history state and remain unresolved; do not synthesize records or enable drawing alone. Projection13 native cases pass, but no actual ESP enabled. See original-esp-recovery-findings.md."
     }
   ],
   "original_runtime_base": "0x44340000",
@@ -2474,6 +2675,31 @@
       "prototype": "void __cdecl localize_module_cache_initializer(void);",
       "comment": "Complete native22-byte CRT initializer wrapper. No arguments/plainRET. ECX=runtime4481E130, calls shared module_export_cache_construct9F790 then atexit3C9530 with destructor wrapperruntime44729E90, pops arg and returns. Does not bind first8byte module hash/handle; shared constructor starts at+8. This is the localize resolver omitted from former12-entry manifest. Function definition/name/prototype pending guarded IDA replay because legacy bridge cannot create functions; live address comment retained.",
       "expected_bytes": "b930e18144e886b9040068909e7244e81c57370059c3"
+    },
+    {
+      "address": "0x44154730",
+      "end_address": "0x44154766",
+      "name": "original_surface_lock_cursor",
+      "prototype": "void __fastcall original_surface_lock_cursor(void *surface, void *preserved_edx);",
+      "comment": "Complete54-byte original LockCursor replacement. Saves incoming ECX/EDX, calls menu_input_capture_active3582B0. When AL!=0 tail-calls virtual66 (+108h) of surface global4DE15C: UnlockCursor. Otherwise restores ECX/EDX and tail-calls saved LockCursor at runtime44B3B878. No stack arguments; ESI/EDI preserved. Native null branches still lead to an invalid call, so a valid surface/method is required. OFFLINE1564B0 inventory targets current VGUI_Surface031 slot67; current slots66/67 independently inspected. Legacy IDA lacks this function definition; guarded replay pending. No full startup or live hook success is implied.",
+      "byte_sha256": "56de277edbb0557d988ee2f5c70e73689a222b400447b5e13ec7d5c81b7ac411",
+      "expected_bytes": "56578bf28bf9e8753b200084c0741b8b0d5ce181448bc185c974028b01050801000074028b005f5effe08bd68bcf5f5eff2578b8b344"
+    },
+    {
+      "address": "0x442cab40",
+      "end_address": "0x442cab45",
+      "name": "original_config_directory_init",
+      "prototype": "void __cdecl original_config_directory_init(void);",
+      "comment": "Original no-stack-argument directory initialization root; protected E9 entry stub only. Retained OFFLINE path returns balanced cdecl after683916 instructions, assigns primordial/configs to field4B3D14 and initializes config discovery. CPU guard reads+B8/+20 only. Current production native-frame path scopes the same validated menu-constructor guard while calling it once. No general protected bootstrap recovery is implied. Full discontiguous protected body is not assigned a contiguous function boundary.",
+      "expected_bytes": "e94e728400"
+    },
+    {
+      "address": "0x44162fa0",
+      "end_address": "0x44162fa5",
+      "name": "original_script_directories_init",
+      "prototype": "void __cdecl original_script_directories_init(void);",
+      "comment": "Original no-stack-argument directory initialization root; protected E9 entry stub only. New frozen-page OFFLINE replay returns balanced cdecl after1297475 instructions with explicit CRT/empty-directory/ANSI include-conversion fixtures; no incoming stack/register buffers read. Original code assigns primordial/scripts to4B3C74 and creates scripts/include. Bytewise before/after image comparison changes only4B3C74..78 and4B3C80..84; captured old pointer1D865D48 must be repaired to an empty owned wstring before this call. CPU guard reads+B8/+20 only; no Lua VM or gameplay initialization observed. Full discontiguous protected body is not assigned a contiguous boundary. Evidence path-initializer-162fa0-offline.json; never inject emulator snapshots.",
+      "expected_bytes": "e9bcb69700"
     }
   ],
   "analysis_segment_profile": {

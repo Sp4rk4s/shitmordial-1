@@ -42,7 +42,18 @@ def main():
                         help='Offline exact-profile intervention at verified native wstring release/assignment')
     parser.add_argument('--draw-window-only', action='store_true',
                         help='Explore primary native window draw without frame/input/periodic feature callbacks')
+    parser.add_argument('--model-directory-handles', action='store_true',
+                        help='OFFLINE ONLY: exact read-attributes opens and identity queries for virtual menu directories')
+    parser.add_argument('--max-steps', type=int, default=1000000)
+    parser.add_argument('--model-material-lookup', action='store_true',
+                        help='OFFLINE ONLY: opaque effects/spark material result; no material methods or rendering modeled')
+    parser.add_argument('--bind-native-script-path', action='store_true',
+                        help='OFFLINE ONLY: transplant just the original162FA0-produced path from its retained replay')
+    parser.add_argument('--model-native-cursor', action='store_true',
+                        help='OFFLINE ONLY: original SetCursor request with hypothetical previous cursor')
     args = parser.parse_args()
+    if args.model_directory_handles and not args.model_empty_config:
+        parser.error('--model-directory-handles requires the explicit virtual empty filesystem')
     cpu = Uc(UC_ARCH_X86, UC_MODE_32)
     with zipfile.ZipFile(ROOT / f'analysis/menu/menu-constructed-offline-{args.pid}.zip') as archive:
         manifest = json.loads(archive.read('manifest.json'))
@@ -112,6 +123,12 @@ def main():
         cpu.mem_write(0x4481E174, struct.pack('<I', 0x26003000))
         cpu.mem_write(0x4481E164, struct.pack('<I', 0x26005000))
         cpu.mem_write(0x44B487AC, struct.pack('<II', game_windows[0]['width'], game_windows[0]['height']))
+    if args.model_material_lookup:
+        cpu.mem_map(0x26006000,0x2000)
+        cpu.mem_write(0x26006000,struct.pack('<I',0x26006100))
+        cpu.mem_write(0x26006100+84*4,struct.pack('<I',0x26007000))
+        cpu.mem_write(0x26006010,struct.pack('<I',0x26006500))
+        cpu.mem_write(BASE+0x4DE19C,struct.pack('<I',0x26006000))
     decoder = Cs(CS_ARCH_X86, CS_MODE_32)
     decoder.detail = True
     original = (ROOT / 'primordial.bin').read_bytes()
@@ -120,6 +137,7 @@ def main():
     tail = collections.deque(maxlen=32)
     standard_models = {int(a): name for a, name in manifest['standard_models'].items()}
     exports = json.loads((ROOT / f'analysis/menu/runtime-standard-exports-{args.pid}.json').read_text())['exports']
+    set_cursor_addresses={int(e['address'],16) for e in exports if e['module'].lower()=='user32.dll' and e['name']=='SetCursor' and not e['forwarded']}
     for export in exports:
         if not export['forwarded'] and export['name'] in ('malloc', 'calloc', 'memcpy', 'memmove', 'memset',
                                                          'GetLastError', 'SetLastError'):
@@ -128,6 +146,9 @@ def main():
     allocation_context = json.loads((ROOT / f'analysis/menu/snapshot-allocator-context-{args.pid}.json').read_text())
     allocations = {int(a, 16): size for a, size in allocation_context['allocations'].items()}
     virtual_find = {'open': False, 'index': 0, 'handle': 0x66000001}
+    directory_handles = {}
+    virtual_directories = ('primordial', 'primordial/configs', 'primordial/scripts',
+                           'primordial/skyboxes', 'csgo/materials/skybox', 'primordial/hitsounds', 'csgo/sound')
     if args.model_empty_config:
         with zipfile.ZipFile(ROOT / f'analysis/menu/config-constructed-offline-{args.pid}.zip') as archive:
             config_manifest = json.loads(archive.read('manifest.json'))
@@ -148,6 +169,25 @@ def main():
         for export in exports:
             if export['name'] in ('CreateDirectoryW', 'GetFileAttributesExW', 'FindFirstFileExW', 'FindNextFileW', 'FindClose') and not export['forwarded']:
                 standard_models[int(export['address'], 16)] = 'virtual_config_' + export['name']
+            if args.model_directory_handles and export['name'] in ('CreateFileW', 'GetFileInformationByHandle', 'GetFileInformationByHandleEx', 'CloseHandle') and not export['forwarded']:
+                standard_models[int(export['address'], 16)] = 'virtual_config_' + export['name']
+    if args.bind_native_script_path:
+        proof=json.loads((ROOT/'analysis/menu/path-initializer-162fa0-offline.json').read_text())
+        if proof['stop_reason']!='returned to caller sentinel with balanced cdecl stack':
+            raise RuntimeError('Native script-path replay is incomplete')
+        with zipfile.ZipFile(ROOT/'analysis/menu/path-initialized-offline-162fa0.zip') as archive:
+            entries=json.loads(archive.read('manifest.json'))['regions']
+            def retained(address,size):
+                region=next(r for r in entries if r['start']<=address and address+size<=r['start']+r['size'])
+                return archive.read(region['member'])[address-region['start']:address-region['start']+size]
+            descriptor=retained(BASE+0x4B3C74,24)
+            pointer,_,_,_,size,capacity=struct.unpack('<6I',descriptor)
+            text=retained(pointer,(size+1)*2)
+            if text.decode('utf-16-le')!='primordial/scripts\0' or capacity!=23:
+                raise RuntimeError('Native script directory output differs from retained proof')
+        cpu.mem_write(0x23010000,text)
+        cpu.mem_write(BASE+0x4B3C74,struct.pack('<6I',0x23010000,0,0,0,size,capacity))
+        allocations[0x23010000]=(capacity+1)*2
     random_state = [allocation_context['rand_state']]
     modules = json.loads((ROOT / f'analysis/menu/render-state-{args.pid}.json').read_text())['modules']
     crt_ranges = [(m['base'], m['base'] + m['size']) for m in modules
@@ -163,6 +203,25 @@ def main():
 
     def instruction(cpu, address, size, _):
         result['instructions'] += 1
+        if args.model_native_cursor and address in set_cursor_addresses:
+            sp=cpu.reg_read(UC_X86_REG_ESP);ret,cursor=struct.unpack('<II',bytes(cpu.mem_read(sp,8)))
+            choice=struct.unpack('<I',bytes(cpu.mem_read(BASE+0x804E10,4)))[0]
+            if choice>=7 or cursor!=struct.unpack('<I',bytes(cpu.mem_read(BASE+0x804E14+4*choice,4)))[0]:
+                result['stop_reason']='native cursor request differs from original table';cpu.emu_stop();return
+            result['modeled_calls'].append(dict(api='SetCursor',requested=hex(cursor),choice=choice,model='hypothetical cursor only; no target API call'))
+            cpu.reg_write(UC_X86_REG_EAX,0 if args.cursor=='absent' else 1)
+            cpu.reg_write(UC_X86_REG_ESP,sp+8);cpu.reg_write(UC_X86_REG_EIP,ret);return
+        if args.model_material_lookup and address==0x26007000:
+            sp=cpu.reg_read(UC_X86_REG_ESP)
+            words=struct.unpack('<5I',bytes(cpu.mem_read(sp,20)))
+            text=bytes(cpu.mem_read(words[1],64)).split(b'\0')[0]
+            if text!=b'effects/spark' or any(words[2:]):
+                result['stop_reason']='unmodeled material lookup arguments';cpu.emu_stop();return
+            result['modeled_calls'].append(dict(api='synthetic MaterialSystem84 FindMaterial',name=text.decode(),
+                model='opaque material identity only; no object methods or pixels',result='0x26006010'))
+            cpu.reg_write(UC_X86_REG_EAX,0x26006010)
+            cpu.reg_write(UC_X86_REG_ESP,sp+20)
+            cpu.reg_write(UC_X86_REG_EIP,words[0]);return
         if args.repair_captured_strings and address in (BASE + 0xA11A0, BASE + 0xAEC80):
             obj = cpu.reg_read(UC_X86_REG_ECX)
             if BASE + 0x4B2000 <= obj <= BASE + 0x4DDBE0 - 24:
@@ -222,7 +281,54 @@ def main():
                 data[44:44 + len(encoded)] = encoded
                 cpu.mem_write(destination, bytes(data))
 
-            if name.endswith('GetFileAttributesExW'):
+            if name.endswith('CreateFileW'):
+                words = struct.unpack('<8I', bytes(cpu.mem_read(sp, 32)))
+                data = bytearray()
+                for i in range(1024):
+                    char = bytes(cpu.mem_read(words[1] + 2*i, 2))
+                    if char == b'\0\0':break
+                    data.extend(char)
+                path = data.decode('utf-16-le').replace('\\', '/').rstrip('/')
+                paths = virtual_directories
+                if path not in paths or words[2:] not in ((0x80,7,0,3,0x2200000,0),(0x80,7,0,3,0x2000000,0)):
+                    result['stop_reason'] = 'unmodeled directory handle open'
+                    result['unmodeled_directory_open'] = dict(path=path, arguments=list(words[2:]))
+                    cpu.emu_stop();return
+                value = 0x66000100 + paths.index(path)
+                directory_handles[value] = path
+                event.update(path=path,handle=hex(value),arguments=list(words[2:]))
+                pop = 32
+            elif name.endswith('GetFileInformationByHandleEx'):
+                if values[1] not in directory_handles or (values[2],values[4]) not in ((9,8),(1,24),(18,24)):
+                    result['stop_reason']='unmodeled extended directory information request';cpu.emu_stop();return
+                if values[2]==9:data=struct.pack('<II',0x10,0)
+                elif values[2]==18:
+                    data=struct.pack('<QQQ',1,values[1]-0x66000000,0)
+                else:
+                    data=bytearray(24)
+                    struct.pack_into('<I',data,16,1)
+                    data[21]=1
+                cpu.mem_write(values[3],bytes(data))
+                event.update(path=directory_handles[values[1]],information_class=values[2],size=values[4])
+                value=1;pop=20
+            elif name.endswith('GetFileInformationByHandle'):
+                if values[1] not in directory_handles:
+                    result['stop_reason'] = 'unmodeled file identity handle';cpu.emu_stop();return
+                data = bytearray(52)
+                struct.pack_into('<I', data, 0, 0x10)
+                struct.pack_into('<I', data, 28, 1)
+                struct.pack_into('<I', data, 40, 1)
+                struct.pack_into('<I', data, 48, values[1]-0x66000000)
+                cpu.mem_write(values[2], data)
+                event.update(path=directory_handles[values[1]],handle=hex(values[1]))
+                value=1;pop=12
+            elif name.endswith('CloseHandle'):
+                if values[1] not in directory_handles:
+                    result['stop_reason']='unmodeled directory close handle';cpu.emu_stop();return
+                event.update(path=directory_handles.pop(values[1]),handle=hex(values[1]))
+                value=1;pop=8
+
+            elif name.endswith('GetFileAttributesExW'):
                 data = bytearray()
                 for i in range(1024):
                     char = bytes(cpu.mem_read(values[1] + 2 * i, 2))
@@ -230,7 +336,7 @@ def main():
                         break
                     data.extend(char)
                 path = data.decode('utf-16-le').replace('\\', '/').rstrip('/')
-                if values[2] or path not in ('primordial', 'primordial/configs', 'primordial/scripts', 'primordial/skyboxes'):
+                if values[2] or path not in virtual_directories:
                     result['stop_reason'] = 'unmodeled virtual directory attribute arguments'
                     result['unmodeled_path'] = path
                     cpu.emu_stop()
@@ -247,7 +353,7 @@ def main():
                         break
                     data.extend(char)
                 path = data.decode('utf-16-le').replace('\\', '/').rstrip('/')
-                if values[2] or path not in ('primordial', 'primordial/configs', 'primordial/scripts', 'primordial/skyboxes'):
+                if values[2] or path not in virtual_directories:
                     result['stop_reason'] = 'unmodeled virtual directory creation arguments'
                     result['unmodeled_path'] = path
                     cpu.emu_stop()
@@ -263,7 +369,7 @@ def main():
                         break
                     data.extend(char)
                 path = data.decode('utf-16-le').replace('\\', '/')
-                if path.replace('//', '/') not in ('primordial/configs/*', 'primordial/scripts/*', 'primordial/skyboxes/*') or values[2] != 1 or any(values[4:]):
+                if path.replace('//', '/') not in tuple(x+'/*' for x in virtual_directories) or values[2] != 1 or any(values[4:]):
                     result['stop_reason'] = 'unmodeled virtual configuration search arguments'
                     result['unmodeled_path'] = path
                     cpu.emu_stop()
@@ -413,6 +519,8 @@ def main():
 
     def invalid(cpu, access, address, size, value, _):
         name = standard_models.get(address)
+        if access==21 and args.model_native_cursor and address in set_cursor_addresses:
+            cpu.mem_map(address&~4095,4096);cpu.mem_write(address,b'\xCC');return True
         if access == 21 and name and (name.startswith('virtual_config_') or
                                       (args.model_basic_crt and name in ('GetLastError', 'SetLastError'))):
             cpu.mem_map(address & ~4095, 4096)
@@ -446,7 +554,7 @@ def main():
     cpu.hook_add(UC_HOOK_MEM_INVALID, invalid)
     cpu.hook_add(UC_HOOK_MEM_READ, read)
     try:
-        cpu.emu_start(BASE + entry, 0, count=1000000)
+        cpu.emu_start(BASE + entry, 0, count=args.max_steps)
     except UcError as error:
         result['emulator_error'] = str(error)
     result['final_eip'] = hex(cpu.reg_read(UC_X86_REG_EIP))
@@ -484,6 +592,14 @@ def main():
         suffix += '-strings'
     if args.draw_window_only:
         suffix += '-window'
+    if args.model_directory_handles:
+        suffix += '-directory-handles'
+    if args.model_material_lookup:
+        suffix += '-material'
+    if args.bind_native_script_path:
+        suffix += '-native-script-path'
+    if args.model_native_cursor:
+        suffix += '-cursor-model'
     path = ROOT / f'analysis/menu/render-dependency-probe-{args.pid}{suffix}.json'
     path.write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result, indent=2))

@@ -24,6 +24,7 @@ template<class F> F method(void* object,unsigned slot) {
 using Paint=void(__thiscall*)(void*,unsigned,bool,bool);
 Paint original_paint=nullptr;
 void *surface=nullptr,*panel_api=nullptr,*engine=nullptr,*client=nullptr,*input=nullptr;
+void* materials=nullptr;
 HMODULE self_module=nullptr;
 HANDLE log_file=INVALID_HANDLE_VALUE;
 volatile LONG failed=0,initialized=0;
@@ -88,6 +89,8 @@ bool preflight() {
     engine=factory("engine.dll","VEngineClient014");
     client=factory("client.dll","VClient018");
     input=factory("inputsystem.dll","InputSystemVersion001");
+    materials=factory("materialsystem.dll","VMaterialSystem080");
+    if(!materials||at<void*>(0x4DE19C)){log("REFUSED native frame material binding");return false;}
     if(!surface||!panel_api||!engine||!client||!input){log("REFUSED missing interfaces");return false;}
     log("interfaces surface=%p panel=%p engine=%p client=%p",surface,panel_api,engine,client);
     return true;
@@ -132,6 +135,16 @@ void guarded_constructor() {
     log("constructor begin UI thread=%lu guard=%p CPU=%08X/%08X build=%u",GetCurrentThreadId(),guard_page,cpu[0],cpu[1],build);
     __try {
         at<unsigned>(0x91BC4B)=address;
+        // Original one-time configuration directory/vector initialization.
+        // Its recovered cdecl path reads the same two scoped CPU-guard fields
+        // as the menu constructor. Real imports handle actual filesystem I/O.
+        reinterpret_cast<void(__cdecl*)()>(base+0x2CAB40)();
+        log("original config initializer returned");
+        // Verified original initializer assigns primordial/scripts and creates
+        // its include directory. No other image globals change on the retained
+        // complete path; no Lua VM or gameplay callback is started here.
+        reinterpret_cast<void(__cdecl*)()>(base+0x162FA0)();
+        log("original script-directory initializer returned");
         reinterpret_cast<void(__cdecl*)()>(base+0x2E04D0)();
     } __finally { at<unsigned>(0x91BC4B)=saved; }
     log("constructor returned guard restored=%08X windows=%08X..%08X",at<unsigned>(0x91BC4B),at<unsigned>(0x804E5C),at<unsigned>(0x804E60));
@@ -153,6 +166,7 @@ bool initialize_menu() {
     at<void*>(0x4DE15C)=surface;
     at<void*>(0x4DE174)=engine;
     at<void*>(0x4DE160)=input;
+    at<void*>(0x4DE19C)=materials;
     using ButtonName=const char*(__thiscall*)(void*,int);
     const char* insert_name=method<ButtonName>(input,40)(input,72);
     log("verified Source input=%p Insert name=%s",input,insert_name?insert_name:"<null>");
@@ -215,76 +229,15 @@ void poll_ui_input() {
     }
     at<unsigned char>(0x80869A)=foreground;
 }
-void native_update(void* window){reinterpret_cast<void(__thiscall*)(void*)>(base+0x3504B0)(window);}
-void native_draw(void* window){reinterpret_cast<void(__thiscall*)(void*)>(base+0x351AB0)(window);}
-bool pressed(unsigned key){return at<unsigned>(0x807F08+4*key)==1;}
 void run_ui_frame() {
-    // UI-only coordinator reconstructed from32BA40. Its cosmetic sync E3EF0,
-    // periodic gameplay roots and uninitialized config selection are excluded.
-    // Window/control update and modal focus remain original native code.
-    at<unsigned>(0x804E10)=7;
-    for(unsigned rva:{0x804DF1,0x804DF3,0x804DF4,0x804E05,0x804E06,0x804DF6})at<unsigned char>(rva)=0;
-    if(at<unsigned char>(0x804E58)){
-        reinterpret_cast<void(__thiscall*)(void*)>(base+0xA11A0)(reinterpret_cast<void*>(base+0x804E40));
-        at<unsigned char>(0x804E58)=0;
-    }
-    at<unsigned char>(0x804DF3)=GetCursor()!=nullptr;
-    void* old_focus=at<void*>(0x804DF8);void* old_active=at<void*>(0x804DFC);
-    // Original panel callback 1550AA copies the accent picker value into the global
-    // style accent read by every control draw, immediately before 32BA40.
+    // Original panel1550AA performs this store immediately before32BA40.
     at<unsigned>(0x4B33A8)=at<unsigned>(0x540138);
-    // Menu toggle is itself an original keybind control.
-    at<unsigned>(0x4B344C)=at<unsigned>(0x5404E0);
-    if(!at<void*>(0x804DFC)&&at<unsigned>(0x807F08+83*4)&&pressed(16))
-        at<unsigned char>(0x804E07)=!at<unsigned char>(0x804E07);
-    if(at<unsigned char>(0x804E07)&&!at<void*>(0x804DFC)&&pressed(70))at<unsigned char>(0x804E07)=0;
-    auto begin=at<unsigned>(0x804E5C),end=at<unsigned>(0x804E60);
-    if(!begin||end-begin!=16){InterlockedExchange(&failed,1);log("REFUSED frame window vector");return;}
-    for(auto a=begin;a<end;a+=4){
-        void* window=*reinterpret_cast<void**>(a);
-        if(window!=at<void*>(0x804DF8)){native_update(window);native_draw(window);}
-    }
-    auto focus=at<void*>(0x804DF8);
-    if(focus&&old_focus==focus){native_update(focus);native_draw(focus);}
-    else if(old_focus&&old_focus!=focus){native_update(old_focus);native_draw(old_focus);}
-    auto active=at<void*>(0x804DFC);
-    if(active&&active==old_active){
-        focus=at<void*>(0x804DF8);
-        if(focus)reinterpret_cast<void(__cdecl*)(float)>(base+0x360CE0)(*reinterpret_cast<float*>(static_cast<unsigned char*>(focus)+0x94));
-        method<void(__thiscall*)(void*,bool)>(active,1)(active,false);
-        method<void(__thiscall*)(void*)>(active,0)(active);
-        reinterpret_cast<void(__cdecl*)()>(base+0x3609E0)();
-    }
-    at<unsigned char>(0x804DF7)=at<unsigned char>(0x804E05);
-    // Original deferred callback/finalization pair,32BD52..BE35. These objects
-    // are owned by the menu, not the feature hotkey registry in input3582C0.
-    auto finalize=[](unsigned flag,unsigned pointer,unsigned embedded){
-        if(!at<unsigned char>(flag))return;
-        auto object=at<void*>(pointer);
-        if(!object){InterlockedExchange(&failed,1);log("REFUSED missing deferred UI callback");return;}
-        method<void(__thiscall*)(void*)>(object,2)(object);
-        if(at<unsigned char>(flag)){
-            object=at<void*>(pointer);
-            if(object)method<void(__thiscall*)(void*,bool)>(object,4)(object,reinterpret_cast<uintptr_t>(object)!=base+embedded);
-            at<void*>(pointer)=nullptr;at<unsigned char>(flag)=0;
-        }
-    };
-    finalize(0x8053B0,0x8053AC,0x805388);
-    finalize(0x804EC0,0x804EBC,0x804E98);
-    if(!at<unsigned char>(0x804DF4)){
-        active=at<void*>(0x804DFC);
-        if(at<unsigned char>(0x804E07)&&active){
-            reinterpret_cast<void(__thiscall*)(void*,unsigned)>(base+0x336EA0)(active,0);
-            at<void*>(0x804DFC)=nullptr;
-        }
-        at<unsigned char>(0x804E07)=0;
-    }
-    // Reflect native visibility for Win32 event capture; do not force shown or
-    // opacity on each frame, which used to break Insert and keybind capture.
+    reinterpret_cast<void(__cdecl*)()>(base+0x32BA40)();
+    // Window-message routing observes visibility; all frame decisions, focus,
+    // search, deferred callbacks and capture publication remain native.
     visible=at<unsigned char>(0x4B3449)!=0;
-    at<unsigned char>(0x80869B)=at<unsigned char>(0x804DF4)!=0;
 }
-void draw_preview(unsigned panel) {
+void draw_menu_frame(unsigned panel) {
     using Push=void(__thiscall*)(void*,unsigned,bool);
     using Pop=void(__thiscall*)(void*,unsigned);
     using Screen=void(__thiscall*)(void*,int&,int&);
@@ -322,11 +275,11 @@ void __fastcall paint_hook(void* object,void*,unsigned panel,bool force,bool all
         }
         poll_ui_input();
         if(!failed){
-            draw_preview(panel);
+            draw_menu_frame(panel);
             if(frames&&primordial_menu_state!=menu_ui::ready){
                 InterlockedExchange(&primordial_menu_state,menu_ui::ready);
-                log("MENU READY: native window/control input and popup routing active; gameplay startup unresolved.");
-                std::printf("[+] Menu UI ready. Insert toggles; native controls and keyboard input active.\n");
+                log("MENU READY: intact original frame32BA40 and native directory initialization active; gameplay startup unresolved.");
+                std::printf("[+] Original menu frame ready. Insert toggles; native controls and keyboard input active.\n");
             }
         }
         if(failed)InterlockedExchange(&primordial_menu_state,menu_ui::failed);

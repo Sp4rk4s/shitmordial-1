@@ -41,6 +41,14 @@
       "preferred_base": "0x10000000",
       "timestamp": "0x64e7c41e",
       "image_size": "0x77000"
+    },
+    {
+      "name": "materialsystem.dll",
+      "path": "c:\\program files (x86)\\steam\\steamapps\\common\\csgo legacy\\bin\\materialsystem.dll",
+      "sha256": "011e6fb57fa1856ae946a442a2aa2c930d5b15447b03c7e67a64337571f92cce",
+      "preferred_base": "0x10000000",
+      "timestamp": "0x63dc3de4",
+      "image_size": "0x114000"
     }
   ],
   "methods": [
@@ -161,6 +169,16 @@
         9
       ],
       "disk_bytes": "558bec8b45088b0485080607105dc20400cccccccccccccccccccccc"
+    },
+    {
+      "module": "materialsystem.dll",
+      "version": "VMaterialSystem080",
+      "slot": 84,
+      "rva": "0x1af30",
+      "relocation_offsets": [
+        6
+      ],
+      "disk_bytes": "558bec6aff687010091064a100000000506489250000000083ec2453"
     }
   ]
 }
