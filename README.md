@@ -3,24 +3,11 @@
 Windows C++20 loader for the supplied x86 Primordial dump and legacy CS:GO.
 The normal loader includes the original menu: Insert toggles it, and the user
 confirmed dragging, tabs, checkboxes, multi-selects, keybinds, sliders and search.
-**Gameplay test scope: original bunnyhop, infinite duck stamina, autostrafer and
-fast stop.** The normal loader executes original feature machine code with
-verified current Source field/interface bindings. The user confirmed this movement
-build works in gameplay; separate confirmation for each control was not supplied.
-Earlier bunnyhop/duck confirmation covered the old bridge.
+**Gameplay features are not restored yet.**
 
-Current source also repairs all fourteen module resolver inputs and one proven
-event-dispatch signature. All 27 native checks pass. Latest test DLLs are under
-`build/original-gameplay/`; its normal loader is injected into fresh CS:GO5336.
-To build the same version, run `tools/build.ps1 -OutputDirectory build/original-gameplay`;
-select it in the controller with `--release build/original-gameplay`.
-After loading a local map, run `joingame; jointeam 2` (T) or
-`joingame; jointeam 3` (CT). In the latest session, `jointeam` alone silently left
-the player unassigned; the user confirmed this initial join step resolves it.
-Enable the desired movement controls and close the menu with Insert before
-testing. Other gameplay features remain unresolved. See
-[original gameplay test](analysis/menu/original-gameplay-testing.md),
-[current feature tests](analysis/menu/first-movement-feature-tests.md),
+Current source also repairs all fourteen module resolver inputs. That correction
+passes all 22 isolated checks but has not been injected into the game; the last
+user-confirmed menu build predates that correction. See
 [feature recovery](analysis/menu/feature-startup-recovery-findings.md) and
 [menu findings](analysis/menu/native-ui-input-findings.md).
 
@@ -43,7 +30,7 @@ Source DLL build documented in
 
 ## Compile
 
-Build the loader, TLS companion and x64 Steam stager, then run the 25 checks:
+Build the loader, TLS companion and x64 Steam stager, then run the 22 checks:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\build.ps1
@@ -74,10 +61,6 @@ currently supports x64 Steam.
 Optional: `build.ps1 -MenuPreview` also compiles a separate diagnostic preview.
 Normal injection uses the integrated menu and does not need that DLL.
 
-Keep `primordial_loader.dll` and `primordial_tls.dll` together when moving them.
-The Steam DLL can live in a separate folder. Inject the loader only; it loads
-its TLS companion automatically.
-
 ## Inject automatically
 
 Start with Steam running and signed in, and CS:GO closed. If Steam already has a
@@ -107,8 +90,8 @@ Every automated launch passes **`-windowed -insecure -steam`**. Do not use Steam
 app 730 launch command here: on this installation that selects CS2.
 
 After the controller reports that the integrated menu completed its first draw,
-press **Insert** to show/hide it. Only the four movement features listed above
-are ready for gameplay testing; responding controls alone do not prove an effect.
+press **Insert** to show/hide it. Gameplay features remain unresolved even when
+menu controls respond.
 
 If the correct Steam stager already prepared a fresh running game, inject just
 the normal loader through the controller:

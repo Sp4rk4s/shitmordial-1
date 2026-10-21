@@ -741,69 +741,6 @@
         "sub_44354170"
       ],
       "byte_sha256": "ede2cde574d69d5dab2fe3b4cbed4714d0ae3cba520aab09532bfc49900889b0"
-    },
-    {
-      "address": "0x440A06C0",
-      "name": "refresh_cached_local_player",
-      "prototype": "void *__thiscall refresh_cached_local_player(void *context);",
-      "comment": "Verified native helper, no stack arguments/plainRET. ECX=context; calls EngineClient014 slot12 through payload4DE174 for current local index, then ClientEntityList003 slot3 through4DE170 for entity; stores returned entity at context+2C and returns it in EAX. Preserves ESI. Both public interface slots corroborated by current native methods/factory identity. Does not read cached entity instead of querying or create an interface itself. Hundreds of gameplay consumers pass local context4481E210. New bounded movement bridge uses the same verified public lookup directly; does not call this helper or populate guessed full context.",
-      "aliases": [
-        "sub_440A06C0"
-      ]
-    },
-    {
-      "address": "0x443748d0",
-      "name": "command_state_ring_record",
-      "prototype": "unsigned char *__cdecl command_state_ring_record(int command_number);",
-      "comment": "Verified native leaf: signed command_number remainder150, returns runtime44B644B8+44*remainder. PlainRET; no allocation, validation or side effects. Positive command numbers select150 records of44bytes at RVA8244B8. Negative remainders can precede ring and are not normalized. Original3798C0 initializes desired angles at record+14/+18/+1C; autostraferF92D0 overwrites them. Other consumers use tick/shift fields. Native execution in tests/original_motion_probe.cpp uses this original helper, not a ring model.",
-      "aliases": [
-        "sub_443748D0"
-      ]
-    },
-    {
-      "address": "0x4410acc0",
-      "name": "read_feature_state_7dbefe",
-      "prototype": "unsigned char __cdecl read_feature_state_7dbefe(void);",
-      "comment": "Verified two-instruction getter: MOV AL,[runtime44B1BEFE], RET; no arguments, preserves no promised upper EAX bits. Reads byte RVA7DBEFE. F7A50 uses it to gate optional special movement handling before old Source move-type operand2D942073. Higher-level meaning of this boolean is unresolved. Isolated original-motion fixture sets the byte false explicitly; no replacement predicate code used.",
-      "aliases": [
-        "sub_4410ACC0"
-      ]
-    },
-    {
-      "address": "0x440f7a50",
-      "name": "correct_command_movement",
-      "prototype": "int __cdecl correct_command_movement(const float *output_angles, const float *movement_angles, void *optional_command);",
-      "comment": "Verified cdecl three-stack-argument function, plainRET, size6D3. Uses optional_command or current command4DE214; converts forward/side movement from movement_angles basis to output_angles basis using original trig imports and constants, normalizes/clamps movement, clamps upmove. Does not set command view angles. Native3798C0 call37A049 supplies cmd+0C, saved ring angles, NULL. Optional branch reads10ACC0/519560 and stale Source operand2D942073, invokes engine slot18 and repairs movement button flags for type9. Full optional-branch live dependencies unresolved. Isolated tests execute original full function after originalF92D0 with explicit false7DBEFE gate: seven active cases preserve450 horizontal magnitude and view angles. Not live gameplay proof.",
-      "aliases": [
-        "sub_440F7A50"
-      ]
-    },
-    {
-      "address": "0x440f92d0",
-      "aliases": [
-        "sub_440F92D0"
-      ],
-      "name": "original_autostrafe",
-      "prototype": "void __cdecl original_autostrafe(void);",
-      "comment": "Verified original autostrafer, no stack args/plainRET, size49D. Checkbox53D360, water<2, no IN_SPEED, inactive slow-walk bind53D700 and airborne flag gate. A06C0 queries local entity; captured Source operand locations2D9CB32C/2D8F778B/2D8F1D4F supply water/flags/velocity offsets. Original math writes command forward/side and ring3748D0 record+14/+18/+1C; toggles7DBBDD. Smoothing53D498 affects angle correction. Native core later appliesF7A50 to convert saved desired-angle basis into actual command movement. Production capsule preserves native decisions/math/callees and repairs only those three verified operand cells plus rel32 call locations. Isolated original_movement_tests exercises real original local lookup, bind getter and correction with public Source interface fixtures. Actual gameplay behavior still requires user validation."
-    },
-    {
-      "address": "0x44369540",
-      "aliases": [
-        "sub_44369540"
-      ],
-      "name": "lookup_ground_entity",
-      "prototype": "void *__thiscall lookup_ground_entity(void *entity);",
-      "comment": "Verified native leaf21bytes/plainRET. ECX=entity; reads field-offset DWORD from captured old-client2D8F003C, then entity+offset as handle, calls ClientEntityList003 slot4 through global4DE170 with that handle and returns its result. Does not validate null interface/method. Offset identity is m_hGroundEntity: current CCSPlayer RecvTable resolves150 and current interface slot4 is handle lookup. Fast-stop blockF8713 calls this before applying braking. Production capsule changes only old operand location to owned verified offset cell; it still calls the real current public interface. Isolated tests cover valid ground handle and no-ground result; no synthetic entity/model used live."
-    },
-    {
-      "address": "0x4433ae00",
-      "aliases": [
-        "sub_4433AE00"
-      ],
-      "name": "keybind_is_active",
-      "prototype": "unsigned char __thiscall keybind_is_active(void *control);",
-      "comment": "Verified native control getter/plainRET, ECX=keybind control, returns AL. Key field+130, mode+134, one-shot flag+154. If one-shot and key nonzero and32C360 false, returns input_button_pressed_this_frame. Otherwise modes0..4 select table33AED0: latched state helper3580D0, held input state, inverse-held input state, always true, always false. Hold/inverse-held use input_button_state_pointer and32C360 suppression; zero key returns false. Table and full getter bytes SHA256 guarded in original movement backend. Autostrafer queries this via bind53D700 slot8; duck prefix uses bind5192B0. Test fixtures exercise actual always/never branches; current original menu supplies real key state live. Wider input subsystem meaning remains in existing input annotations."
     }
   ],
   "data_comments": [
@@ -2418,34 +2355,6 @@
     {
       "address": "0x444DE198",
       "comment": "Client-state pointer role corroborated by captured originalFC7F0010 and current EngineClient014 getters: slot26 loads[engine+59F19C] and tests[state+108]==6; slot78 loads same state and returns[state+9C]. Current observed stateFC2F0010. OFFLINE binding feeds protected1564B0 secondary vtable atstate+8, yielding target6C316110 with detour150350/original44B3B6D0. No live binding/hook applied."
-    },
-    {
-      "address": "0x44155841",
-      "comment": "\n\n2026-10-20 pattern follow-up: current compiled event signature is consumed through this 18-byte helper, NOT the ASCII scanner at21E560. ECX points to24 bytes (18 pattern bytes,2 padding,mask DWORD+20); stack args are output DWORD*,start,length. Returns output pointer in EAX and RET12. Original strict excluded-final-position and first-byte behavior retained. Original x86 execution test event-pattern-consumer verifies the adapted pattern with this helper. Production adapter is additionally restricted to native return RVAs155352/155375, exact old signature/mask0, engine executable range, SHA256-guarded helper and installed Source files. It does not invoke1564B0 or enable gameplay."
-    },
-    {
-      "address": "0x44155ad1",
-      "comment": "\n\n2026-10-20 pattern follow-up: current GAMEEVENTSMANAGER002 slots8/9 independently call engine RVA211C70. Old18-byte prefix has0 matches; current18-byte prefix matches this target exactly once in installed executable sections. tools/audit_feature_patterns.py records public wrapper rel32 proof and reference provenance. Scoped source adapter prepared in event_pattern.cpp; NOT loaded in game23896. OFFLINE1564B0 failed-hook inventory now requests this target6C2A1C70 for this exact detour/original slot44B3B8EC, reducing null requests7->6. Callback preprocessing356130/full startup still unresolved; do not equate target recovery with event-hook or gameplay success."
-    },
-    {
-      "address": "0x44155b81",
-      "comment": "\n\n2026-10-20 partial dependency warning: native callback reads DWORD at captured old-client VA2DAA11A5, then writes [ESI+that value]=0 under a local-player/menu-state condition before forwarding original44B3B8C4. Recovering a new function target alone cannot repair this stale Source operand read. No field-offset identity inferred merely from a reference pattern; current field binding remains unresolved."
-    },
-    {
-      "address": "0x4436a7c1",
-      "comment": "\n\n2026-10-20 partial dependency warning: vector-result helper reached from155BD0 reads DWORD operands at captured old-client addresses2D906360,2DAA0FB0 and2D8FBEC0 and uses them as entity-relative scalar/vector offsets. Current Source is a different build/base. These are operand-location dependencies distinct from function-hook targets; do not blindly rebase or substitute offsets without dataflow/field proof. Whole helper semantics remain partial; no new name/prototype asserted."
-    },
-    {
-      "address": "0x440f8511",
-      "comment": "\n\n2026-10-20 partial movement coordinator: direct checkbox reads link bunnyhop(53D0E8+138), fast stop(53DAE0+138), infinite duck stamina(53DC20+138). Called at379A58 from native CreateMove-shaped callback3798C0. Bunnyhop decision excerpt F8674..F870E reads old-client operand locations2D9CB32C(water-level offset) and2D8F778B(flags offset), current command global4DE214, bypass byte7DBBDC. New movement-original-x86 test executes this exact excerpt with explicit local offset/entity fixtures and verifies320 decisions against the bounded native bridge. Full coordinator includes weapon/other behaviors and is NOT enabled live; semantics outside excerpt remain partial."
-    },
-    {
-      "address": "0x440f92d1",
-      "comment": "\n\n2026-10-20 partial autostrafe dependency: original autostrafer checkbox53D228+138 gates this function; smoothing float at53D368+130. Reads current command4DE214 and old-client operand locations2D9CB32C(water),2D8F778B(flags),2D8F1D4F(velocity). Computes horizontal speed/angles, writes command movement and per-command state via3748D0. Whole math/state contract remains incomplete. Not called by the new two-feature bridge; autostrafer remains unresolved."
-    },
-    {
-      "address": "0x443798c1",
-      "comment": "\n\n2026-10-20 partial original CreateMove-shaped callback: three stack args forwarded to original44B65FE0, derives sequence modulo150,100-byte commands and104-byte verified commands from payload CInput field4DE1A8. CallsF8510 at379A58 among many feature roots. Concrete game-build mismatch: original buffer reads Input+F4/F8; installed native CInput CreateMove atclient+305740 uses+F0/F4. Original XOR call at3799CE/D6 resolves stale client function2DBE2740; installed native checksum called atclient+307260 after verified-command copy. Do not install this whole callback from one corrected pattern or the incomplete decompiler prototype (bad stack warning). No original core hook installed live."
     }
   ],
   "original_runtime_base": "0x44340000",
