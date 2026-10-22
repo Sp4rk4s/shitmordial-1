@@ -2,6 +2,7 @@
 #include "crashlog.h"
 #include "config.h"
 #include "menu_ui.h"
+#include "frame_stage.h"
 #include <windows.h>
 #include <algorithm>
 #include <cstdio>
@@ -52,6 +53,9 @@ static DWORD WINAPI init_thread(LPVOID hModule) {
         printf("    Entry: 0x%08X\n\n", cfg::IMAGE_BASE + cfg::ENTRY_RVA);
         if (menu_ui::install(static_cast<HMODULE>(hModule))) {
             printf("[*] Menu hooks installed; waiting for the first UI paint.\n");
+            printf("[*] Preparing FrameStageNotify hook:\n");
+            printf(frame_stage::install() ? "[+] FrameStageNotify hooked; original knife changer runs at stage 2.\n"
+                                          : "[!] FrameStageNotify hook not installed.\n");
         } else {
             printf("[!] Menu UI installation failed. Check primordial_menu.log in the game directory.\n");
         }

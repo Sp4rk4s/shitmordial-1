@@ -34,7 +34,7 @@ target_link_options(primordial_tls PRIVATE /NODEFAULTLIB /ENTRY:DllMain@12 /INCL
 # Steam embeds and stages the binary; this DLL patches and initializes it.
 add_library(${PROJECT_NAME} SHARED src/dllmain.cpp src/mapper.cpp src/pe_builder.cpp
     src/crashlog.cpp src/signatures.cpp src/pattern_hook.cpp src/imports.cpp src/startup.cpp src/tls.cpp src/game_modules.cpp
-    src/menu_ui.cpp src/menu_profile.cpp)
+    src/menu_ui.cpp src/menu_profile.cpp src/frame_stage.cpp)
 # MSVC19.52 optimizer crashes on the nested native-SEH paint diagnostic boundary.
 set_source_files_properties(src/menu_ui.cpp PROPERTIES COMPILE_OPTIONS /Od)
 add_dependencies(primordial_loader primordial_tls)

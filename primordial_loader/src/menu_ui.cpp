@@ -149,6 +149,18 @@ void rename_title(const wchar_t* title) {
     chars[length]=0;size=static_cast<unsigned>(length);
     log("title renamed to %ls",title);
 }
+uintptr_t find_unique(const char* module,const char* pattern,size_t length) {
+    auto* image=reinterpret_cast<const unsigned char*>(GetModuleHandleA(module));
+    if(!image)return 0;
+    auto* nt=reinterpret_cast<const IMAGE_NT_HEADERS*>(image+reinterpret_cast<const IMAGE_DOS_HEADER*>(image)->e_lfanew);
+    uintptr_t hit=0;
+    for(size_t i=0;i+length<=nt->OptionalHeader.SizeOfImage;++i){
+        size_t j=0;
+        while(j<length&&(pattern[j]=='?'||static_cast<unsigned char>(pattern[j])==image[i+j]))++j;
+        if(j==length){if(hit)return 0;hit=reinterpret_cast<uintptr_t>(image+i);}
+    }
+    return hit;
+}
 bool initialize_menu() {
     at<void*>(0x4DE15C)=surface;
     at<void*>(0x4DE174)=engine;
@@ -175,6 +187,25 @@ bool initialize_menu() {
     bool primary=false;
     for(unsigned i=0;i<4;++i){auto object=reinterpret_cast<unsigned*>(begin)[i];log("window[%u]=%08X",i,object);primary|=(object==base+0x4B33B0);}
     if(!primary){log("FAILED primary window not in constructed tree");return false;}
+    // Original 32BA40 periodic skybox-list refresh; the dropdown draw (341CBC) assumes a nonempty list.
+    reinterpret_cast<void(__cdecl*)()>(base+0x14DB50)();
+    log("skybox list populated: %u items",(at<unsigned>(0x53A584)-at<unsigned>(0x53A580))/0x1C);
+    // IClientEntityList (slots 3/4/6 = GetClientEntity/FromHandle/HighestIndex), read by feature callbacks e.g. A06C0.
+    if(!at<void*>(0x4DE170)) at<void*>(0x4DE170)=factory("client.dll","VClientEntityList003");
+    if(!at<void*>(0x4DE170)){log("FAILED VClientEntityList003");return false;}
+    // Chams material lists (4414B330 -> 147ED0) FindMaterial through IMaterialSystem at 4DE19C (slots 84/86/87/89).
+    if(!at<void*>(0x4DE19C)) at<void*>(0x4DE19C)=factory("materialsystem.dll","VMaterialSystem080");
+    if(!at<void*>(0x4DE19C)){log("FAILED VMaterialSystem080");return false;}
+    reinterpret_cast<void(__cdecl*)()>(base+0x14B330)();
+    log("material lists populated: %u/%u items",(at<unsigned>(0x536B1C)-at<unsigned>(0x536B18))/0x1C,(at<unsigned>(0x536C7C)-at<unsigned>(0x536C78))/0x1C);
+    // ItemSystem getter A1FC0 jumps to a captured-process client address; seed its once-cache
+    // (value 57ECE0, flag 57ECE4) with the current ItemSystem() before the original knife/skin builder FBE50.
+    // A1 ? ? ? ? 85 C0 75 53 also matches the call preceding FBE50's own E8 ? ? ? ? 8B F0 8B 4E 7C scan.
+    uintptr_t item_system=find_unique("client.dll","\xA1????\x85\xC0\x75\x53",9);
+    if(!item_system){log("FAILED ItemSystem pattern");return false;}
+    at<uintptr_t>(0x57ECE0)=item_system;at<unsigned>(0x57ECE4)|=1;
+    reinterpret_cast<void(__cdecl*)()>(base+0x0FBE50)();
+    log("ItemSystem=%p knife list populated: %u items",reinterpret_cast<void*>(item_system),(at<unsigned>(0x55072C)-at<unsigned>(0x550728))/0x1C);
     rename_title(L"cyganmordial");
     at<void*>(0x804DF8)=reinterpret_cast<void*>(base+0x4B33B0);
     at<unsigned char>(0x4B3449)=1;at<float>(0x4B3444)=1.0f;
@@ -182,15 +213,13 @@ bool initialize_menu() {
     log("MENU CONSTRUCTED. Initially visible; Insert toggles. Gameplay startup not executed.");
     return true;
 }
-bool hit(int px,int py,int x,int y,int w,int h){return w>0&&h>0&&px>=x&&py>=y&&px<x+w&&py<y+h;}
 LRESULT CALLBACK window_proc(HWND window,UINT message,WPARAM wp,LPARAM lp){
     if(initialized&&!failed){
         if(message==WM_MOUSEWHEEL) InterlockedExchangeAdd(&wheel_units,static_cast<short>(HIWORD(wp)));
         if(visible){
-            POINT cursor{};GetCursorPos(&cursor);ScreenToClient(window,&cursor);
-            bool inside=hit(cursor.x,cursor.y,at<int>(0x4B33EC),at<int>(0x4B33F0),at<int>(0x4B33F4),at<int>(0x4B33F8));
-            bool capture=inside||at<unsigned>(0x804DFC)||at<unsigned char>(0x4B341C);
-            if(capture&&message>=WM_MOUSEFIRST&&message<=WM_MOUSELAST)return 0;
+            // The menu polls buttons with GetAsyncKeyState; keep clicks/raw mouse from the game while it is open.
+            if(message>=WM_MOUSEFIRST&&message<=WM_MOUSELAST)return 0;
+            if(message==WM_INPUT)return DefWindowProcA(window,message,wp,lp);
             // Native text fields use button states, not WM_CHAR. Keep the game's
             // console/menu shortcuts from also receiving captured UI keystrokes.
             if(message>=WM_KEYFIRST&&message<=WM_KEYLAST)return 0;
@@ -213,7 +242,6 @@ void poll_ui_input() {
         auto next=menu_input::advance({at<unsigned>(0x807F08+4*i),at<float>(0x808460+4*i)},down,delta);
         at<unsigned>(0x807F08+4*i)=next.state;at<float>(0x808460+4*i)=next.held;
     }
-    at<unsigned char>(0x80869A)=foreground;
 }
 void native_update(void* window){reinterpret_cast<void(__thiscall*)(void*)>(base+0x3504B0)(window);}
 void native_draw(void* window){reinterpret_cast<void(__thiscall*)(void*)>(base+0x351AB0)(window);}

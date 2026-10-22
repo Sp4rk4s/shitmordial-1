@@ -1,0 +1,6 @@
+#pragma once
+
+namespace frame_stage {
+// FrameStageNotify (VClient018 slot 37) running original stage-2 handler 100900 (knife model changer).
+bool install() noexcept;
+}

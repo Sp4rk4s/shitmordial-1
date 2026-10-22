@@ -25,6 +25,8 @@ Result prepare(uint8_t* image, size_t size) {
         // the second label through the same verified wstring storage helper.
         {0x4B3D14, {0x41C66620, 0, 0, 0, 18, 23}},
         {0x4B3C44, {0x417EADA0, 0x3C386838, 0x0097D52C, 0x443E11D5, 19, 23}},
+        // Material-list refresh 147ED0 releases this label before reassigning it.
+        {0x4B3C14, {0x417EA748, 0, 0x44876B28, 0x42BEE840, 20, 23}},
     };
     constexpr size_t selector_guard = 0x34356A;
     constexpr uint8_t captured_selector_guard[] = {
@@ -62,6 +64,15 @@ Result prepare(uint8_t* image, size_t size) {
     for (const auto& profile : menu_strings)
         if (std::memcmp(image + profile.offset, profile.captured, sizeof(profile.captured)))
             return {false, "Captured menu ownership state does not match the verified startup profile."};
+    // WEAPON_DEAGLE, WEAPON_KNIFE, WEAPON_KNIFE_T, WEAPON_BUMPMINE, STUDDED_HYDRA_GLOVES, WEAPON_FLASHBANG.
+    constexpr struct { uint32_t rva, value; } constant_profile[] = {
+        {0x7DBC5C, 1}, {0x7DBCD4, 42}, {0x7DBCD8, 59}, {0x7FC518, 85}, {0x7DBD5C, 5035}, {0x5840DC, 43}};
+    for (const auto& check : constant_profile) {
+        uint32_t actual = 0;
+        std::memcpy(&actual, image + check.rva, 4);
+        if (actual != check.value)
+            return {false, "Captured item definition constants do not match the verified startup profile."};
+    }
     if (std::memcmp(image + selector_guard, captured_selector_guard, sizeof(captured_selector_guard)))
         return {false, "Menu selector bounds instructions do not match the verified profile."};
     for (const auto& binding : game_modules::bindings) {
@@ -93,8 +104,17 @@ Result prepare(uint8_t* image, size_t size) {
     std::memset(image + menu_vector, 0, sizeof(captured_menu_vector));
     uint8_t settings[loader_input_size];
     std::memcpy(settings, image + loader_input, sizeof(settings));
+    constexpr uint32_t constant_count = [] { uint32_t n = 0; for (const auto& run : item_definition_constants) n += run.count; return n; }();
+    static_assert(constant_count == 95);
+    uint32_t constants[constant_count];
+    size_t saved = 0;
+    for (const auto& run : item_definition_constants)
+        for (uint32_t i = 0; i < run.count; ++i) std::memcpy(&constants[saved++], image + run.rva + i * 4, 4);
     std::memset(image + bss, 0, bss_size);
     std::memcpy(image + loader_input, settings, sizeof(settings));
+    saved = 0;
+    for (const auto& run : item_definition_constants)
+        for (uint32_t i = 0; i < run.count; ++i) std::memcpy(image + run.rva + i * 4, &constants[saved++], 4);
     // Mode byte = ac-130 build tier. Attach helper A1E72 copies it to RVA 4DE245,
     // read by the title-bar tag (351AB0) and tier-gated feature paths.
     image[ac130_mode] = 1;
