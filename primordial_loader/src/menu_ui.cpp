@@ -12,6 +12,7 @@
 #include "menu_profile.h"
 #include "menu_ui.h"
 #include "menu_input.h"
+#include "frame_stage.h"
 
 extern "C" { __declspec(dllexport) volatile LONG primordial_menu_state=menu_ui::dormant; }
 
@@ -197,6 +198,9 @@ bool initialize_menu() {
     if(!at<void*>(0x4DE19C)) at<void*>(0x4DE19C)=factory("materialsystem.dll","VMaterialSystem080");
     if(!at<void*>(0x4DE19C)){log("FAILED VMaterialSystem080");return false;}
     reinterpret_cast<void(__cdecl*)()>(base+0x14B330)();
+    // Chams materials (FindMaterial into 7DC930/7DC934); called from skipped startup code at A287E.
+    reinterpret_cast<void(__cdecl*)()>(base+0x134810)();
+    log("chams materials: %p %p",at<void*>(0x7DC930),at<void*>(0x7DC934));
     log("material lists populated: %u/%u items",(at<unsigned>(0x536B1C)-at<unsigned>(0x536B18))/0x1C,(at<unsigned>(0x536C7C)-at<unsigned>(0x536C78))/0x1C);
     // ItemSystem getter A1FC0 jumps to a captured-process client address; seed its once-cache
     // (value 57ECE0, flag 57ECE4) with the current ItemSystem() before the original knife/skin builder FBE50.
@@ -227,21 +231,21 @@ LRESULT CALLBACK window_proc(HWND window,UINT message,WPARAM wp,LPARAM lp){
     }
     return CallWindowProcA(old_wndproc,window,message,wp,lp);
 }
+volatile LONG poller_failed=0;
+int poller_fault(EXCEPTION_POINTERS* e){
+    InterlockedExchange(&poller_failed,1);
+    log("INPUT POLLER STOP exception=%08lX address=%p",e->ExceptionRecord->ExceptionCode,e->ExceptionRecord->ExceptionAddress);
+    return EXCEPTION_EXECUTE_HANDLER;
+}
 void poll_ui_input() {
-    bool foreground=GetForegroundWindow()==game_window;
-    POINT cursor{-100,-100};
-    if(foreground){GetCursorPos(&cursor);ScreenToClient(game_window,&cursor);}
-    at<int>(0x807F00)=cursor.x;at<int>(0x807F04)=cursor.y;
-    float delta=*reinterpret_cast<float*>(reinterpret_cast<uintptr_t>(at<void*>(0x4DE164))+0x14);
-    constexpr unsigned mouse_keys[]={VK_LBUTTON,VK_RBUTTON,VK_MBUTTON,VK_XBUTTON1,VK_XBUTTON2};
-    LONG wheel=InterlockedExchange(&wheel_units,0);
-    at<float>(0x80869C)=foreground?static_cast<float>(wheel)/WHEEL_DELTA:0.0f;
-    for(unsigned i=0;i<114;++i){
-        unsigned vk=i<107?virtual_keys[i]:i<112?mouse_keys[i-107]:0;
-        bool down=foreground&&(i==112?wheel>0:i==113?wheel<0:vk&&((GetAsyncKeyState(vk)&0x8000)!=0));
-        auto next=menu_input::advance({at<unsigned>(0x807F08+4*i),at<float>(0x808460+4*i)},down,delta);
-        at<unsigned>(0x807F08+4*i)=next.state;at<float>(0x808460+4*i)=next.held;
+    // Original poller: cursor, 114-button state machine (807F08/808460), keybind dispatch and toggles.
+    if(!poller_failed){
+        __try{reinterpret_cast<void(__cdecl*)()>(base+0x3582C0)();}
+        __except(poller_fault(GetExceptionInformation())){}
     }
+    // The window procedure keeps the wheel from the input system while the menu is open.
+    LONG wheel=InterlockedExchange(&wheel_units,0);
+    if(visible&&wheel)at<float>(0x80869C)=GetForegroundWindow()==game_window?static_cast<float>(wheel)/WHEEL_DELTA:0.0f;
 }
 void native_update(void* window){reinterpret_cast<void(__thiscall*)(void*)>(base+0x3504B0)(window);}
 void native_draw(void* window){reinterpret_cast<void(__thiscall*)(void*)>(base+0x351AB0)(window);}
@@ -326,6 +330,7 @@ void draw_preview(unsigned panel) {
         at<int>(0x8087AC)=w;at<int>(0x8087B0)=h;
         reinterpret_cast<void(__cdecl*)()>(base+0x3609A0)();
         reinterpret_cast<void(__cdecl*)()>(base+0x3609E0)();
+        frame_stage::run_visuals();
         run_ui_frame();
         ++frames;
         if(frames==1 || frames==300) log("DRAW RETURNED frames=%u panel=%X dimensions=%d,%d",frames,panel,w,h);
